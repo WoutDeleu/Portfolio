@@ -34,6 +34,30 @@ interface Timeline {
   items: TimelineItem[];
 }
 
+interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface Interest {
+  name: string;
+  description: string;
+  icon: SafeHtml;
+  color: string;
+}
+
+interface Certification {
+  title: string;
+  organization: string;
+  logo: SafeHtml;
+  credentialUrl: string;
+  achieved: string;
+  expires: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -46,6 +70,16 @@ export class PortfolioComponent implements AfterViewInit {
   age: number;
   showAge: boolean = true;
   selectedTimelineItem: TimelineItem | null = null;
+
+  // Contact form properties
+  contactFormData: ContactFormData = {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  };
+  isSubmitting: boolean = false;
+  formStatus: string | null = null;
 
   constructor(private sanitizer: DomSanitizer) {
     this.age = this.calculateAge();
@@ -105,6 +139,39 @@ export class PortfolioComponent implements AfterViewInit {
     this.selectedTimelineItem = null;
   }
 
+  onSubmitContactForm(): void {
+    if (this.isSubmitting) return;
+
+    this.isSubmitting = true;
+    this.formStatus = null;
+
+    // Simulate form submission (replace with actual API call)
+    setTimeout(() => {
+      try {
+        // Here you would normally send the data to your backend
+        console.log('Contact form data:', this.contactFormData);
+
+        // For now, we'll just simulate success
+        this.formStatus = 'success';
+        this.resetContactForm();
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        this.formStatus = 'error';
+      } finally {
+        this.isSubmitting = false;
+      }
+    }, 2000); // Simulate network delay
+  }
+
+  private resetContactForm(): void {
+    this.contactFormData = {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    };
+  }
+
   skills: Skill[] = [
     {
       name: 'Python',
@@ -132,10 +199,34 @@ export class PortfolioComponent implements AfterViewInit {
     }
   ];
 
-  certifications: string[] = [
-    'PSM I',
-    'OCP',
-    'Industrial Engineering'
+  certifications: Certification[] = [
+    {
+      title: 'Spring Professional Develop (2V0-72.22)',
+      organization: 'Broadcom',
+      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`),
+      credentialUrl: 'https://www.credly.com/badges/8968e30b-4175-4dff-9a5b-a1865fe49ec1/public_url',
+      achieved: '08/2025',
+      expires: 'never',
+      description: 'Those who earn the Spring Professional certification have demonstrated strong expertise in the Spring Framework, including its core features such as dependency injection, data access, transaction management, RESTful services, and Spring Boot for building modern applications.'
+    },
+    {
+      title: 'PSM I',
+      organization: 'Scrum.org',
+      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>`),
+      credentialUrl: 'https://www.scrum.org/certificates/1185678',
+      achieved: '02/2025',
+      expires: 'never',
+      description: 'Those who earn the globally recognized Professional Scrum Master I (PSM I) certification have demonstrated a fundamental level of Scrum mastery, including the concepts of applying Scrum, and proven an understanding of Scrum as described in the Scrum Guide.'
+    },
+    {
+      title: 'OCP Java SE17',
+      organization: 'Oracle',
+      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`),
+      credentialUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=166E2EF9C94AE1E525CA00B70BA9C774474DA062FB852E0833EBDB4511973B85',
+      achieved: '01/2024',
+      expires: 'never',
+      description: 'An Oracle Certified Professional: Java SE 17 Developer has demonstrated proficiency in Java (Standard Edition) software development recognized by a wide range of world-wide industries. They have also exhibited thorough and broad knowledge of the Java programming language, coding practices, and utilization of new features incorporated into Java SE 17.'
+    }
   ];
 
   languageList: Language[] = [
@@ -144,10 +235,25 @@ export class PortfolioComponent implements AfterViewInit {
     { name: 'French', level: 'Conversational', flag: '🇫🇷' }
   ];
 
-  interests: string[] = [
-    'Badminton',
-    'Technology',
-    'Sports'
+  interests: Interest[] = [
+    {
+      name: 'Badminton',
+      description: 'Playing competitive badminton and enjoying recreational matches',
+      icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v10c0 5.55 3.84 10 9 9s9-4.03 9-9V7l-8-5z"/><path d="M8 11.5l2-2 2 2 2-2"/></svg>`),
+      color: '#00ff41'
+    },
+    {
+      name: 'Technology',
+      description: 'Exploring new tech trends, coding innovations, and digital solutions',
+      icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`),
+      color: '#00ccff'
+    },
+    {
+      name: 'Sports',
+      description: 'Active lifestyle with various sports and fitness activities',
+      icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 4.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>`),
+      color: '#ff6b35'
+    }
   ];
 
   contactInfo: string[] = [
@@ -312,7 +418,7 @@ export class PortfolioComponent implements AfterViewInit {
   }
 
   private updateActiveSection(): void {
-    const sections = ['about', 'skills', 'certifications', 'interests', 'contact', 'timeline'];
+    const sections = ['about', 'interests', 'skills', 'certifications', 'timeline', 'contact'];
     const mainContent = document.querySelector('.main-content') as HTMLElement;
 
     if (!mainContent) return;

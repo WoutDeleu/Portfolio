@@ -4,28 +4,18 @@
     <header>
       <div class="header-left">
         <div class="logo">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_6_319)">
-              <path
-                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
-                fill="currentColor"
-              ></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
-            </defs>
-          </svg>
+          <img src="assets/images/logo.png" alt="Wout Deleu Logo" class="logo-image">
         </div>
         <h2 class="header-title">Wout Deleu</h2>
       </div>
       <div class="header-right">
         <div class="nav-links">
           <a class="nav-link" [class.active]="isActiveSection('about')" (click)="scrollToSection('about')">About</a>
+          <a class="nav-link" [class.active]="isActiveSection('interests')" (click)="scrollToSection('interests')">Interests</a>
           <a class="nav-link" [class.active]="isActiveSection('skills')" (click)="scrollToSection('skills')">Skills</a>
           <a class="nav-link" [class.active]="isActiveSection('certifications')" (click)="scrollToSection('certifications')">Certifications</a>
-          <a class="nav-link" [class.active]="isActiveSection('interests')" (click)="scrollToSection('interests')">Interests</a>
-          <a class="nav-link" [class.active]="isActiveSection('contact')" (click)="scrollToSection('contact')">Contact</a>
           <a class="nav-link" [class.active]="isActiveSection('timeline')" (click)="scrollToSection('timeline')">Timeline</a>
+          <a class="nav-link" [class.active]="isActiveSection('contact')" (click)="scrollToSection('contact')">Contact</a>
         </div>
         <button class="globe-button">
           <div>
@@ -82,6 +72,24 @@
           </div>
         </section>
 
+        <!-- Interests Section -->
+        <section id="interests" class="interests-section">
+          <h2 class="section-title">Interests</h2>
+          <div class="interests-grid">
+            <div class="interest-card" *ngFor="let interest of interests">
+              <div class="interest-icon" [innerHTML]="interest.icon" [style.color]="interest.color"></div>
+              <div class="interest-content">
+                <h3 class="interest-name">{{interest.name}}</h3>
+                <p class="interest-description">{{interest.description}}</p>
+              </div>
+              <div class="interest-background"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
+
         <!-- Skills Section -->
         <section id="skills">
           <h2 class="section-title">Skills</h2>
@@ -120,30 +128,40 @@
           </div>
         </section>
 
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
+
         <!-- Certifications Section -->
-        <section id="certifications">
+        <section id="certifications" class="certifications-section">
           <h2 class="section-title">Certifications</h2>
-          <div class="list-item" *ngFor="let cert of certifications">
-            <p class="list-item-text">{{cert}}</p>
+          <div class="certifications-grid">
+            <div class="certification-card" *ngFor="let cert of certifications">
+              <div class="certification-header">
+                <div class="certification-logo" [innerHTML]="cert.logo"></div>
+                <div class="certification-meta">
+                  <h3 class="certification-title">{{cert.title}}</h3>
+                  <p class="certification-organization">{{cert.organization}}</p>
+                  <div class="certification-dates">
+                    <span class="achieved">achieved: {{cert.achieved}}</span>
+                    <span class="expires">expires: {{cert.expires}}</span>
+                  </div>
+                </div>
+              </div>
+              <p class="certification-description">{{cert.description}}</p>
+              <a [href]="cert.credentialUrl" target="_blank" class="certification-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+                View Credential
+              </a>
+            </div>
           </div>
         </section>
 
-
-        <!-- Interests Section -->
-        <section id="interests">
-          <h2 class="section-title">Interests</h2>
-          <div class="list-item" *ngFor="let interest of interests">
-            <p class="list-item-text">{{interest}}</p>
-          </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-          <h2 class="section-title">Contact</h2>
-          <div class="list-item" *ngFor="let contact of contactInfo">
-            <p class="list-item-text">{{contact}}</p>
-          </div>
-        </section>
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
 
         <!-- Timeline Sections -->
         <section id="timeline" class="timeline-section">
@@ -183,6 +201,133 @@
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
+
+        <!-- Contact Form Section -->
+        <section id="contact" class="contact-section">
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="contact-container">
+            <div class="contact-info">
+              <p class="contact-description">
+                I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+                Feel free to reach out!
+              </p>
+            </div>
+
+            <form class="contact-form" (ngSubmit)="onSubmitContactForm()" #contactForm="ngForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    [(ngModel)]="contactFormData.name"
+                    required
+                    #nameField="ngModel"
+                    [class.error]="nameField.invalid && nameField.touched"
+                  >
+                  <span class="error-message" *ngIf="nameField.invalid && nameField.touched">
+                    Name is required
+                  </span>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    [(ngModel)]="contactFormData.email"
+                    required
+                    email
+                    #emailField="ngModel"
+                    [class.error]="emailField.invalid && emailField.touched"
+                  >
+                  <span class="error-message" *ngIf="emailField.invalid && emailField.touched">
+                    <span *ngIf="emailField.errors?.['required']">Email is required</span>
+                    <span *ngIf="emailField.errors?.['email']">Please enter a valid email</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  [(ngModel)]="contactFormData.subject"
+                  required
+                  #subjectField="ngModel"
+                  [class.error]="subjectField.invalid && subjectField.touched"
+                >
+                <span class="error-message" *ngIf="subjectField.invalid && subjectField.touched">
+                  Subject is required
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  [(ngModel)]="contactFormData.message"
+                  required
+                  #messageField="ngModel"
+                  [class.error]="messageField.invalid && messageField.touched"
+                  placeholder="Tell me about your project or just say hello..."
+                ></textarea>
+                <span class="error-message" *ngIf="messageField.invalid && messageField.touched">
+                  Message is required
+                </span>
+              </div>
+
+              <button
+                type="submit"
+                class="submit-button"
+                [disabled]="contactForm.invalid || isSubmitting"
+              >
+                <span *ngIf="!isSubmitting">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                  </svg>
+                  Send Message
+                </span>
+                <span *ngIf="isSubmitting" class="loading">
+                  <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                      <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+                      <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+                    </circle>
+                  </svg>
+                  Sending...
+                </span>
+              </button>
+
+              <div class="form-status" *ngIf="formStatus">
+                <div class="success-message" *ngIf="formStatus === 'success'">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20,6 9,17 4,12"></polyline>
+                  </svg>
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+                <div class="error-message" *ngIf="formStatus === 'error'">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                  </svg>
+                  Failed to send message. Please try again or contact me directly.
+                </div>
+              </div>
+            </form>
           </div>
         </section>
 

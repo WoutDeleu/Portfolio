@@ -40,8 +40,24 @@ header {
 }
 
 .logo {
-  width: 16px;
-  height: 16px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .header-title {
@@ -149,15 +165,13 @@ header {
 
 .about-section {
   display: flex;
-  padding: 10px 16px;
-  min-height: 100vh;
+  padding: 10px 16px 40px;
 }
 
 section {
-  min-height: 80vh;
   padding-top: 0;
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding-bottom: 24px;
 }
 
 .about-content {
@@ -255,7 +269,7 @@ section {
   font-weight: bold;
   line-height: 1.4;
   letter-spacing: -0.015em;
-  padding: 20px 16px 12px;
+  padding: 16px 16px 12px;
   margin: 0;
 }
 
@@ -265,7 +279,7 @@ section {
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.015em;
-  padding: 30px 16px 12px;
+  padding: 20px 16px 12px;
   margin: 0;
 }
 
@@ -417,6 +431,185 @@ section {
   letter-spacing: 0.5px;
 }
 
+// Certifications Section Styles
+.certifications-section {
+  padding: 16px 16px 32px;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+  padding: 0 16px;
+}
+
+.certification-card {
+  background: linear-gradient(145deg, #1a1f26, #0d1117);
+  border: 2px solid #283039;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.certification-card:hover {
+  border-color: #00ff41;
+  box-shadow: 0 8px 32px rgba(0, 255, 65, 0.2);
+  transform: translateY(-4px);
+}
+
+.certification-header {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.certification-logo {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 255, 65, 0.1);
+  border: 2px solid #283039;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff41;
+  stroke: #00ff41;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.certification-card:hover .certification-logo {
+  border-color: #00ff41;
+  background-color: rgba(0, 255, 65, 0.15);
+}
+
+.certification-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.certification-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.certification-organization {
+  color: #00ff41;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+
+.certification-dates {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.certification-dates span {
+  color: #9dabb9;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.certification-dates .achieved {
+  color: #00ff41;
+}
+
+.certification-description {
+  color: #9dabb9;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+
+.certification-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #00ff41;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background-color: rgba(0, 255, 65, 0.05);
+}
+
+.certification-link:hover {
+  background-color: rgba(0, 255, 65, 0.1);
+  border-color: #00ff41;
+  transform: translateX(2px);
+}
+
+.certification-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+// Responsive design for certifications
+@media (max-width: 768px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .certification-card {
+    padding: 20px;
+  }
+
+  .certification-header {
+    gap: 16px;
+  }
+
+  .certification-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .certification-title {
+    font-size: 16px;
+  }
+
+  .certification-dates {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certification-card {
+    padding: 16px;
+  }
+
+  .certification-header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .certification-logo {
+    align-self: center;
+  }
+
+  .certification-description {
+    font-size: 13px;
+  }
+}
+
 .list-item {
   display: flex;
   align-items: center;
@@ -438,6 +631,14 @@ section {
   text-overflow: ellipsis;
 }
 
+// Section Divider
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #283039, transparent);
+  margin: 40px 0;
+  opacity: 0.6;
+}
+
 @media (max-width: 768px) {
   .main-content {
     padding: 70px 20px 0;
@@ -454,11 +655,20 @@ section {
   .nav-link {
     font-size: 12px;
   }
+
+  .logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-title {
+    font-size: 16px;
+  }
 }
 
 // Timeline Styles
 .timeline-section {
-  padding: 40px 16px 20px;
+  padding: 16px 16px 20px;
 }
 
 .timelines-container {
@@ -780,5 +990,366 @@ section {
   .timeline-modal-header {
     flex-direction: column;
     gap: 16px;
+  }
+}
+
+// Contact Form Styles
+.contact-section {
+  padding: 16px 16px 40px;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-description {
+  color: #9dabb9;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  background: linear-gradient(145deg, #1a1f26, #0d1117);
+  border: 2px solid #283039;
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.contact-form:hover {
+  border-color: rgba(0, 255, 65, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 255, 65, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.form-group input,
+.form-group textarea {
+  background-color: #111418;
+  border: 2px solid #283039;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00ff41;
+  box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #ff4444;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #636b74;
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 12px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #00ff41, #00cc33);
+  border: none;
+  border-radius: 8px;
+  color: #111418;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #00cc33, #00ff41);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 255, 65, 0.3);
+}
+
+.submit-button:disabled {
+  background: #283039;
+  color: #636b74;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.form-status {
+  margin-top: 20px;
+}
+
+.success-message,
+.form-status .error-message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.success-message {
+  background-color: rgba(0, 255, 65, 0.1);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  color: #00ff41;
+}
+
+.form-status .error-message {
+  background-color: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ff4444;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 24px 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-description {
+    font-size: 14px;
+  }
+}
+
+// Modern Interests Section Styles
+.interests-section {
+  padding: 16px 16px 32px;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+  padding: 0 16px;
+}
+
+.interest-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(26, 31, 38, 0.9), rgba(13, 17, 23, 0.9));
+  border: 1px solid transparent;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.interest-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.05));
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.interest-card:hover::before {
+  opacity: 1;
+}
+
+.interest-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.interest-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.interest-card:hover .interest-icon {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.interest-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.interest-content {
+  position: relative;
+  z-index: 2;
+}
+
+.interest-name {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.015em;
+  transition: color 0.3s ease;
+}
+
+.interest-card:hover .interest-name {
+  color: #ffffff;
+}
+
+.interest-description {
+  color: #9dabb9;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.interest-card:hover .interest-description {
+  color: #b8c5d1;
+  opacity: 1;
+}
+
+.interest-background {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.interest-card:hover .interest-background {
+  transform: scale(1.5);
+  opacity: 0.7;
+}
+
+// Responsive design for interests
+@media (max-width: 768px) {
+  .interests-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .interest-card {
+    padding: 20px;
+  }
+
+  .interest-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+@media (max-width: 480px) {
+  .interest-card {
+    padding: 16px;
+  }
+
+  .interest-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+
+  .interest-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .interest-name {
+    font-size: 16px;
+  }
+
+  .interest-description {
+    font-size: 13px;
   }
 }
