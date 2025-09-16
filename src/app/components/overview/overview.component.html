@@ -8,12 +8,10 @@
 <!--      <github-badge/>-->
 <!--      <linkedIn-badge/>-->
     </div>
-
     <div id="About Me">
       <h2>About Me</h2>
       <p [innerHTML]="person.aboutMe"></p>
     </div>
-
     <div>
       <h2>Skills</h2>
       <ul>
@@ -21,7 +19,6 @@
       </ul>
     </div>
   </div>
-
   <div>
     <h2>Timeline</h2>
     <div *ngFor="let event of person.getTimeline()">
@@ -33,4 +30,3 @@
   <app-contact-form/>
 </div>
 </body>
-

@@ -1,5 +1,6 @@
-import { Component, HostListener, AfterViewInit } from '@angular/core';
+import { Component, HostListener, AfterViewInit, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DataService, PersonalInfo, Interest as DataInterest } from '../../services/data.service';
 
 interface Skill {
   name: string;
@@ -64,9 +65,13 @@ interface Certification {
   styleUrl: './portfolio.component.scss',
   standalone: false
 })
-export class PortfolioComponent implements AfterViewInit {
+export class PortfolioComponent implements AfterViewInit, OnInit {
   activeSection: string = 'about';
-  birthDate: Date = new Date('1995-08-15'); // Update with your actual birthdate
+
+  // Data from external files
+  personalInfo: PersonalInfo | null = null;
+  socialMediaLinks: any[] = [];
+  birthDate: Date = new Date('1995-08-15'); // Fallback
   age: number;
   showAge: boolean = true;
   selectedTimelineItem: TimelineItem | null = null;
@@ -81,8 +86,60 @@ export class PortfolioComponent implements AfterViewInit {
   isSubmitting: boolean = false;
   formStatus: string | null = null;
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(
+    private sanitizer: DomSanitizer,
+    private dataService: DataService
+  ) {
     this.age = this.calculateAge();
+  }
+
+  ngOnInit(): void {
+    this.loadPersonalInfo();
+    this.loadInterests();
+    this.loadSocialMedia();
+  }
+
+  private loadPersonalInfo(): void {
+    this.dataService.getPersonalInfo().subscribe({
+      next: (data) => {
+        this.personalInfo = data;
+        this.birthDate = new Date(data.birthDate);
+        this.age = this.calculateAge();
+      },
+      error: (error) => {
+        console.error('Error loading personal info:', error);
+      }
+    });
+  }
+
+  private loadInterests(): void {
+    this.dataService.getInterests().subscribe({
+      next: (data) => {
+        this.interests = data.map(interest => ({
+          name: interest.name,
+          description: interest.description,
+          icon: this.sanitizer.bypassSecurityTrustHtml(interest.icon),
+          color: interest.color
+        }));
+      },
+      error: (error) => {
+        console.error('Error loading interests:', error);
+      }
+    });
+  }
+
+  private loadSocialMedia(): void {
+    this.dataService.getSocialMedia().subscribe({
+      next: (data) => {
+        this.socialMediaLinks = data.map(social => ({
+          ...social,
+          icon: this.sanitizer.bypassSecurityTrustHtml(social.icon as string)
+        }));
+      },
+      error: (error) => {
+        console.error('Error loading social media:', error);
+      }
+    });
   }
 
   private calculateAge(): number {
@@ -203,7 +260,7 @@ export class PortfolioComponent implements AfterViewInit {
     {
       title: 'Spring Professional Develop (2V0-72.22)',
       organization: 'Broadcom',
-      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`),
+      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 256 256" fill="none"><path d="M204.9 53.1c-16.2 0-35.4 13.3-51.6 21.6-18.7 9.6-35.9 16.9-53.3 16.9s-34.6-7.3-53.3-16.9C30.5 66.4 11.3 53.1-4.9 53.1c-5.1 0-9.8 2.2-13.1 6.1s-4.4 9.1-2.6 14c7.6 20.7 22.5 38.8 42.4 51.6 21.4 13.7 46.7 20.8 72.2 20.8s50.8-7.1 72.2-20.8c19.9-12.8 34.8-30.9 42.4-51.6 1.8-4.9 0.7-10.1-2.6-14s-8-6.1-13.1-6.1z" fill="#6db33f"/><path d="M51.1 202.9c16.2 0 35.4-13.3 51.6-21.6 18.7-9.6 35.9-16.9 53.3-16.9s34.6 7.3 53.3 16.9c16.2 8.3 35.4 21.6 51.6 21.6 5.1 0 9.8-2.2 13.1-6.1s4.4-9.1 2.6-14c-7.6-20.7-22.5-38.8-42.4-51.6-21.4-13.7-46.7-20.8-72.2-20.8s-50.8 7.1-72.2 20.8c-19.9 12.8-34.8 30.9-42.4 51.6-1.8 4.9-0.7 10.1 2.6 14s8 6.1 13.1 6.1z" fill="#6db33f"/></svg>`),
       credentialUrl: 'https://www.credly.com/badges/8968e30b-4175-4dff-9a5b-a1865fe49ec1/public_url',
       achieved: '08/2025',
       expires: 'never',
@@ -212,7 +269,7 @@ export class PortfolioComponent implements AfterViewInit {
     {
       title: 'PSM I',
       organization: 'Scrum.org',
-      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>`),
+      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 256 256" fill="currentColor"><path d="M128 256C57.308 256 0 198.692 0 128S57.308 0 128 0s128 57.308 128 128-57.308 128-128 128zm0-240C66.152 16 16 66.152 16 128s50.152 112 112 112 112-50.152 112-112S189.848 16 128 16z" fill="#0066CC"/><path d="M96 96h64v16H96zm0 32h64v16H96zm0 32h64v16H96z" fill="#0066CC"/><circle cx="64" cy="104" r="8" fill="#0066CC"/><circle cx="64" cy="136" r="8" fill="#0066CC"/><circle cx="64" cy="168" r="8" fill="#0066CC"/></svg>`),
       credentialUrl: 'https://www.scrum.org/certificates/1185678',
       achieved: '02/2025',
       expires: 'never',
@@ -221,7 +278,7 @@ export class PortfolioComponent implements AfterViewInit {
     {
       title: 'OCP Java SE17',
       organization: 'Oracle',
-      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`),
+      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 256 256" fill="none"><path d="M67.3 128c0-33.6 27.3-60.9 60.9-60.9s60.9 27.3 60.9 60.9-27.3 60.9-60.9 60.9-60.9-27.3-60.9-60.9zm121.8 0c0-33.6 27.3-60.9 60.9-60.9h6.1v121.8H250c-33.6 0-60.9-27.3-60.9-60.9z" fill="#FF0000"/><path d="M0 67.1h61.8c33.6 0 60.9 27.3 60.9 60.9s-27.3 60.9-60.9 60.9H0V67.1zm30.9 30.9v60.9h30.9c16.8 0 30.9-14.1 30.9-30.9s-14.1-30.9-30.9-30.9H30.9z" fill="#FF0000"/><path d="M128 67.1c33.6 0 60.9 27.3 60.9 60.9s-27.3 60.9-60.9 60.9c-16.8 0-30.9-7-42.4-18.5-11.5-11.5-18.5-25.6-18.5-42.4s7-30.9 18.5-42.4c11.5-11.5 25.6-18.5 42.4-18.5z" fill="#FF0000"/></svg>`),
       credentialUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=166E2EF9C94AE1E525CA00B70BA9C774474DA062FB852E0833EBDB4511973B85',
       achieved: '01/2024',
       expires: 'never',
@@ -235,26 +292,7 @@ export class PortfolioComponent implements AfterViewInit {
     { name: 'French', level: 'Conversational', flag: '🇫🇷' }
   ];
 
-  interests: Interest[] = [
-    {
-      name: 'Badminton',
-      description: 'Playing competitive badminton and enjoying recreational matches',
-      icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v10c0 5.55 3.84 10 9 9s9-4.03 9-9V7l-8-5z"/><path d="M8 11.5l2-2 2 2 2-2"/></svg>`),
-      color: '#00ff41'
-    },
-    {
-      name: 'Technology',
-      description: 'Exploring new tech trends, coding innovations, and digital solutions',
-      icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`),
-      color: '#00ccff'
-    },
-    {
-      name: 'Sports',
-      description: 'Active lifestyle with various sports and fitness activities',
-      icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 4.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>`),
-      color: '#ff6b35'
-    }
-  ];
+  interests: Interest[] = []; // Loaded from external files
 
   contactInfo: string[] = [
     'Email: wout.deleu@email.com',
@@ -310,10 +348,21 @@ export class PortfolioComponent implements AfterViewInit {
       title: 'Education & Certificates',
       items: [
         {
+          id: 'cert-spring',
+          title: 'Spring Professional Develop (2V0-72.22)',
+          organization: 'Broadcom',
+          startDate: new Date('2025-08-01'),
+          type: 'event',
+          icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="16" height="16" viewBox="0 0 256 256" fill="none"><path d="M204.9 53.1c-16.2 0-35.4 13.3-51.6 21.6-18.7 9.6-35.9 16.9-53.3 16.9s-34.6-7.3-53.3-16.9C30.5 66.4 11.3 53.1-4.9 53.1c-5.1 0-9.8 2.2-13.1 6.1s-4.4 9.1-2.6 14c7.6 20.7 22.5 38.8 42.4 51.6 21.4 13.7 46.7 20.8 72.2 20.8s50.8-7.1 72.2-20.8c19.9-12.8 34.8-30.9 42.4-51.6 1.8-4.9 0.7-10.1-2.6-14s-8-6.1-13.1-6.1z" fill="#6db33f"/><path d="M51.1 202.9c16.2 0 35.4-13.3 51.6-21.6 18.7-9.6 35.9-16.9 53.3-16.9s34.6 7.3 53.3 16.9c16.2 8.3 35.4 21.6 51.6 21.6 5.1 0 9.8-2.2 13.1-6.1s4.4-9.1 2.6-14c-7.6-20.7-22.5-38.8-42.4-51.6-21.4-13.7-46.7-20.8-72.2-20.8s-50.8 7.1-72.2 20.8c-19.9 12.8-34.8 30.9-42.4 51.6-1.8 4.9-0.7 10.1 2.6 14s8 6.1 13.1 6.1z" fill="#6db33f"/></svg>`),
+          shortDescription: 'Spring Framework expertise certification',
+          details: 'Demonstrated strong expertise in the Spring Framework, including core features such as dependency injection, data access, transaction management, RESTful services, and Spring Boot for building modern applications.',
+          tags: ['Spring Framework', 'Java', 'Spring Boot', 'REST APIs']
+        },
+        {
           id: 'cert-psm',
           title: 'Professional Scrum Master I',
           organization: 'Scrum.org',
-          startDate: new Date('2022-11-15'),
+          startDate: new Date('2025-02-01'),
           type: 'event',
           icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>`),
           shortDescription: 'Agile project management certification',
@@ -417,6 +466,18 @@ export class PortfolioComponent implements AfterViewInit {
     }
   }
 
+  scrollToTop(): void {
+    this.activeSection = 'about';
+    const mainContent = document.querySelector('.main-content') as HTMLElement;
+
+    if (mainContent) {
+      mainContent.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+
   private updateActiveSection(): void {
     const sections = ['about', 'interests', 'skills', 'certifications', 'timeline', 'contact'];
     const mainContent = document.querySelector('.main-content') as HTMLElement;
@@ -439,5 +500,9 @@ export class PortfolioComponent implements AfterViewInit {
 
   isActiveSection(sectionId: string): boolean {
     return this.activeSection === sectionId;
+  }
+
+  getSocialMediaLinks() {
+    return this.socialMediaLinks || [];
   }
 }

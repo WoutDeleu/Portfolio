@@ -1,0 +1,22 @@
+{
+  "firstName": "Wout",
+  "lastName": "Deleu",
+  "birthDate": "2001-12-13",
+  "title": "Backend Developer | Problem Solver | Tech Enthusiast",
+  "description": "Analytical thinker with a passion for solving complex problems. Experienced in backend development with a strong foundation in programming languages and certifications.",
+  "contact": {
+    "email": "wout.deleu@student.kuleuven.be",
+    "phone": "+32 477 123 456",
+    "location": "Bruges, Belgium",
+    "linkedin": "linkedin.com/in/wout-deleu",
+    "github": "github.com/WoutDeleu"
+  },
+  "education": {
+    "degree": "Master of Science in Industrial Engineering",
+    "specialization": "Electronics & ICT",
+    "university": "KU Leuven",
+    "period": "2017-2020",
+    "location": "Leuven, Belgium"
+  },
+  "professionalSummary": "Results-driven Backend Developer with strong analytical and problem-solving skills. Experienced in developing scalable applications using modern technologies and frameworks. Passionate about continuous learning and applying best practices in software development."
+}

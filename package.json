@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run sync-content && ng serve",
+    "build": "npm run sync-content && ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "sync-content": "rsync -av --delete content/ src/assets/data/",
+    "dev": "ng serve"
   },
   "private": true,
   "dependencies": {

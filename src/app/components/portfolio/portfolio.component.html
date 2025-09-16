@@ -3,10 +3,13 @@
     <!-- Header with Navigation -->
     <header>
       <div class="header-left">
-        <div class="logo">
-          <img src="assets/images/logo.png" alt="Wout Deleu Logo" class="logo-image">
+        <div class="logo" (click)="scrollToTop()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="logo-icon">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
         </div>
-        <h2 class="header-title">Wout Deleu</h2>
+        <h2 class="header-title">{{ personalInfo?.firstName || 'Wout' }} {{ personalInfo?.lastName || 'Deleu' }}</h2>
       </div>
       <div class="header-right">
         <div class="nav-links">
@@ -17,18 +20,9 @@
           <a class="nav-link" [class.active]="isActiveSection('timeline')" (click)="scrollToSection('timeline')">Timeline</a>
           <a class="nav-link" [class.active]="isActiveSection('contact')" (click)="scrollToSection('contact')">Contact</a>
         </div>
-        <button class="globe-button">
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-              <path
-                d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM101.63,168h52.74C149,186.34,140,202.87,128,215.89,116,202.87,107,186.34,101.63,168ZM98,152a145.72,145.72,0,0,1,0-48h60a145.72,145.72,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.79a161.79,161.79,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154.37,88H101.63C107,69.66,116,53.13,128,40.11,140,53.13,149,69.66,154.37,88Zm19.84,16h38.46a88.15,88.15,0,0,1,0,48H174.21a161.79,161.79,0,0,0,0-48Zm32.16-16H170.94a142.39,142.39,0,0,0-20.26-45A88.37,88.37,0,0,1,206.37,88ZM105.32,43A142.39,142.39,0,0,0,85.06,88H49.63A88.37,88.37,0,0,1,105.32,43ZM49.63,168H85.06a142.39,142.39,0,0,0,20.26,45A88.37,88.37,0,0,1,49.63,168Zm101.05,45a142.39,142.39,0,0,0,20.26-45h35.43A88.37,88.37,0,0,1,150.68,213Z"
-              ></path>
-            </svg>
-          </div>
-        </button>
         <div
           class="profile-image"
-          style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUr_WOQD1k-6vHU1pIDPY1ldrlkZewHCQoMjDXAtvhAxgCPi5lPf-FirqhES21d5OwEd_6rXm-9LlzMFIr_oBLxpEKCAqCbxH09E5eCQGUUJP7W9Zh22USWwSFKrNaYgWHa2NcUEHlwgw_4GFoshHokRkrQW6GuFHDpJO7y4FejIeGLdpMZQ6AQatzcnpnxr3rWv5rHIyO1QeBsgWfn8-xVqWuB7HFpqrLaye9UZIrvRgg7z5hwoEMSDrWyei1l4QCk_etQIONsUc");'
+          style='background-image: url("assets/images/Profile/small.JPG");'
         ></div>
       </div>
     </header>
@@ -43,10 +37,10 @@
             <div class="about-inner">
               <div
                 class="profile-picture"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpD1NCA_c6B1-eVWx1sX7OUliQMesmlQi6wqcFOxYjWrQ9OCoPeymhenHE8fg8Ms9sDw9mYgu6SlNgFjqu6svynNQ5N0MvaRspFHsrEpt5VxQVCpZX5jPtiU0vj2rAsaqVuC3AHxrZWsx2Tv1209HsJoCdzpqGh0OrBh4ByZdPOivRo4XihPdx5mfLpRa9Z1Jmt81O8TjQ0DsP_17oKmnjg6nxQyNU14tj21EFy-Hj6Yydc0sB5SLc7c88zwJKysAxw_Y1vnu7YL8");'
+                style='background-image: url("assets/images/Profile/Professional.jpg");'
               ></div>
               <div class="profile-info">
-                <p class="profile-name">Wout Deleu</p>
+                <p class="profile-name">{{ personalInfo?.firstName || 'Wout' }} {{ personalInfo?.lastName || 'Deleu' }}</p>
                 <div class="profile-age-container" (click)="toggleAgeDisplay()">
                   <span class="profile-age">
                     <svg *ngIf="showAge" class="age-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -59,14 +53,29 @@
                       <circle cx="12" cy="12" r="10"></circle>
                       <polyline points="12,6 12,12 16,14"></polyline>
                     </svg>
-                    {{ showAge ? (age + 'y') : getFormattedBirthDate() }}
+                    {{ showAge ? (age + ' Years Old') : getFormattedBirthDate() }}
                   </span>
                 </div>
-                <p class="profile-title">Backend Developer | Problem Solver | Tech Enthusiast</p>
+                <p class="profile-title">{{ personalInfo?.title || 'Backend Developer | Problem Solver | Tech Enthusiast' }}</p>
                 <p class="profile-description">
-                  Analytical thinker with a passion for solving complex problems. Experienced in backend development with a strong foundation in programming languages and
-                  certifications.
+                  {{ personalInfo?.description || 'Analytical thinker with a passion for solving complex problems. Experienced in backend development with a strong foundation in programming languages and certifications.' }}
                 </p>
+
+                <!-- Social Media Links -->
+                <div class="social-media-links" *ngIf="getSocialMediaLinks().length > 0">
+                  <div class="social-icons">
+                    <a
+                      *ngFor="let social of getSocialMediaLinks()"
+                      [href]="social.url"
+                      target="_blank"
+                      class="social-icon"
+                      [attr.aria-label]="social.name"
+                      [style.color]="social.color"
+                    >
+                      <div [innerHTML]="social.icon"></div>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -213,7 +222,7 @@
           <div class="contact-container">
             <div class="contact-info">
               <p class="contact-description">
-                I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+                I'm always open to discussing new opportunities and interesting projects.
                 Feel free to reach out!
               </p>
             </div>
