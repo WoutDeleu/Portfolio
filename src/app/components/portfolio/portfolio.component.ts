@@ -52,7 +52,8 @@ interface Interest {
 interface Certification {
   title: string;
   organization: string;
-  logo: SafeHtml;
+  logo?: SafeHtml;
+  logoImage?: string;
   credentialUrl: string;
   achieved: string;
   expires: string;
@@ -260,7 +261,7 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
     {
       title: 'Spring Professional Develop (2V0-72.22)',
       organization: 'Broadcom',
-      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 256 256" fill="none"><path d="M204.9 53.1c-16.2 0-35.4 13.3-51.6 21.6-18.7 9.6-35.9 16.9-53.3 16.9s-34.6-7.3-53.3-16.9C30.5 66.4 11.3 53.1-4.9 53.1c-5.1 0-9.8 2.2-13.1 6.1s-4.4 9.1-2.6 14c7.6 20.7 22.5 38.8 42.4 51.6 21.4 13.7 46.7 20.8 72.2 20.8s50.8-7.1 72.2-20.8c19.9-12.8 34.8-30.9 42.4-51.6 1.8-4.9 0.7-10.1-2.6-14s-8-6.1-13.1-6.1z" fill="#6db33f"/><path d="M51.1 202.9c16.2 0 35.4-13.3 51.6-21.6 18.7-9.6 35.9-16.9 53.3-16.9s34.6 7.3 53.3 16.9c16.2 8.3 35.4 21.6 51.6 21.6 5.1 0 9.8-2.2 13.1-6.1s4.4-9.1 2.6-14c-7.6-20.7-22.5-38.8-42.4-51.6-21.4-13.7-46.7-20.8-72.2-20.8s-50.8 7.1-72.2 20.8c-19.9 12.8-34.8 30.9-42.4 51.6-1.8 4.9-0.7 10.1 2.6 14s8 6.1 13.1 6.1z" fill="#6db33f"/></svg>`),
+      logoImage: 'assets/images/spring.png',
       credentialUrl: 'https://www.credly.com/badges/8968e30b-4175-4dff-9a5b-a1865fe49ec1/public_url',
       achieved: '08/2025',
       expires: 'never',
@@ -269,7 +270,7 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
     {
       title: 'PSM I',
       organization: 'Scrum.org',
-      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 256 256" fill="currentColor"><path d="M128 256C57.308 256 0 198.692 0 128S57.308 0 128 0s128 57.308 128 128-57.308 128-128 128zm0-240C66.152 16 16 66.152 16 128s50.152 112 112 112 112-50.152 112-112S189.848 16 128 16z" fill="#0066CC"/><path d="M96 96h64v16H96zm0 32h64v16H96zm0 32h64v16H96z" fill="#0066CC"/><circle cx="64" cy="104" r="8" fill="#0066CC"/><circle cx="64" cy="136" r="8" fill="#0066CC"/><circle cx="64" cy="168" r="8" fill="#0066CC"/></svg>`),
+      logoImage: 'assets/images/scrum.png',
       credentialUrl: 'https://www.scrum.org/certificates/1185678',
       achieved: '02/2025',
       expires: 'never',
@@ -278,7 +279,7 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
     {
       title: 'OCP Java SE17',
       organization: 'Oracle',
-      logo: this.sanitizer.bypassSecurityTrustHtml(`<svg width="32" height="32" viewBox="0 0 256 256" fill="none"><path d="M67.3 128c0-33.6 27.3-60.9 60.9-60.9s60.9 27.3 60.9 60.9-27.3 60.9-60.9 60.9-60.9-27.3-60.9-60.9zm121.8 0c0-33.6 27.3-60.9 60.9-60.9h6.1v121.8H250c-33.6 0-60.9-27.3-60.9-60.9z" fill="#FF0000"/><path d="M0 67.1h61.8c33.6 0 60.9 27.3 60.9 60.9s-27.3 60.9-60.9 60.9H0V67.1zm30.9 30.9v60.9h30.9c16.8 0 30.9-14.1 30.9-30.9s-14.1-30.9-30.9-30.9H30.9z" fill="#FF0000"/><path d="M128 67.1c33.6 0 60.9 27.3 60.9 60.9s-27.3 60.9-60.9 60.9c-16.8 0-30.9-7-42.4-18.5-11.5-11.5-18.5-25.6-18.5-42.4s7-30.9 18.5-42.4c11.5-11.5 25.6-18.5 42.4-18.5z" fill="#FF0000"/></svg>`),
+      logoImage: 'assets/images/oracle.png',
       credentialUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=166E2EF9C94AE1E525CA00B70BA9C774474DA062FB852E0833EBDB4511973B85',
       achieved: '01/2024',
       expires: 'never',
