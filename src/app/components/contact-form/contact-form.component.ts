@@ -3,9 +3,10 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser'
 import {takeUntil, tap} from "rxjs";
 @Component({
-  selector: 'app-contact-form',
-  templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.scss']
+    selector: 'app-contact-form',
+    templateUrl: './contact-form.component.html',
+    styleUrls: ['./contact-form.component.scss'],
+    standalone: false
 })
 export class ContactFormComponent implements OnInit {
   form: FormGroup;

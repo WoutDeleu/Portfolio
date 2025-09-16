@@ -2,9 +2,10 @@ import {Component, Input} from '@angular/core';
 import {Person} from "../../../models/Person";
 
 @Component({
-  selector: 'app-location-badge',
-  templateUrl: './location-badge.component.html',
-  styleUrls: ['./location-badge.component.scss']
+    selector: 'app-location-badge',
+    templateUrl: './location-badge.component.html',
+    styleUrls: ['./location-badge.component.scss'],
+    standalone: false
 })
 export class LocationBadgeComponent {
   @Input() person : Person;
