@@ -1,20 +1,7 @@
-<!-- Toolbar -->
+<!-- Portfolio Layout -->
 <div *ngIf="!production">
-<div class="topnav" role="banner">
-  <title>Portfolio - Wout Deleu (under construction)</title>
-  <img class="profile"
-    alt="Wout Deleu" src="./assets/images/Profile/professional.png"/>
-  <app-toggle-switch [isToggled]="terminalView" (toggleView)="terminalView=$event"/>
-  <app-download-cv-button/>
-  <app-navigation-bar *ngIf="!terminalView"/>
-</div>
-<main class="">
-  <div>
-    <app-overview *ngIf="!terminalView" [person]="person"/>
-    <app-terminal *ngIf="terminalView" [person]="person"/>
-  </div>
-
-</main>
+  <app-portfolio *ngIf="!terminalView"/>
+  <app-terminal *ngIf="terminalView" [person]="person"/>
 </div>
 
 <!--UNDER CONSTRUCITON-->

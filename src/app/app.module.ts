@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { SkillsComponent } from './components/cards/skills/skills.component';
 import { LocationBadgeComponent } from './components/badges/location-badge/location-badge.component';
 import {MatIconModule} from "@angular/material/icon";
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 @NgModule({
     declarations: [
@@ -34,9 +36,11 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
         SkillsComponent,
         LocationBadgeComponent,
         ContactFormComponent,
+        PortfolioComponent,
     ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatSlideToggleModule,

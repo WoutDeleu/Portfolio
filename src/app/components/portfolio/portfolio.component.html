@@ -1,0 +1,132 @@
+<div class="portfolio-container">
+  <div class="layout-container">
+    <!-- Header with Navigation -->
+    <header>
+      <div class="header-left">
+        <div class="logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+        </div>
+        <h2 class="header-title">Wout Deleu</h2>
+      </div>
+      <div class="header-right">
+        <div class="nav-links">
+          <a class="nav-link" [class.active]="isActiveSection('about')" (click)="scrollToSection('about')">About</a>
+          <a class="nav-link" [class.active]="isActiveSection('skills')" (click)="scrollToSection('skills')">Skills</a>
+          <a class="nav-link" [class.active]="isActiveSection('certifications')" (click)="scrollToSection('certifications')">Certifications</a>
+          <a class="nav-link" [class.active]="isActiveSection('interests')" (click)="scrollToSection('interests')">Interests</a>
+          <a class="nav-link" [class.active]="isActiveSection('contact')" (click)="scrollToSection('contact')">Contact</a>
+        </div>
+        <button class="globe-button">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+              <path
+                d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM101.63,168h52.74C149,186.34,140,202.87,128,215.89,116,202.87,107,186.34,101.63,168ZM98,152a145.72,145.72,0,0,1,0-48h60a145.72,145.72,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.79a161.79,161.79,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154.37,88H101.63C107,69.66,116,53.13,128,40.11,140,53.13,149,69.66,154.37,88Zm19.84,16h38.46a88.15,88.15,0,0,1,0,48H174.21a161.79,161.79,0,0,0,0-48Zm32.16-16H170.94a142.39,142.39,0,0,0-20.26-45A88.37,88.37,0,0,1,206.37,88ZM105.32,43A142.39,142.39,0,0,0,85.06,88H49.63A88.37,88.37,0,0,1,105.32,43ZM49.63,168H85.06a142.39,142.39,0,0,0,20.26,45A88.37,88.37,0,0,1,49.63,168Zm101.05,45a142.39,142.39,0,0,0,20.26-45h35.43A88.37,88.37,0,0,1,150.68,213Z"
+              ></path>
+            </svg>
+          </div>
+        </button>
+        <div
+          class="profile-image"
+          style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUr_WOQD1k-6vHU1pIDPY1ldrlkZewHCQoMjDXAtvhAxgCPi5lPf-FirqhES21d5OwEd_6rXm-9LlzMFIr_oBLxpEKCAqCbxH09E5eCQGUUJP7W9Zh22USWwSFKrNaYgWHa2NcUEHlwgw_4GFoshHokRkrQW6GuFHDpJO7y4FejIeGLdpMZQ6AQatzcnpnxr3rWv5rHIyO1QeBsgWfn8-xVqWuB7HFpqrLaye9UZIrvRgg7z5hwoEMSDrWyei1l4QCk_etQIONsUc");'
+        ></div>
+      </div>
+    </header>
+
+    <!-- Main Content with Scrollable Sections -->
+    <div class="main-content" (scroll)="onMainContentScroll($event)">
+      <div class="content-container">
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+          <div class="about-content">
+            <div class="about-inner">
+              <div
+                class="profile-picture"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpD1NCA_c6B1-eVWx1sX7OUliQMesmlQi6wqcFOxYjWrQ9OCoPeymhenHE8fg8Ms9sDw9mYgu6SlNgFjqu6svynNQ5N0MvaRspFHsrEpt5VxQVCpZX5jPtiU0vj2rAsaqVuC3AHxrZWsx2Tv1209HsJoCdzpqGh0OrBh4ByZdPOivRo4XihPdx5mfLpRa9Z1Jmt81O8TjQ0DsP_17oKmnjg6nxQyNU14tj21EFy-Hj6Yydc0sB5SLc7c88zwJKysAxw_Y1vnu7YL8");'
+              ></div>
+              <div class="profile-info">
+                <p class="profile-name">Wout Deleu</p>
+                <p class="profile-title">Backend Developer | Problem Solver | Tech Enthusiast</p>
+                <p class="profile-description">
+                  Analytical thinker with a passion for solving complex problems. Experienced in backend development with a strong foundation in programming languages and
+                  certifications.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+          <h2 class="section-title">Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-progress-circle" *ngFor="let skill of skills">
+              <div class="progress-ring">
+                <svg class="progress-svg" viewBox="0 0 120 120">
+                  <circle class="progress-background" cx="60" cy="60" r="54" fill="none"/>
+                  <circle class="progress-bar" cx="60" cy="60" r="54" fill="none"
+                          stroke-linecap="round"
+                          [attr.stroke-dasharray]="339.292"
+                          [attr.stroke-dashoffset]="339.292 - (339.292 * skill.proficiency / 100)"/>
+                </svg>
+                <div class="skill-content">
+                  <div class="skill-icon" [innerHTML]="skill.icon"></div>
+                  <div class="skill-name">{{skill.name}}</div>
+                  <div class="skill-percentage">{{skill.proficiency}}%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages Subsection -->
+          <h3 class="subsection-title">Languages</h3>
+          <div class="languages-grid">
+            <div class="language-card" *ngFor="let language of languageList">
+              <div class="language-flag">{{language.flag}}</div>
+              <div class="language-info">
+                <div class="language-name">{{language.name}}</div>
+                <div class="language-level">{{language.level}}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+          <h2 class="section-title">Certifications</h2>
+          <div class="list-item" *ngFor="let cert of certifications">
+            <p class="list-item-text">{{cert}}</p>
+          </div>
+        </section>
+
+
+        <!-- Interests Section -->
+        <section id="interests">
+          <h2 class="section-title">Interests</h2>
+          <div class="list-item" *ngFor="let interest of interests">
+            <p class="list-item-text">{{interest}}</p>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+          <h2 class="section-title">Contact</h2>
+          <div class="list-item" *ngFor="let contact of contactInfo">
+            <p class="list-item-text">{{contact}}</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>
