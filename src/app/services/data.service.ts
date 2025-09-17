@@ -60,6 +60,23 @@ export interface Certification {
   order: number;
 }
 
+export interface Education {
+  id: string;
+  title: string;
+  subTitle: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  specialization: string;
+  relevantCourses: string[];
+  institution: {
+    name: string;
+    logo: string;
+    website: string;
+  };
+  order: number;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -109,6 +126,19 @@ export class DataService {
 
     return forkJoin(certificationRequests).pipe(
       map(certifications => certifications.sort((a, b) => a.order - b.order))
+    );
+  }
+
+  getEducation(): Observable<Education[]> {
+    // List of known education files - Angular can't dynamically discover files
+    const educationFiles = ['university-xyz', 'axxes'];
+
+    const educationRequests = educationFiles.map(id =>
+      this.http.get<Education>(`${this.basePath}/education/${id}.json`)
+    );
+
+    return forkJoin(educationRequests).pipe(
+      map(education => education.sort((a, b) => a.order - b.order))
     );
   }
 }
