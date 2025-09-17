@@ -16,8 +16,8 @@
           <a class="nav-link" [class.active]="isActiveSection('about')" (click)="scrollToSection('about')">About</a>
           <a class="nav-link" [class.active]="isActiveSection('interests')" (click)="scrollToSection('interests')">Interests</a>
           <a class="nav-link" [class.active]="isActiveSection('skills')" (click)="scrollToSection('skills')">Skills</a>
-          <a class="nav-link" [class.active]="isActiveSection('certifications')" (click)="scrollToSection('certifications')">Certifications</a>
           <a class="nav-link" [class.active]="isActiveSection('timeline')" (click)="scrollToSection('timeline')">Timeline</a>
+          <a class="nav-link" [class.active]="isActiveSection('certifications')" (click)="scrollToSection('certifications')">Certifications</a>
           <a class="nav-link" [class.active]="isActiveSection('contact')" (click)="scrollToSection('contact')">Contact</a>
         </div>
         <div
@@ -82,10 +82,10 @@
         </section>
 
         <!-- Interests Section -->
-        <section id="interests" class="interests-section">
+        <section id="interests" class="interests-section" appScrollAnimation [delay]="50">
           <h2 class="section-title">Interests</h2>
           <div class="interests-grid">
-            <div class="interest-card" *ngFor="let interest of interests">
+            <div class="interest-card" *ngFor="let interest of interests; let i = index" appScrollAnimation [delay]="100 + (i * 50)">
               <div class="interest-icon" [innerHTML]="interest.icon" [style.color]="interest.color"></div>
               <div class="interest-content">
                 <h3 class="interest-name">{{interest.name}}</h3>
@@ -100,13 +100,13 @@
         <div class="section-divider"></div>
 
         <!-- Skills Section -->
-        <section id="skills">
+        <section id="skills" appScrollAnimation [delay]="50">
           <h2 class="section-title">Skills</h2>
 
           <!-- Development Subsection -->
           <h3 class="subsection-title">Development</h3>
           <div class="skills-grid">
-            <div class="skill-progress-circle" *ngFor="let skill of skills">
+            <div class="skill-progress-circle" *ngFor="let skill of skills; let i = index" appScrollAnimation [delay]="150 + (i * 75)">
               <div class="progress-ring">
                 <svg class="progress-svg" viewBox="0 0 120 120">
                   <circle class="progress-background" cx="60" cy="60" r="54" fill="none"/>
@@ -127,7 +127,7 @@
           <!-- Languages Subsection -->
           <h3 class="subsection-title">Languages</h3>
           <div class="languages-grid">
-            <div class="language-card" *ngFor="let language of languageList">
+            <div class="language-card" *ngFor="let language of languageList; let i = index" appScrollAnimation [delay]="100 + (i * 50)">
               <div class="language-flag">{{language.flag}}</div>
               <div class="language-info">
                 <div class="language-name">{{language.name}}</div>
@@ -140,47 +140,12 @@
         <!-- Section Divider -->
         <div class="section-divider"></div>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="certifications-section">
-          <h2 class="section-title">Certifications</h2>
-          <div class="certifications-grid">
-            <div class="certification-card" *ngFor="let cert of certifications">
-              <div class="certification-header">
-                <div class="certification-logo">
-                  <div *ngIf="cert.logo && !cert.logoImage" [innerHTML]="cert.logo"></div>
-                  <img *ngIf="cert.logoImage" [src]="cert.logoImage" [alt]="cert.organization + ' logo'" class="certification-image">
-                </div>
-                <div class="certification-meta">
-                  <h3 class="certification-title">{{cert.title}}</h3>
-                  <p class="certification-organization">{{cert.organization}}</p>
-                  <div class="certification-dates">
-                    <span class="achieved">achieved: {{cert.achieved}}</span>
-                    <span class="expires">expires: {{cert.expires}}</span>
-                  </div>
-                </div>
-              </div>
-              <p class="certification-description">{{cert.description}}</p>
-              <a [href]="cert.credentialUrl" target="_blank" class="certification-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15,3 21,3 21,9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-                View Credential
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section Divider -->
-        <div class="section-divider"></div>
-
         <!-- Timeline Sections -->
-        <section id="timeline" class="timeline-section">
+        <section id="timeline" class="timeline-section" appScrollAnimation [delay]="50">
           <h2 class="section-title">Timeline</h2>
 
           <div class="timelines-container">
-            <div class="timeline-column" *ngFor="let timeline of timelines; let i = index" [class]="'timeline-' + i">
+            <div class="timeline-column" *ngFor="let timeline of timelines; let i = index" [class]="'timeline-' + i" appScrollAnimation [delay]="100 + (i * 100)">
               <h3 class="timeline-title">{{timeline.title}}</h3>
 
               <div class="timeline-track">
@@ -191,15 +156,17 @@
                      [class.timeline-event]="item.type === 'event'"
                      [class.timeline-period]="item.type === 'period'"
                      (click)="onTimelineItemClick(item)"
-                     (mouseenter)="onTimelineItemHover(item)">
+                     (mouseenter)="onTimelineItemHover(item)"
+                     appScrollAnimation [delay]="200 + (j * 50)">
 
                   <div class="timeline-marker">
-                    <div class="timeline-icon" [innerHTML]="item.icon"></div>
+                    <div class="timeline-icon" *ngIf="!item.logoImage" [innerHTML]="item.icon"></div>
+                    <img *ngIf="item.logoImage" [src]="item.logoImage" [alt]="item.organization + ' logo'" class="timeline-logo-image">
                   </div>
 
                   <div class="timeline-content">
                     <div class="timeline-header">
-                      <h4 class="timeline-item-title">{{item.title}}</h4>
+                      <h4 class="timeline-item-title">{{item.certificationId ? (getCertificationById(item.certificationId)?.title || item.title) : item.title}}</h4>
                       <span class="timeline-date">{{getTimelineDuration(item)}}</span>
                     </div>
 
@@ -219,8 +186,48 @@
         <!-- Section Divider -->
         <div class="section-divider"></div>
 
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications-section" appScrollAnimation [delay]="50">
+          <h2 class="section-title">Certifications</h2>
+          <div class="certifications-grid">
+            <div class="certification-card" *ngFor="let cert of certifications; let i = index" appScrollAnimation [delay]="100 + (i * 75)">
+              <div class="certification-header">
+                <div class="certification-logo">
+                  <div *ngIf="cert.logo && !cert.logoImage" [innerHTML]="cert.logo"></div>
+                  <img *ngIf="cert.logoImage" [src]="cert.logoImage" [alt]="cert.organization + ' logo'" class="certification-image">
+                </div>
+                <div class="certification-meta">
+                  <h3 class="certification-title">{{cert.title}}</h3>
+                  <p class="certification-organization">{{cert.organization}}</p>
+                  <div class="certification-dates">
+                    <span class="achieved">achieved: {{cert.achieved}}</span>
+                    <span class="expires">expires: {{cert.expires}}</span>
+                  </div>
+                </div>
+              </div>
+              <p class="certification-description">{{cert.description}}</p>
+
+              <div class="certification-tags" *ngIf="cert.tags">
+                <span class="certification-tag" *ngFor="let tag of cert.tags">{{tag}}</span>
+              </div>
+
+              <a [href]="cert.credentialUrl" target="_blank" class="certification-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+                View Credential
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
+
         <!-- Contact Form Section -->
-        <section id="contact" class="contact-section">
+        <section id="contact" class="contact-section" appScrollAnimation [delay]="50">
           <h2 class="section-title">Get In Touch</h2>
           <div class="contact-container">
             <div class="contact-info">
@@ -230,7 +237,7 @@
               </p>
             </div>
 
-            <form class="contact-form" (ngSubmit)="onSubmitContactForm()" #contactForm="ngForm">
+            <form class="contact-form" (ngSubmit)="onSubmitContactForm()" #contactForm="ngForm" appScrollAnimation [delay]="150">
               <div class="form-row">
                 <div class="form-group">
                   <label for="name">Name *</label>
@@ -357,9 +364,12 @@
         </button>
 
         <div class="timeline-modal-header">
-          <div class="timeline-modal-icon" [innerHTML]="selectedTimelineItem.icon"></div>
+          <div class="timeline-modal-icon" *ngIf="!selectedTimelineItem.logoImage" [innerHTML]="selectedTimelineItem.icon"></div>
+          <div class="timeline-modal-icon" *ngIf="selectedTimelineItem.logoImage">
+            <img [src]="selectedTimelineItem.logoImage" [alt]="selectedTimelineItem.organization + ' logo'" class="timeline-modal-logo-image">
+          </div>
           <div>
-            <h3 class="timeline-modal-title">{{selectedTimelineItem.title}}</h3>
+            <h3 class="timeline-modal-title">{{selectedTimelineItem.certificationId ? (getCertificationById(selectedTimelineItem.certificationId)?.title || selectedTimelineItem.title) : selectedTimelineItem.title}}</h3>
             <p class="timeline-modal-organization" *ngIf="selectedTimelineItem.organization">
               {{selectedTimelineItem.organization}}
             </p>
@@ -379,6 +389,53 @@
               <span class="timeline-modal-tag" *ngFor="let tag of selectedTimelineItem.tags">{{tag}}</span>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certification Detail Modal -->
+    <div class="certification-modal" *ngIf="selectedCertification" (click)="closeCertificationDetail()">
+      <div class="certification-modal-content" (click)="$event.stopPropagation()">
+        <button class="certification-modal-close" (click)="closeCertificationDetail()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="certification-modal-header">
+          <div class="certification-modal-logo">
+            <div *ngIf="selectedCertification.logo && !selectedCertification.logoImage" [innerHTML]="selectedCertification.logo"></div>
+            <img *ngIf="selectedCertification.logoImage" [src]="selectedCertification.logoImage" [alt]="selectedCertification.organization + ' logo'" class="certification-modal-image">
+          </div>
+          <div class="certification-modal-meta">
+            <h3 class="certification-modal-title">{{selectedCertification.title}}</h3>
+            <p class="certification-modal-organization">{{selectedCertification.organization}}</p>
+            <div class="certification-modal-dates">
+              <span class="achieved">achieved: {{selectedCertification.achieved}}</span>
+              <span class="expires">expires: {{selectedCertification.expires}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="certification-modal-body">
+          <p class="certification-modal-description">{{selectedCertification.description}}</p>
+
+          <div class="certification-modal-tags" *ngIf="selectedCertification.tags">
+            <h4>Technologies & Skills</h4>
+            <div class="certification-modal-tag-list">
+              <span class="certification-modal-tag" *ngFor="let tag of selectedCertification.tags">{{tag}}</span>
+            </div>
+          </div>
+
+          <a [href]="selectedCertification.credentialUrl" target="_blank" class="certification-modal-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15,3 21,3 21,9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            View Credential
+          </a>
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@ import { LocationBadgeComponent } from './components/badges/location-badge/locat
 import {MatIconModule} from "@angular/material/icon";
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { ScrollAnimationDirective } from './directives/scroll-animation.directive';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
         LocationBadgeComponent,
         ContactFormComponent,
         PortfolioComponent,
+        ScrollAnimationDirective,
     ],
   imports: [
     BrowserModule,

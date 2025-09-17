@@ -1,0 +1,14 @@
+{
+  "id": "cert-psm",
+  "title": "PSM I (Professional Scrum Master)",
+  "organization": "Scrum.org",
+  "logoImage": "assets/images/scrum.png",
+  "credentialUrl": "https://www.scrum.org/certificates/1185678",
+  "achieved": "02/2025",
+  "expires": "never",
+  "description": "Those who earn the globally recognized Professional Scrum Master I (PSM I) certification have demonstrated a fundamental level of Scrum mastery, including the concepts of applying Scrum, and proven an understanding of Scrum as described in the Scrum Guide. This certification validates expertise in Scrum framework implementation.",
+  "tags": ["Scrum", "Agile", "Project Management"],
+  "startDate": "2025-02-01",
+  "type": "certification",
+  "order": 2
+}

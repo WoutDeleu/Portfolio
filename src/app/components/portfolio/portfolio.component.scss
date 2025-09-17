@@ -276,11 +276,14 @@ section {
 
 .skill-progress-circle {
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0s;
+  border-radius: 50%;
+  padding: 8px;
 }
 
 .skill-progress-circle:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.15);
+  transform: translateY(-1px) scale(1.02);
 }
 
 .progress-ring {
@@ -311,7 +314,12 @@ section {
   stroke: #00ff41;
   stroke-linecap: round;
   stroke-width: 4;
-  transition: stroke-dashoffset 1s ease-in-out;
+  transition: stroke-dashoffset 1s ease-in-out, stroke-width 0s, opacity 0s;
+}
+
+.skill-progress-circle:hover .progress-bar {
+  stroke-width: 5;
+  opacity: 0.9;
 }
 
 .skill-content {
@@ -322,6 +330,11 @@ section {
   justify-content: center;
   text-align: center;
   z-index: 1;
+  transition: transform 0s;
+}
+
+.skill-progress-circle:hover .skill-content {
+  transform: scale(1.05);
 }
 
 .skill-icon {
@@ -521,6 +534,24 @@ section {
   font-size: 14px;
   line-height: 1.5;
   margin: 0 0 16px 0;
+}
+
+.certification-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.certification-tag {
+  background-color: rgba(0, 255, 65, 0.1);
+  color: #00ff41;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 .certification-link {
@@ -745,6 +776,13 @@ section {
   stroke: #111418;
 }
 
+.timeline-logo-image {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
 .timeline-content {
   background-color: rgba(40, 48, 57, 0.3);
   border: 1px solid #283039;
@@ -887,6 +925,13 @@ section {
   flex-shrink: 0;
 }
 
+.timeline-modal-logo-image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
 .timeline-modal-title {
   color: #ffffff;
   font-size: 20px;
@@ -946,6 +991,180 @@ section {
   border-radius: 6px;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+}
+
+// Certification Modal Styles
+.certification-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.certification-modal-content {
+  background-color: #111418;
+  border: 1px solid #283039;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.certification-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #9dabb9;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.certification-modal-close:hover {
+  color: #00ff41;
+  background-color: rgba(0, 255, 65, 0.1);
+}
+
+.certification-modal-header {
+  display: flex;
+  gap: 20px;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #283039;
+  align-items: flex-start;
+}
+
+.certification-modal-logo {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 255, 65, 0.1);
+  border: 2px solid #283039;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff41;
+  stroke: #00ff41;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.certification-modal-image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.certification-modal-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.certification-modal-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.certification-modal-organization {
+  color: #00ff41;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+
+.certification-modal-dates {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.certification-modal-dates span {
+  color: #9dabb9;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.certification-modal-dates .achieved {
+  color: #00ff41;
+}
+
+.certification-modal-body {
+  padding: 24px;
+}
+
+.certification-modal-description {
+  color: #9dabb9;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+.certification-modal-tags h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.certification-modal-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.certification-modal-tag {
+  background-color: rgba(0, 255, 65, 0.1);
+  color: #00ff41;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.certification-modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #00ff41;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 20px;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: rgba(0, 255, 65, 0.05);
+}
+
+.certification-modal-link:hover {
+  background-color: rgba(0, 255, 65, 0.1);
+  border-color: #00ff41;
+  transform: translateX(2px);
+}
+
+.certification-modal-link svg {
+  width: 16px;
+  height: 16px;
 }
 
 // Responsive timeline design

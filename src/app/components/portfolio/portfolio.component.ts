@@ -1,6 +1,6 @@
 import { Component, HostListener, AfterViewInit, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { DataService, PersonalInfo, Interest as DataInterest } from '../../services/data.service';
+import { DataService, PersonalInfo, Interest as DataInterest, Certification as DataCertification } from '../../services/data.service';
 
 interface Skill {
   name: string;
@@ -23,11 +23,13 @@ interface TimelineItem {
   endDate?: Date;
   type: 'period' | 'event';
   icon: SafeHtml;
+  logoImage?: string;
   shortDescription: string;
   details: string;
   tags?: string[];
   location?: string;
   image?: string;
+  certificationId?: string;
 }
 
 interface Timeline {
@@ -50,6 +52,7 @@ interface Interest {
 }
 
 interface Certification {
+  id: string;
   title: string;
   organization: string;
   logo?: SafeHtml;
@@ -58,6 +61,10 @@ interface Certification {
   achieved: string;
   expires: string;
   description: string;
+  tags?: string[];
+  startDate: Date;
+  type: string;
+  order: number;
 }
 
 @Component({
@@ -76,6 +83,7 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   age: number;
   showAge: boolean = true;
   selectedTimelineItem: TimelineItem | null = null;
+  selectedCertification: Certification | null = null;
 
   // Contact form properties
   contactFormData: ContactFormData = {
@@ -98,6 +106,7 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
     this.loadPersonalInfo();
     this.loadInterests();
     this.loadSocialMedia();
+    this.loadCertifications();
   }
 
   private loadPersonalInfo(): void {
@@ -139,6 +148,21 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
       },
       error: (error) => {
         console.error('Error loading social media:', error);
+      }
+    });
+  }
+
+  private loadCertifications(): void {
+    this.dataService.getCertifications().subscribe({
+      next: (data) => {
+        this.certifications = data.map(cert => ({
+          ...cert,
+          startDate: new Date(cert.startDate),
+          logo: cert.logo ? this.sanitizer.bypassSecurityTrustHtml(cert.logo) : undefined
+        }));
+      },
+      error: (error) => {
+        console.error('Error loading certifications:', error);
       }
     });
   }
@@ -186,7 +210,16 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   }
 
   onTimelineItemClick(item: TimelineItem): void {
-    this.selectedTimelineItem = item;
+    if (item.certificationId) {
+      // If it's a certification, show the certification modal
+      const certification = this.getCertificationById(item.certificationId);
+      if (certification) {
+        this.selectedCertification = certification;
+      }
+    } else {
+      // Otherwise, show the regular timeline modal
+      this.selectedTimelineItem = item;
+    }
   }
 
   onTimelineItemHover(item: TimelineItem): void {
@@ -195,6 +228,10 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
 
   closeTimelineDetail(): void {
     this.selectedTimelineItem = null;
+  }
+
+  closeCertificationDetail(): void {
+    this.selectedCertification = null;
   }
 
   onSubmitContactForm(): void {
@@ -257,35 +294,6 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
     }
   ];
 
-  certifications: Certification[] = [
-    {
-      title: 'Spring Professional Develop (2V0-72.22)',
-      organization: 'Broadcom',
-      logoImage: 'assets/images/spring.png',
-      credentialUrl: 'https://www.credly.com/badges/8968e30b-4175-4dff-9a5b-a1865fe49ec1/public_url',
-      achieved: '08/2025',
-      expires: 'never',
-      description: 'Those who earn the Spring Professional certification have demonstrated strong expertise in the Spring Framework, including its core features such as dependency injection, data access, transaction management, RESTful services, and Spring Boot for building modern applications.'
-    },
-    {
-      title: 'PSM I',
-      organization: 'Scrum.org',
-      logoImage: 'assets/images/scrum.png',
-      credentialUrl: 'https://www.scrum.org/certificates/1185678',
-      achieved: '02/2025',
-      expires: 'never',
-      description: 'Those who earn the globally recognized Professional Scrum Master I (PSM I) certification have demonstrated a fundamental level of Scrum mastery, including the concepts of applying Scrum, and proven an understanding of Scrum as described in the Scrum Guide.'
-    },
-    {
-      title: 'OCP Java SE17',
-      organization: 'Oracle',
-      logoImage: 'assets/images/oracle.png',
-      credentialUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=166E2EF9C94AE1E525CA00B70BA9C774474DA062FB852E0833EBDB4511973B85',
-      achieved: '01/2024',
-      expires: 'never',
-      description: 'An Oracle Certified Professional: Java SE 17 Developer has demonstrated proficiency in Java (Standard Edition) software development recognized by a wide range of world-wide industries. They have also exhibited thorough and broad knowledge of the Java programming language, coding practices, and utilization of new features incorporated into Java SE 17.'
-    }
-  ];
 
   languageList: Language[] = [
     { name: 'Dutch', level: 'Native', flag: '🇳🇱' },
@@ -294,6 +302,7 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   ];
 
   interests: Interest[] = []; // Loaded from external files
+  certifications: Certification[] = []; // Loaded from external files
 
   contactInfo: string[] = [
     'Email: wout.deleu@email.com',
@@ -355,9 +364,11 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
           startDate: new Date('2025-08-01'),
           type: 'event',
           icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="16" height="16" viewBox="0 0 256 256" fill="none"><path d="M204.9 53.1c-16.2 0-35.4 13.3-51.6 21.6-18.7 9.6-35.9 16.9-53.3 16.9s-34.6-7.3-53.3-16.9C30.5 66.4 11.3 53.1-4.9 53.1c-5.1 0-9.8 2.2-13.1 6.1s-4.4 9.1-2.6 14c7.6 20.7 22.5 38.8 42.4 51.6 21.4 13.7 46.7 20.8 72.2 20.8s50.8-7.1 72.2-20.8c19.9-12.8 34.8-30.9 42.4-51.6 1.8-4.9 0.7-10.1-2.6-14s-8-6.1-13.1-6.1z" fill="#6db33f"/><path d="M51.1 202.9c16.2 0 35.4-13.3 51.6-21.6 18.7-9.6 35.9-16.9 53.3-16.9s34.6 7.3 53.3 16.9c16.2 8.3 35.4 21.6 51.6 21.6 5.1 0 9.8-2.2 13.1-6.1s4.4-9.1 2.6-14c-7.6-20.7-22.5-38.8-42.4-51.6-21.4-13.7-46.7-20.8-72.2-20.8s-50.8 7.1-72.2 20.8c-19.9 12.8-34.8 30.9-42.4 51.6-1.8 4.9-0.7 10.1 2.6 14s8 6.1 13.1 6.1z" fill="#6db33f"/></svg>`),
+          logoImage: 'assets/images/spring.png',
           shortDescription: 'Spring Framework expertise certification',
           details: 'Demonstrated strong expertise in the Spring Framework, including core features such as dependency injection, data access, transaction management, RESTful services, and Spring Boot for building modern applications.',
-          tags: ['Spring Framework', 'Java', 'Spring Boot', 'REST APIs']
+          tags: ['Spring Framework', 'Java', 'Spring Boot', 'REST APIs'],
+          certificationId: 'cert-spring'
         },
         {
           id: 'cert-psm',
@@ -366,9 +377,11 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
           startDate: new Date('2025-02-01'),
           type: 'event',
           icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>`),
+          logoImage: 'assets/images/scrum.png',
           shortDescription: 'Agile project management certification',
           details: 'Certified in Scrum framework and agile methodologies. Demonstrated understanding of Scrum theory, practices, and rules.',
-          tags: ['Scrum', 'Agile', 'Project Management']
+          tags: ['Scrum', 'Agile', 'Project Management'],
+          certificationId: 'cert-psm'
         },
         {
           id: 'cert-ocp',
@@ -377,9 +390,11 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
           startDate: new Date('2021-08-20'),
           type: 'event',
           icon: this.sanitizer.bypassSecurityTrustHtml(`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/><path d="M3 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/><path d="M12 21c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/><path d="M12 3c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/></svg>`),
+          logoImage: 'assets/images/oracle.png',
           shortDescription: 'Java programming certification',
           details: 'Advanced Java programming certification covering OOP concepts, collections, concurrency, and best practices.',
-          tags: ['Java', 'OOP', 'Certification']
+          tags: ['Java', 'OOP', 'Certification'],
+          certificationId: 'cert-ocp'
         },
         {
           id: 'edu-engineering',
@@ -480,7 +495,7 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   }
 
   private updateActiveSection(): void {
-    const sections = ['about', 'interests', 'skills', 'certifications', 'timeline', 'contact'];
+    const sections = ['about', 'interests', 'skills', 'timeline', 'certifications', 'contact'];
     const mainContent = document.querySelector('.main-content') as HTMLElement;
 
     if (!mainContent) return;
@@ -505,5 +520,9 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
 
   getSocialMediaLinks() {
     return this.socialMediaLinks || [];
+  }
+
+  getCertificationById(id: string): Certification | undefined {
+    return this.certifications.find(cert => cert.id === id);
   }
 }
