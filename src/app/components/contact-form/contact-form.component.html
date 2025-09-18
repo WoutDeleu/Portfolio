@@ -1,31 +1,163 @@
-<section>
-  <div>
-    <form [formGroup]="form" (ngSubmit)="send($event)">
-      <h1>Angular Contact Form</h1>
-      <div>
-        <label for="name">Name</label>
-        <input formControlName="name" type="text" id="name" name="name"/>
+<section class="contact-form-section">
+  <div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="send($event)" class="contact-form">
+      <h1 class="form-title">Contact Me</h1>
+
+      <!-- Status Messages -->
+      <div *ngIf="statusMessage"
+           class="status-message"
+           [ngClass]="{'success': submitStatus === 'success', 'error': submitStatus === 'error'}">
+        {{ statusMessage }}
       </div>
-      <div>
-        <label for="email">Email</label>
-        <input formControlName="email" type="email" id="email" name="email"/>
+
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input formControlName="name"
+               type="text"
+               id="name"
+               name="name"
+               [class.invalid]="isFieldInvalid('name')"
+               placeholder="Your full name"/>
+        <div *ngIf="isFieldInvalid('name')" class="error-message">
+          {{ getFieldError('name') }}
+        </div>
       </div>
-      <div>
-        <input type="checkbox" id="allowedToCall" name="checkbox" value="1" (change)="toggle_disable_telnr()" checked="allowedToCall">
-        <label for="allowedToCall">Give me a call</label>
-        <input formControlName="telNr" type="tel" id="telNr" name="telNr"/>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input formControlName="email"
+               type="email"
+               id="email"
+               name="email"
+               [class.invalid]="isFieldInvalid('email')"
+               placeholder="your.email@example.com"/>
+        <div *ngIf="isFieldInvalid('email')" class="error-message">
+          {{ getFieldError('email') }}
+        </div>
       </div>
-      <div>
-        <label for="subject">Subject</label>
-        <textarea formControlName="subject" id="subject" name="subject"></textarea>
+
+      <div class="form-group checkbox-group">
+        <div class="toggle-container">
+          <label class="toggle-switch">
+            <input type="checkbox"
+                   id="allowedToCall"
+                   formControlName="allowedToCall"
+                   (change)="toggle_disable_telnr()"
+                   class="toggle-input">
+            <span class="toggle-slider">
+              <span class="toggle-knob"></span>
+            </span>
+          </label>
+          <label for="allowedToCall" class="toggle-label">You can give me a call</label>
+        </div>
+        <div *ngIf="allowedToCall"
+             class="phone-input-container"
+             [@slideInOut]>
+          <label for="phone" class="phone-label">Phone Number</label>
+          <div class="phone-input-wrapper">
+            <select formControlName="countryCode" class="country-select">
+              <option value="+32">🇧🇪 Belgium +32</option>
+              <option value="+93">🇦🇫 Afghanistan +93</option>
+              <option value="+355">🇦🇱 Albania +355</option>
+              <option value="+213">🇩🇿 Algeria +213</option>
+              <option value="+54">🇦🇷 Argentina +54</option>
+              <option value="+61">🇦🇺 Australia +61</option>
+              <option value="+43">🇦🇹 Austria +43</option>
+              <option value="+973">🇧🇭 Bahrain +973</option>
+              <option value="+880">🇧🇩 Bangladesh +880</option>
+              <option value="+55">🇧🇷 Brazil +55</option>
+              <option value="+1">🇨🇦 Canada +1</option>
+              <option value="+86">🇨🇳 China +86</option>
+              <option value="+45">🇩🇰 Denmark +45</option>
+              <option value="+20">🇪🇬 Egypt +20</option>
+              <option value="+358">🇫🇮 Finland +358</option>
+              <option value="+33">🇫🇷 France +33</option>
+              <option value="+49">🇩🇪 Germany +49</option>
+              <option value="+30">🇬🇷 Greece +30</option>
+              <option value="+852">🇭🇰 Hong Kong +852</option>
+              <option value="+36">🇭🇺 Hungary +36</option>
+              <option value="+354">🇮🇸 Iceland +354</option>
+              <option value="+91">🇮🇳 India +91</option>
+              <option value="+62">🇮🇩 Indonesia +62</option>
+              <option value="+98">🇮🇷 Iran +98</option>
+              <option value="+353">🇮🇪 Ireland +353</option>
+              <option value="+972">🇮🇱 Israel +972</option>
+              <option value="+39">🇮🇹 Italy +39</option>
+              <option value="+81">🇯🇵 Japan +81</option>
+              <option value="+962">🇯🇴 Jordan +962</option>
+              <option value="+82">🇰🇷 South Korea +82</option>
+              <option value="+965">🇰🇼 Kuwait +965</option>
+              <option value="+352">🇱🇺 Luxembourg +352</option>
+              <option value="+60">🇲🇾 Malaysia +60</option>
+              <option value="+52">🇲🇽 Mexico +52</option>
+              <option value="+212">🇲🇦 Morocco +212</option>
+              <option value="+31">🇳🇱 Netherlands +31</option>
+              <option value="+64">🇳🇿 New Zealand +64</option>
+              <option value="+47">🇳🇴 Norway +47</option>
+              <option value="+92">🇵🇰 Pakistan +92</option>
+              <option value="+63">🇵🇭 Philippines +63</option>
+              <option value="+48">🇵🇱 Poland +48</option>
+              <option value="+351">🇵🇹 Portugal +351</option>
+              <option value="+974">🇶🇦 Qatar +974</option>
+              <option value="+40">🇷🇴 Romania +40</option>
+              <option value="+7">🇷🇺 Russia +7</option>
+              <option value="+966">🇸🇦 Saudi Arabia +966</option>
+              <option value="+65">🇸🇬 Singapore +65</option>
+              <option value="+27">🇿🇦 South Africa +27</option>
+              <option value="+34">🇪🇸 Spain +34</option>
+              <option value="+46">🇸🇪 Sweden +46</option>
+              <option value="+41">🇨🇭 Switzerland +41</option>
+              <option value="+66">🇹🇭 Thailand +66</option>
+              <option value="+90">🇹🇷 Turkey +90</option>
+              <option value="+971">🇦🇪 UAE +971</option>
+              <option value="+44">🇬🇧 United Kingdom +44</option>
+              <option value="+1">🇺🇸 United States +1</option>
+              <option value="+84">🇻🇳 Vietnam +84</option>
+            </select>
+            <input formControlName="telNr"
+                   type="tel"
+                   id="phone"
+                   name="phone"
+                   placeholder="470 12 34 56"
+                   (input)="onPhoneNumberInput($event)"
+                   class="phone-number-input"/>
+          </div>
+        </div>
       </div>
-      <div>
-        <label for="message">Message</label>
-        <textarea formControlName="message" id="message" name="message"></textarea>
+
+      <div class="form-group">
+        <label for="subject">Subject *</label>
+        <input formControlName="subject"
+               type="text"
+               id="subject"
+               name="subject"
+               [class.invalid]="isFieldInvalid('subject')"
+               placeholder="What is this about?"/>
+        <div *ngIf="isFieldInvalid('subject')" class="error-message">
+          {{ getFieldError('subject') }}
+        </div>
       </div>
-      <button>
-        Send
+
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea formControlName="message"
+                  id="message"
+                  name="message"
+                  [class.invalid]="isFieldInvalid('message')"
+                  placeholder="Tell me about your project or question..."
+                  rows="5"></textarea>
+        <div *ngIf="isFieldInvalid('message')" class="error-message">
+          {{ getFieldError('message') }}
+        </div>
+      </div>
+
+      <button type="submit"
+              class="submit-button"
+              [disabled]="isSubmitting || form.invalid">
+        <span *ngIf="!isSubmitting">Send Message</span>
+        <span *ngIf="isSubmitting">Sending...</span>
       </button>
+
     </form>
   </div>
 </section>

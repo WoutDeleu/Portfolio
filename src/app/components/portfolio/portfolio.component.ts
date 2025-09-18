@@ -75,6 +75,7 @@ interface Certification {
 })
 export class PortfolioComponent implements AfterViewInit, OnInit {
   activeSection: string = 'about';
+  isMobileMenuOpen: boolean = false;
 
   // Data from external files
   personalInfo: PersonalInfo | null = null;
@@ -468,18 +469,48 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
 
   scrollToSection(sectionId: string): void {
     this.activeSection = sectionId;
-    const element = document.getElementById(sectionId);
-    const mainContent = document.querySelector('.main-content') as HTMLElement;
+    // Close mobile menu when navigating
+    this.isMobileMenuOpen = false;
 
-    if (element && mainContent) {
-      const headerHeight = 70; // Fixed header height
-      const elementTop = element.offsetTop - mainContent.offsetTop - headerHeight;
+    // Use setTimeout to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      const mainContent = document.querySelector('.main-content') as HTMLElement;
 
-      mainContent.scrollTo({
-        top: elementTop,
-        behavior: 'smooth'
-      });
-    }
+      if (element && mainContent) {
+        const headerHeight = 70; // Fixed header height
+        const elementTop = element.offsetTop - mainContent.offsetTop - headerHeight;
+
+        // Try multiple scroll methods for better mobile compatibility
+        try {
+          mainContent.scrollTo({
+            top: elementTop,
+            behavior: 'smooth'
+          });
+        } catch (error) {
+          mainContent.scrollTop = elementTop;
+        }
+
+        // Also try scrolling the window as fallback
+        setTimeout(() => {
+          if (mainContent.scrollTop === 0 || Math.abs(mainContent.scrollTop - elementTop) > 100) {
+            const windowScrollTop = element.offsetTop - headerHeight;
+            window.scrollTo({
+              top: windowScrollTop,
+              behavior: 'smooth'
+            });
+          }
+        }, 200);
+      }
+    }, 100);
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
   }
 
   scrollToTop(): void {
@@ -494,28 +525,29 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
     }
   }
 
-  private updateActiveSection(): void {
-    const sections = ['about', 'interests', 'skills', 'timeline', 'certifications', 'contact'];
-    const mainContent = document.querySelector('.main-content') as HTMLElement;
 
+  isActiveSection(sectionId: string): boolean {
+    return this.activeSection === sectionId;
+  }
+
+  updateActiveSection(): void {
+    const mainContent = document.querySelector('.main-content') as HTMLElement;
     if (!mainContent) return;
 
-    const scrollPosition = mainContent.scrollTop + 200; // Offset for header
+    const sections = ['about', 'interests', 'skills', 'timeline', 'certifications', 'contact'];
+    const headerHeight = 70;
+    const scrollTop = mainContent.scrollTop + headerHeight + 100; // Add offset for better detection
 
     for (let i = sections.length - 1; i >= 0; i--) {
       const section = document.getElementById(sections[i]);
       if (section) {
         const sectionTop = section.offsetTop - mainContent.offsetTop;
-        if (sectionTop <= scrollPosition) {
+        if (scrollTop >= sectionTop) {
           this.activeSection = sections[i];
           break;
         }
       }
     }
-  }
-
-  isActiveSection(sectionId: string): boolean {
-    return this.activeSection === sectionId;
   }
 
   getSocialMediaLinks() {

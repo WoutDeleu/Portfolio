@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {NgOptimizedImage} from "@angular/common";
 import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.component';
@@ -46,7 +46,7 @@ import { ScrollAnimationDirective } from './directives/scroll-animation.directiv
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     MatSlideToggleModule,
     NgOptimizedImage,
     FormsModule,
