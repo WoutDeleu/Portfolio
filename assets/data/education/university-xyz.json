@@ -1,0 +1,21 @@
+{
+  "id": "university-xyz",
+  "title": "Bachelor's in Computer Science",
+  "subTitle": "Bachelor",
+  "startDate": "January 2010",
+  "endDate": "January 2014",
+  "description": "Studied computer science with a focus on software development.",
+  "specialization": "Software Engineering",
+  "relevantCourses": [
+    "Software Engineering",
+    "Web Development",
+    "Data Structures",
+    "Algorithms"
+  ],
+  "institution": {
+    "name": "University of XYZ",
+    "logo": "https://bib.kuleuven.be/english/ebib/afbeeldingen/logos-ku-leuven//kuleuven-logo-2012.png/image_thumb",
+    "website": "https://www.websolutions.com"
+  },
+  "order": 1
+}

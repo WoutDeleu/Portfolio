@@ -1,0 +1,9 @@
+{
+  "recipientEmail": "wout.deleu@gmail.com",
+  "emailService": {
+    "provider": "emailjs",
+    "serviceId": "service_x85363u",
+    "templateId": "template_08pbt9i",
+    "publicKey": "tAL5L8Z5FRoC9hh2k"
+  }
+}
