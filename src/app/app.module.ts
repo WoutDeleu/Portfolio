@@ -31,9 +31,6 @@ import { ScrollAnimationDirective } from './directives/scroll-animation.directiv
         OverviewComponent,
         NavigationBarComponent,
         UnderConstructionComponent,
-        UnderConstructionComponent,
-        OverviewComponent,
-        TerminalviewComponent,
         AgeBadgeComponent,
         SkillsComponent,
         LocationBadgeComponent,
@@ -50,9 +47,9 @@ import { ScrollAnimationDirective } from './directives/scroll-animation.directiv
     MatSlideToggleModule,
     NgOptimizedImage,
     FormsModule,
+    ReactiveFormsModule,
     DownloadCVButtonComponent,
-    MatIconModule,
-    ReactiveFormsModule
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

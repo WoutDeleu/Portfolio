@@ -557,4 +557,8 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   getCertificationById(id: string): Certification | undefined {
     return this.certifications.find(cert => cert.id === id);
   }
+
+  encodeURIComponent(str: string): string {
+    return encodeURIComponent(str);
+  }
 }

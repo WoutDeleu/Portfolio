@@ -8,6 +8,21 @@
   color: white;
   overflow-x: hidden;
   font-family: 'JetBrains Mono', monospace, sans-serif;
+
+  /* Global scrollbar hiding */
+  * {
+    /* Hide scrollbar for webkit browsers */
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    /* Hide scrollbar for Firefox */
+    scrollbar-width: none;
+
+    /* Hide scrollbar for IE and Edge */
+    -ms-overflow-style: none;
+  }
 }
 
 .layout-container {
@@ -29,7 +44,8 @@ header {
   left: 0;
   right: 0;
   background-color: #111418;
-  z-index: 1000;
+  z-index: 10000; /* Ensure navbar is always on top */
+  backdrop-filter: blur(10px); /* Add backdrop blur for better visibility */
 }
 
 .header-left {
@@ -134,6 +150,18 @@ header {
   justify-content: center;
   overflow-y: auto;
   height: calc(100vh - 70px); /* Account for header height */
+
+  /* Hide scrollbar for webkit browsers */
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+
+  /* Hide scrollbar for IE and Edge */
+  -ms-overflow-style: none;
 }
 
 .content-container {
@@ -199,16 +227,30 @@ section {
   margin-bottom: 4px;
 }
 
+.profile-details-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .profile-age-container {
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 4px;
   padding: 2px 4px;
-  margin-bottom: 8px;
 }
 
 .profile-age-container:hover {
   background-color: rgba(0, 255, 65, 0.1);
+}
+
+.profile-separator {
+  color: #9dabb9;
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.6;
 }
 
 .profile-age {
@@ -228,6 +270,50 @@ section {
   color: #00ff41;
   stroke: #00ff41;
   opacity: 0.8;
+}
+
+.profile-location-container {
+  border-radius: 4px;
+  padding: 2px 4px;
+  transition: all 0.3s ease;
+}
+
+.profile-location-container:hover {
+  background-color: rgba(0, 255, 65, 0.1);
+}
+
+.profile-location {
+  color: #00ff41;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile-location:hover {
+  color: #33ff55;
+  transform: translateY(-1px);
+}
+
+.location-icon {
+  color: #00ff41;
+  stroke: #00ff41;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.profile-location:hover .location-icon {
+  color: #33ff55;
+  stroke: #33ff55;
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .profile-title {
@@ -680,6 +766,22 @@ section {
   opacity: 0.6;
 }
 
+// Responsive Navigation - reduce spacing first
+@media (max-width: 1024px) {
+  header {
+    padding: 12px 30px;
+  }
+
+  .nav-links {
+    gap: 24px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+}
+
+// Hide desktop nav and show hamburger at tablet/mobile sizes
 @media (max-width: 768px) {
   .main-content {
     padding: 70px 20px 0;
@@ -689,21 +791,32 @@ section {
     padding: 12px 20px;
   }
 
-  .nav-links {
-    gap: 20px;
+  .desktop-nav {
+    display: none;
   }
 
-  .nav-link {
-    font-size: 12px;
+  .mobile-hamburger {
+    display: flex;
+  }
+
+  .header-title {
+    font-size: 16px;
   }
 
   .logo {
     width: 32px;
     height: 32px;
   }
+}
 
-  .header-title {
-    font-size: 16px;
+// Extra condensed for very small screens
+@media (max-width: 920px) and (min-width: 769px) {
+  .nav-links {
+    gap: 16px;
+  }
+
+  .nav-link {
+    font-size: 12px;
   }
 }
 

@@ -64,20 +64,35 @@
               ></div>
               <div class="profile-info">
                 <p class="profile-name">{{ personalInfo?.firstName || 'Wout' }} {{ personalInfo?.lastName || 'Deleu' }}</p>
-                <div class="profile-age-container" (click)="toggleAgeDisplay()">
-                  <span class="profile-age">
-                    <svg *ngIf="showAge" class="age-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M8 2v4"></path>
-                      <path d="M16 2v4"></path>
-                      <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                      <path d="M3 10h18"></path>
-                    </svg>
-                    <svg *ngIf="!showAge" class="age-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12,6 12,12 16,14"></polyline>
-                    </svg>
-                    {{ showAge ? (age + ' Years Old') : getFormattedBirthDate() }}
-                  </span>
+                <div class="profile-details-container">
+                  <div class="profile-age-container" (click)="toggleAgeDisplay()">
+                    <span class="profile-age">
+                      <svg *ngIf="showAge" class="age-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 2v4"></path>
+                        <path d="M16 2v4"></path>
+                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                        <path d="M3 10h18"></path>
+                      </svg>
+                      <svg *ngIf="!showAge" class="age-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12,6 12,12 16,14"></polyline>
+                      </svg>
+                      {{ showAge ? (age + ' Years Old') : getFormattedBirthDate() }}
+                    </span>
+                  </div>
+                  <div class="profile-separator">•</div>
+                  <div class="profile-location-container">
+                    <a class="profile-location"
+                       [href]="'https://maps.google.com/?q=' + encodeURIComponent(personalInfo?.contact?.location || 'Ghent, Belgium')"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      <svg class="location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                        <circle cx="12" cy="9" r="2.5"></circle>
+                      </svg>
+                      {{ personalInfo?.contact?.location || 'Ghent, Belgium' }}
+                    </a>
+                  </div>
                 </div>
                 <p class="profile-title">{{ personalInfo?.title || 'Backend Developer | Problem Solver | Tech Enthusiast' }}</p>
                 <p class="profile-description">
