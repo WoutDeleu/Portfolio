@@ -1,9 +1,0 @@
-- Structuur van het project omgooien
-
-- scss aanpassen met material ui!!!!
-
-- Overlopen project - en alles optimaliseren enzo!
-  - Functionality werkende krijgen
-  - Styling
-
-Working board aanpassen
