@@ -1,9 +1,3 @@
 <!-- Portfolio Layout -->
-<div *ngIf="!production">
-  <app-portfolio *ngIf="!terminalView"/>
-  <app-terminal *ngIf="terminalView" [person]="person"/>
-</div>
-<!--UNDER CONSTRUCITON-->
-<div *ngIf="production">
-      <app-under-construction/>
-</div>
+<app-portfolio *ngIf="!terminalView"/>
+<app-terminal *ngIf="terminalView" [person]="person"/>
