@@ -1,0 +1,64 @@
+<!-- EmailJS Template for Contact Form -->
+<!-- Copy this HTML into your EmailJS template editor -->
+
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+
+  <!-- Header -->
+  <div style="background: linear-gradient(135deg, #00ff41, #00cc33); color: white; padding: 30px; text-align: center;">
+    <h1 style="margin: 0; font-size: 28px; font-weight: 700;">📧 New Contact Message</h1>
+    <p style="margin: 8px 0 0 0; opacity: 0.9;">Portfolio Contact Form Submission</p>
+  </div>
+
+  <!-- Content -->
+  <div style="padding: 30px;">
+
+    <!-- Sender Info -->
+    <div style="background: #f8f9fa; border-radius: 8px; padding: 20px; margin: 20px 0; border-left: 4px solid #00ff41;">
+      <h3 style="margin: 0 0 15px 0; color: #212529;">👤 Sender Information</h3>
+      <p style="margin: 5px 0; font-size: 16px;"><strong>Name:</strong> {{from_name}}</p>
+      <p style="margin: 5px 0; font-size: 16px;"><strong>Email:</strong> {{from_email}}</p>
+      <p style="margin: 5px 0; font-size: 16px;"><strong>Phone:</strong> {{phone}}</p>
+      <p style="margin: 5px 0; font-size: 16px;"><strong>Can Call:</strong> {{can_call}}</p>
+    </div>
+
+    <!-- Subject -->
+    <div style="background: #e3f2fd; border-radius: 8px; padding: 20px; margin: 20px 0;">
+      <h3 style="margin: 0 0 10px 0; color: #1976d2;">📝 Subject</h3>
+      <p style="margin: 0; font-size: 18px; font-weight: 600; color: #212529;">{{subject}}</p>
+    </div>
+
+    <!-- Message -->
+    <div style="background: #f5f5f5; border-radius: 8px; padding: 25px; margin: 20px 0; border: 1px solid #e0e0e0;">
+      <h3 style="margin: 0 0 15px 0; color: #212529;">💬 Message</h3>
+      <div style="background: white; padding: 20px; border-radius: 6px; font-size: 16px; line-height: 1.6; color: #333; white-space: pre-wrap; border: 1px solid #e9ecef;">{{message}}</div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div style="background: linear-gradient(135deg, #e8f5e8, #f0f8f0); border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+      <h3 style="margin: 0 0 15px 0; color: #2e7d32;">🔗 Quick Actions</h3>
+      <p style="margin: 10px 0; font-size: 14px;">
+        <strong>Reply to:</strong>
+        <a href="mailto:{{reply_to}}" style="color: #00ff41; text-decoration: none; font-weight: 600;">{{reply_to}}</a>
+      </p>
+      <p style="margin: 10px 0; font-size: 14px;">
+        <strong>Call:</strong> <span style="color: #2e7d32; font-weight: 600;">{{phone}}</span>
+      </p>
+    </div>
+
+    <!-- Timestamp -->
+    <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 6px; margin: 20px 0;">
+      <p style="margin: 0; color: #6c757d; font-size: 14px;">
+        📅 Received via Portfolio Contact Form<br>
+        🌐 <a href="https://woutdeleu.github.io/Portfolio/" style="color: #00ff41; text-decoration: none;">woutdeleu.github.io/Portfolio</a>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div style="background: #343a40; color: white; padding: 20px; text-align: center;">
+    <p style="margin: 0; font-weight: 600;">Wout Deleu - Portfolio</p>
+    <p style="margin: 5px 0 0 0; opacity: 0.8; font-size: 14px;">Backend Developer | Problem Solver | Tech Enthusiast</p>
+  </div>
+
+</div>

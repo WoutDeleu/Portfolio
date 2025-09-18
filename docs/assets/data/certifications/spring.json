@@ -1,0 +1,14 @@
+{
+  "id": "cert-spring",
+  "title": "Spring Professional Develop (2V0-72.22)",
+  "organization": "Broadcom",
+  "logoImage": "assets/images/spring.png",
+  "credentialUrl": "https://www.credly.com/badges/8968e30b-4175-4dff-9a5b-a1865fe49ec1/public_url",
+  "achieved": "08/2025",
+  "expires": "never",
+  "description": "Those who earn the Spring Professional certification have demonstrated strong expertise in the Spring Framework, including its core features such as dependency injection, data access, transaction management, RESTful services, and Spring Boot for building modern applications.",
+  "tags": ["Spring Framework", "Java", "Spring Boot", "REST APIs"],
+  "startDate": "2025-08-01",
+  "type": "certification",
+  "order": 1
+}

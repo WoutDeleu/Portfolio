@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact Form Message</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f8f9fa;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.15"/><circle cx="10" cy="50" r="0.5" fill="white" opacity="0.15"/><circle cx="90" cy="30" r="0.5" fill="white" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .message-card {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .info-item {
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #00ff41;
+            transition: all 0.3s ease;
+        }
+
+        .info-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #212529;
+            word-wrap: break-word;
+        }
+
+        .message-content {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #495057;
+            white-space: pre-wrap;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            background: #00ff41;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #343a40;
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            opacity: 0.8;
+        }
+
+        .timestamp {
+            background: #e9ecef;
+            border-radius: 6px;
+            padding: 10px 15px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            background: #dc3545;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .can-call-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+
+            .header, .content, .footer {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📧 New Contact Message</h1>
+            <p>You have received a new message from your portfolio website</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Timestamp -->
+            <div class="timestamp">
+                📅 Received on {{date}} at {{time}}
+            </div>
+
+            <!-- Sender Information -->
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">👤 Sender Name</div>
+                    <div class="info-value">{{from_name}}</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">📧 Email Address</div>
+                    <div class="info-value">{{from_email}}</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">📝 Subject</div>
+                    <div class="info-value">{{subject}} <span class="priority-badge">New</span></div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">📞 Phone Contact</div>
+                    <div class="info-value">
+                        {{phone}}
+                        {{#if_can_call}}
+                        <span class="can-call-badge">✓ Can Call</span>
+                        {{/if_can_call}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Content -->
+            <div class="message-card">
+                <div class="info-label">💬 Message Content</div>
+                <div class="message-content">{{message}}</div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="info-label" style="margin-bottom: 15px;">🔗 Quick Actions</div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">↩</div>
+                        <span>Reply to: {{reply_to}}</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <span>Call: {{phone}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Wout Deleu Portfolio</strong></p>
+            <p>This message was sent via your portfolio contact form</p>
+            <p style="font-size: 12px; margin-top: 15px;">
+                🌐 https://woutdeleu.github.io/Portfolio/
+            </p>
+        </div>
+    </div>
+</body>
+</html>

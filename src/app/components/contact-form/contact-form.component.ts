@@ -86,23 +86,34 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     this.statusMessage = '';
 
     try {
+      const countryCode = this.form.get('countryCode')?.value;
+      const phoneNumber = this.form.get('telNr')?.value;
+      const allowedToCall = this.form.get('allowedToCall')?.value;
+
+      console.log('Phone debug:', { countryCode, phoneNumber, allowedToCall });
+
       const formData: ContactFormData = {
         name: this.form.get('name')?.value,
         email: this.form.get('email')?.value,
         subject: this.form.get('subject')?.value,
         message: this.form.get('message')?.value,
-        telNr: this.form.get('allowedToCall')?.value
-          ? `${this.form.get('countryCode')?.value} ${this.form.get('telNr')?.value}`
+        telNr: allowedToCall && phoneNumber
+          ? `${countryCode} ${phoneNumber}`.trim()
           : undefined,
-        allowedToCall: this.form.get('allowedToCall')?.value
+        allowedToCall: allowedToCall
       };
+
+      console.log('Final phone number:', formData.telNr);
 
       const result = await this.emailService.sendEmail(formData);
       console.log('Email sent successfully:', result.text);
 
       this.submitStatus = 'success';
       this.statusMessage = `Email sent successfully to ${this.emailService.getRecipientEmail()}!`;
-      this.form.reset();
+      this.form.reset({
+        allowedToCall: false,
+        countryCode: '+32'
+      });
       this.allowedToCall = false;
 
       // Reset status after 5 seconds

@@ -1,0 +1,14 @@
+{
+  "id": "cert-ocp",
+  "title": "OCP Java SE17",
+  "organization": "Oracle",
+  "logoImage": "assets/images/oracle.png",
+  "credentialUrl": "https://catalog-education.oracle.com/pls/certview/sharebadge?id=166E2EF9C94AE1E525CA00B70BA9C774474DA062FB852E0833EBDB4511973B85",
+  "achieved": "01/2024",
+  "expires": "never",
+  "description": "An Oracle Certified Professional: Java SE 17 Developer has demonstrated proficiency in Java (Standard Edition) software development recognized by a wide range of world-wide industries. They have also exhibited thorough and broad knowledge of the Java programming language, coding practices, and utilization of new features incorporated into Java SE 17.",
+  "tags": ["Java", "OOP", "Certification"],
+  "startDate": "2021-08-20",
+  "type": "certification",
+  "order": 3
+}
