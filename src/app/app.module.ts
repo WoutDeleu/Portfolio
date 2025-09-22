@@ -12,7 +12,6 @@ import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.
 import { TerminalviewComponent } from './components/terminalview/terminal/terminal.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
-import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import {DownloadCVButtonComponent} from "./components/download-cv-button/download-cv-button.component";
 import { AgeBadgeComponent } from './components/badges/age-badge/age-badge.component';
@@ -30,7 +29,6 @@ import { ScrollAnimationDirective } from './directives/scroll-animation.directiv
         TerminalviewComponent,
         OverviewComponent,
         NavigationBarComponent,
-        UnderConstructionComponent,
         AgeBadgeComponent,
         SkillsComponent,
         LocationBadgeComponent,
