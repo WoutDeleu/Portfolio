@@ -1,4 +1,4 @@
-<div class="terminal-container">
+<div class="terminal-container" (click)="onTerminalClick()">
   <div class="terminal-header">
     <div class="terminal-buttons">
       <span class="button close"></span>
@@ -8,16 +8,38 @@
     <div class="terminal-title">wout@portfolio:~</div>
   </div>
 
-  <div class="terminal-body">
+  <div class="terminal-body" #terminalContent>
     <div class="terminal-content">
+      <!-- Rickroll video embed -->
+      <div *ngIf="showRickroll" class="video-container">
+        <iframe
+          width="100%"
+          height="315"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
       <div *ngFor="let line of lines"
            class="terminal-line"
            [ngClass]="line.type">
-        {{ line.text }}
+        {{ line.displayText || line.text }}<span *ngIf="line.isTyping" class="typing-cursor">▊</span>
       </div>
-      <div class="terminal-line command">
+      <div class="terminal-line command input-line" *ngIf="!isTyping">
         <span class="prompt">></span>
-        <span class="cursor">_</span>
+        <input
+          #terminalInput
+          type="text"
+          class="terminal-input"
+          [(ngModel)]="currentInput"
+          (keydown)="handleKeyDown($event)"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <span class="cursor" [class.hidden]="currentInput.length > 0">_</span>
       </div>
     </div>
   </div>

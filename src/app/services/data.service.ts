@@ -92,7 +92,7 @@ export class DataService {
 
   getInterests(): Observable<Interest[]> {
     // List of known interest files - Angular can't dynamically discover files
-    const interestFiles = ['badminton', 'gaming', 'sports', 'technology'];
+    const interestFiles = ['badminton', 'coaching', 'sports', 'technology'];
 
     const interestRequests = interestFiles.map(id =>
       this.http.get<Interest>(`${this.basePath}/interests/${id}.json`)

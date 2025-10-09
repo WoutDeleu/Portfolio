@@ -88,11 +88,35 @@
   line-height: 1.6;
 }
 
+.video-container {
+  margin: 20px 0;
+  border: 2px solid rgba(0, 255, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+  animation: videoFadeIn 0.8s ease-in;
+
+  iframe {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@keyframes videoFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .terminal-line {
   margin: 4px 0;
   white-space: pre-wrap;
   word-wrap: break-word;
-  animation: fadeIn 0.3s ease-in;
 
   &.command {
     color: #00ff00;
@@ -113,6 +137,34 @@
     color: #00ffff;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
   }
+
+  &.error {
+    color: #ff6b6b;
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+  }
+
+  &.input-line {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  caret-color: #00ff00;
+  padding: 0;
+  margin: 0;
+
+  &::selection {
+    background: rgba(0, 255, 0, 0.3);
+  }
 }
 
 .cursor {
@@ -120,16 +172,26 @@
   animation: blink 1s infinite;
   margin-left: 4px;
   font-weight: bold;
+
+  &.hidden {
+    display: none;
+  }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
+.typing-cursor {
+  display: inline-block;
+  animation: cursorBlink 0.5s steps(2, jump-none) infinite;
+  margin-left: 1px;
+  color: inherit;
+  font-weight: bold;
+}
+
+@keyframes cursorBlink {
+  0%, 49% {
     opacity: 1;
-    transform: translateY(0);
+  }
+  50%, 100% {
+    opacity: 0;
   }
 }
 
