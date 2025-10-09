@@ -1,3 +1,17 @@
-<!-- Portfolio Layout -->
-<app-portfolio *ngIf="!terminalView"/>
-<app-terminal *ngIf="terminalView" [person]="person"/>
+<app-view-toggle (viewChange)="onViewChange($event)"></app-view-toggle>
+
+<div class="view-container">
+  <div class="view-wrapper" [class.show-terminal]="currentView === 'terminal'">
+    <div class="view main-view"
+         [@slideAnimation]="currentView === 'main' ? 'visible' : 'hidden'"
+         [style.visibility]="currentView === 'main' ? 'visible' : 'hidden'">
+      <app-portfolio/>
+    </div>
+
+    <div class="view terminal-view-wrapper"
+         [@slideAnimation]="currentView === 'terminal' ? 'visible' : 'hidden'"
+         [style.visibility]="currentView === 'terminal' ? 'visible' : 'hidden'">
+      <app-terminal-view></app-terminal-view>
+    </div>
+  </div>
+</div>

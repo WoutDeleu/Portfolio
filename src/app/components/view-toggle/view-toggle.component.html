@@ -1,0 +1,13 @@
+<div class="toggle-container">
+  <button
+    class="toggle-button"
+    (click)="toggleView()"
+    [class.terminal-mode]="currentView === 'terminal'">
+    <div class="toggle-track">
+      <div class="toggle-thumb" [class.active]="currentView === 'terminal'">
+        <span class="icon">{{ currentView === 'main' ? '🖥️' : '⌨️' }}</span>
+      </div>
+    </div>
+    <span class="toggle-label">{{ currentView === 'main' ? 'Portfolio' : 'Terminal' }}</span>
+  </button>
+</div>

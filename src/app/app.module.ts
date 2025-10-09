@@ -21,6 +21,8 @@ import {MatIconModule} from "@angular/material/icon";
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { ScrollAnimationDirective } from './directives/scroll-animation.directive';
+import { ViewToggleComponent } from './components/view-toggle/view-toggle.component';
+import { TerminalViewComponent } from './components/terminal-view/terminal-view.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +37,8 @@ import { ScrollAnimationDirective } from './directives/scroll-animation.directiv
         ContactFormComponent,
         PortfolioComponent,
         ScrollAnimationDirective,
+        ViewToggleComponent,
+        TerminalViewComponent
     ],
   imports: [
     BrowserModule,

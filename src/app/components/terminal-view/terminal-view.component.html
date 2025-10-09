@@ -1,0 +1,24 @@
+<div class="terminal-container">
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="button close"></span>
+      <span class="button minimize"></span>
+      <span class="button maximize"></span>
+    </div>
+    <div class="terminal-title">wout@portfolio:~</div>
+  </div>
+
+  <div class="terminal-body">
+    <div class="terminal-content">
+      <div *ngFor="let line of lines"
+           class="terminal-line"
+           [ngClass]="line.type">
+        {{ line.text }}
+      </div>
+      <div class="terminal-line command">
+        <span class="prompt">></span>
+        <span class="cursor">_</span>
+      </div>
+    </div>
+  </div>
+</div>
