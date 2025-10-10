@@ -1,0 +1,493 @@
+/**/_xdc_._dhyob6 && _xdc_._dhyob6( {
+   "html_attributions" : [],
+   "result" : 
+   {
+      "address_components" : 
+      [
+         {
+            "long_name" : "25",
+            "short_name" : "25",
+            "types" : 
+            [
+               "street_number"
+            ]
+         },
+         {
+            "long_name" : "John F. Kennedylaan",
+            "short_name" : "John F. Kennedylaan",
+            "types" : 
+            [
+               "route"
+            ]
+         },
+         {
+            "long_name" : "Oostakker",
+            "short_name" : "Oostakker",
+            "types" : 
+            [
+               "political",
+               "sublocality",
+               "sublocality_level_1"
+            ]
+         },
+         {
+            "long_name" : "Gent",
+            "short_name" : "Gent",
+            "types" : 
+            [
+               "locality",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "Oost-Vlaanderen",
+            "short_name" : "OV",
+            "types" : 
+            [
+               "administrative_area_level_2",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "Vlaanderen",
+            "short_name" : "Vlaanderen",
+            "types" : 
+            [
+               "administrative_area_level_1",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "België",
+            "short_name" : "BE",
+            "types" : 
+            [
+               "country",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "9000",
+            "short_name" : "9000",
+            "types" : 
+            [
+               "postal_code"
+            ]
+         }
+      ],
+      "adr_address" : "\u003cspan class=\"street-address\"\u003eJohn F. Kennedylaan 25\u003c/span\u003e, \u003cspan class=\"region\"\u003eOostakker\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e9000\u003c/span\u003e \u003cspan class=\"locality\"\u003eGent\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eBelgië\u003c/span\u003e",
+      "business_status" : "OPERATIONAL",
+      "current_opening_hours" : 
+      {
+         "minutes_until_closed" : 283,
+         "minutes_until_open" : 4003,
+         "open_now" : true,
+         "periods" : 
+         [
+            {
+               "close" : 
+               {
+                  "date" : "2025-10-06",
+                  "day" : 1,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "date" : "2025-10-06",
+                  "day" : 1,
+                  "time" : "0730"
+               }
+            },
+            {
+               "close" : 
+               {
+                  "date" : "2025-10-07",
+                  "day" : 2,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "date" : "2025-10-07",
+                  "day" : 2,
+                  "time" : "0730"
+               }
+            },
+            {
+               "close" : 
+               {
+                  "date" : "2025-10-08",
+                  "day" : 3,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "date" : "2025-10-08",
+                  "day" : 3,
+                  "time" : "0730"
+               }
+            },
+            {
+               "close" : 
+               {
+                  "date" : "2025-10-09",
+                  "day" : 4,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "date" : "2025-10-09",
+                  "day" : 4,
+                  "time" : "0730"
+               }
+            },
+            {
+               "close" : 
+               {
+                  "date" : "2025-10-03",
+                  "day" : 5,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "date" : "2025-10-03",
+                  "day" : 5,
+                  "time" : "0730"
+               }
+            }
+         ],
+         "weekday_text" : 
+         [
+            "maandag: 07:30–17:30",
+            "dinsdag: 07:30–17:30",
+            "woensdag: 07:30–17:30",
+            "donderdag: 07:30–17:30",
+            "vrijdag: 07:30–17:30",
+            "zaterdag: Gesloten",
+            "zondag: Gesloten"
+         ]
+      },
+      "formatted_address" : "John F. Kennedylaan 25, 9000 Gent, België",
+      "formatted_phone_number" : "09 250 21 11",
+      "geometry" : 
+      {
+         "location" : 
+         {
+            "lat" : 51.1040834,
+            "lng" : 3.7574369
+         },
+         "viewport" : 
+         {
+            "northeast" : 
+            {
+               "lat" : 51.1054420802915,
+               "lng" : 3.758841730291502
+            },
+            "southwest" : 
+            {
+               "lat" : 51.1027441197085,
+               "lng" : 3.756143769708498
+            }
+         }
+      },
+      "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+      "icon_background_color" : "#7B9EB0",
+      "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+      "international_phone_number" : "+32 9 250 21 11",
+      "name" : "Volvo Car Gent",
+      "opening_hours" : 
+      {
+         "minutes_until_closed" : 283,
+         "minutes_until_open" : 4003,
+         "open_now" : true,
+         "periods" : 
+         [
+            {
+               "close" : 
+               {
+                  "day" : 1,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "day" : 1,
+                  "time" : "0730"
+               }
+            },
+            {
+               "close" : 
+               {
+                  "day" : 2,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "day" : 2,
+                  "time" : "0730"
+               }
+            },
+            {
+               "close" : 
+               {
+                  "day" : 3,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "day" : 3,
+                  "time" : "0730"
+               }
+            },
+            {
+               "close" : 
+               {
+                  "day" : 4,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "day" : 4,
+                  "time" : "0730"
+               }
+            },
+            {
+               "close" : 
+               {
+                  "day" : 5,
+                  "time" : "1730"
+               },
+               "open" : 
+               {
+                  "day" : 5,
+                  "time" : "0730"
+               }
+            }
+         ],
+         "weekday_text" : 
+         [
+            "maandag: 07:30–17:30",
+            "dinsdag: 07:30–17:30",
+            "woensdag: 07:30–17:30",
+            "donderdag: 07:30–17:30",
+            "vrijdag: 07:30–17:30",
+            "zaterdag: Gesloten",
+            "zondag: Gesloten"
+         ]
+      },
+      "photos" : 
+      [
+         {
+            "height" : 2448,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/113217103525020448885\"\u003eAndrzej\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2dy4xUtpzto0G8Kpue3Au7IcGHPX6gwdPhGlcXXTTb1UOzxe4g-dNKcUwI0AX4s1dZrUfyDn9GiucJDtzLGIg70CqeucepY-SbePT25wJlMx50EHcijCp1EnZDC1b33xFWbsl5Cg0pp3WBH42-FOa_HqI-0nTCB_UmUGWq1QFy0de7OHOUP13nGPmpWcsPokdp20k2rJtO2DEC0Cxodn3fGtZdFZAFrePqg86KJhEVd-TvikP11KHlLC6IX2gDDpTgHm5HWfsJwGypW3jOeZjmxjifLkcbywdiWlTj908YTt1LJN9zjvzWowNNBunfyW9iJuD2A5jq3fb4GLdmmS_dey-eZxA2PVKWO4r9EM_QXKh_D2n4JpDEtIqzkT5gqj18BCqFUxaugloOezPTLMKacOWyZXwJWIhE19cMPrjGAcQo",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICLvOCCpwE"
+            },
+            "width" : 3264
+         },
+         {
+            "height" : 538,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/108684067534381823895\"\u003eAlamine Hadrati\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2c7-58uA1G6lVgPVOIypP3I4EieGwAHuKZErCxZSCYjN7IsXBD033JXbcP4ONd5O_zNiKrsTm--VYe3l3K5RaTLH_34enprXQPlqAlv8jGB_ntY80R3uUyjclWiORAySiVCQw02tCm0LvDQLVaMDjqqF1pEg4O_xQX9m4CFar5sXz6m_M4Ob6WF-PahDZF5h2Ax57BWZ68K30n4Nu_ypdyEGJMm2fdDt4GT69rXsCdqO8PPByz23ptk86bPa5-wOshHMmz9Q3bawUak1G6EppyfIa3wrMEYb8pi_tS59z8YytCY2yY6YD-N2UUoPswWOjefyWQnYPUioUQNjmYVINkT1DxTgdP5NYA9Rr9Ag-FyrpG96TYLFWgIeApN_cWS1do5jv28NsG3Q5RSlbONzrF0QH-0-29vRmMLDM1eIzE-Mg",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICG-onTDQ"
+            },
+            "width" : 956
+         },
+         {
+            "height" : 4624,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/108963034257079191029\"\u003eDariusz Chmielewski\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2eXA2da932D9DS9emt3HdyjvddgQPjmajQu8FeIbi16cMOe0xSAra7gctteXAPxJJRVQs_H0gCoHskztrnocxQaRuOpbyfheUTXJW73G3p0XaO0t6FzzomMJa3oIWFlTHSsTFiTofod7cp0k-c7eJA-nOPjO1A7DRrP28MtpTKGH4YjWl_oiqm9EPYWZfikcDKatjenTwOSx5ilgQXo2FWFADnj5jikbSF979dFfHmAZ2NPop7A8BymzQnexILbLVXfi88XbtQXO9zXwdQpcBIXV-bPTgJgjU2LHIgF-Fpcfx4qeWvJXJ0LIbcoUCKuMcbbSP0jBVZaapNxoA6SQ0rB8MTr-Q5vKWsVjc4Ju5EG_pBu-qeiQ4B4jD3TooavHd1xIyP4Z4ZvkLHrF_TjUaBWSzVtVN1HxJ2VQzKk29joBQ",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICihPvoEQ"
+            },
+            "width" : 3472
+         },
+         {
+            "height" : 4032,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/111038651415280014884\"\u003eDarth Vader\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2cHby8Cv6PuT7PjfbzUUWEy876fuRjqVjMlKU4cqCpOjhnwYXAegfS4J-QhThlNCQ0vjUWwghIqG2C1X7A6JCySDzLFW7wNKAcUlbMgJPj4ANqHDgD9m0Y4Ns57zEH_nN8e02N0Ot-GUtG9iY2Hh8cWxd2B72k9FzII-uhFMebfoQhtJmKeGJODY_2emjc5VE3oHrbwDoMe-_-EB1dYJhDhs3lxicxbUNiikInEUtNTh0W-xSGUM3bCJBy5f-80JEBelXw5q_8qqfuO3_IIzYUdXcp2Rb1HENDFVGQ43STnuZ-sztruVZUdSS7uuPIL_spe0W45GSh5gKdef-jseh6WQtvsX33xRmWuElZ9DyHCvR3m_MJtah-D1qYdv7sEYQ9jQUQKyc-6ikwcVM_DR6z3Yg4rZ03cS2j14CSFtPhdBA",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICa3_L0Ow"
+            },
+            "width" : 3024
+         },
+         {
+            "height" : 4160,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/105544218885239211423\"\u003eVitalii Віталій\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2cDD2Eg7w-REV53uB4TeiboC10zCF3mlfHYjvXx1sEQFTpqrI4vYEC2iDxQqtqumao72saYiXdbx5d-RTqTHRQBAguS6iI6tWJmtQQ3cEafn29QQJ4EbG8iu5CdtXUrzU8LZXaL2KO5JMy2UKpbTzsdsk9o4hlZauHSElCLInsqnOTOfB_SK9jgDCUUku4jj_GNxQzdwsjn8CGaAd1lF9uLWDstZ1taLhmpmJOaD9unJtIRJzuadIQdd5wgFG6VwmWqflyPiLZ-6KLvX7TgOKzeyludfFMFusQXezQH-zr56KcaaTnF5eXZi4ZqQSxg3tbjTxKJ94DURIQF-U8JXHCofEnq23P4Dfg72v2CRPS1ooYjbLHOf5HiT6yaCkDFFN864ZvPOfB1Ps-F-B9X0gfXcBeNN9YA0Pv_BJaQbSjqaw",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICCyZ_BLg"
+            },
+            "width" : 3120
+         },
+         {
+            "height" : 2268,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/112209598865802898889\"\u003eNicklas Öhlin\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2cLYlHOrQzd67itqhThrNAK34Xu2Qn6nktnRZYNSXq8Hw3TfcSMsjhJxoAf4QCEOrbOLgPx16_XTVSjjm-e3gpCk9QEJplDycm1JqBHaAuYhB54UdCKdNcYL3x3s27N7m8q8WTmW04J83Rs1wrBcGU74EQLeV3REFO-XICPVdXkF1JsuLtTcWwUaXXSHhP-gvQ_3_BDHPvCOE3-eJhqxwMJru9MtIE8BIIfMFja5jZTne9PF9S5llAU5JaB3L0WFgSCKe8BtiD_-wn3quW9tB--luTiMyJLC_iz-16gmApV2T7xBzDKu0XiIDvHFhfl655IOt8pFWLQ0JBa0qKtQ-uaxkfCO9TiFtxwWVKF016rDW7hCjJpPPuH9VMDvT6raxiFfAm0TuaZqRsLMb4BY9RLppJ0RCq6Jhni1eFNZdpc2Bui",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICOr4zl_gE"
+            },
+            "width" : 4032
+         },
+         {
+            "height" : 4032,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/104987801130360762350\"\u003emisale valentin\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2fXkrVS0P0CbQa8-30wTxqv3DG0cRmnxgMiYD026O3n8jEcDPMmmCjdwmtAywCyGxsc_44taSUuv8_Fh4xxP5-FN3soPkxKG7xt4mIEs8_YrAFEW-DPDjX2VgLlM4a44hvUymd02AiM9XMfhlzCTT6DCTfswt8IhrZkOGw-8kxvLem9MSm4o9g96aSas1Bcj9PLfwrepwy9oGO1L_Nz8E2GwU9IH9eZp9CaBgumcl3xaLz-u9z3Sx_f8idOMxeQCZsJObJpPTJqpw32fRg6GcVstm8v8H1qeFTyDz_VXXYOolPueD-_hiXPu_a9sXdBY9n3jxJfgaJ4s-RZh6gS7nIjEnU0abQCLMWAznGt7oQBopCOc2rP1EdpUFshDAd3I6keOAWKAiQYwVHKrE2H7UlhJc3Po_-KGHb44Nuu6bNH-LsP",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgIDZlp7VzwE"
+            },
+            "width" : 3024
+         },
+         {
+            "height" : 3024,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/111819273375388602660\"\u003eAdam Solosciuk (Popeye)\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2ebJyW4R_JpOyqoF7Y2h5mvZg26xcfbZcYBzWnM2Drkwi9E9AuPQhlASwGR7FfD5Rix7LKO0o0PL28-dvzrxXjWkLJh_vFI-5TgN-_GVPO40Iwbka31q2R4jZwekpH_CYYGP7AJ-z18uoC2uDLgbNeH39NyeG4VIyVvfXtQEhj0YAvSVOYLSmp81wREZfigTJJTCE9EMTTIgh0LtsZC1sWCAE9MPYrHxG4dsZeelIp9XjT7xVRYZzh-GUl2iVy04kMQBqvNI6r0cZuGWfuhkdawoRZlxdt_uAEjyBSSkx50_GUPMf9hr7a6UUJ0_Za3XP7BboKR-KXfrFrVBsBG1t2hzPZUD9MeOXWSISGuiaNP96VbxysltOWBIFmTcbCn2PZAIVy05sWWL-4_2GQomvOvZxDjH4jQzXkreTbMjQf41m4f",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICOo4jr4gE"
+            },
+            "width" : 4032
+         },
+         {
+            "height" : 4128,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/117324530883379779579\"\u003ehammepdw\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2dilD_a6cHi1QJhe63fHVGmz9D4D3deApbJRGo_pCT_KsqvzpvS7zW2Ik_1wLYXFjOcbvsCoerCr7a9wEJ5x5qNDk0upfedJJer5magCIAGwGo0PsNBt-2nqT0uqWNtuiqzwzzPNqZXvBDhx2xQmoC8KK0W2t_TrQ2tdJJKIOQrE6zh4ingMZaePs_AsYW0BuBYs2UOyilwZ8wEB7RIDwdD3D-YaZRMI7BTZVJ-V9cbS1h-U53Rq0xogYidq0NsZ9bxnEoAQ3EEKQFvk1c5k5IgS1NhmpNf4q8MthC__jrqAP0N-jT55bS3g1za8kAeiM6AKzJCotg-W28GSAQsvKlw0F7MLsNkxqCqaY88ogOUoi3V2fRDBoa2nZ5SpCThdSaxlo6CCiUxniAjjZDawJcGhX1qN9ceEpTO4wLLXUo",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICEre3YQw"
+            },
+            "width" : 3096
+         },
+         {
+            "height" : 3024,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/114543448183618701375\"\u003eSteven Govaert\u003c/a\u003e"
+            ],
+            "photo_reference" : "AciIO2eYjKrmMimflaWL8HmQNlmdyfw39M3RjOBnaYfHKF4FEIxVM5SMrxBp7V5vsWYWVvhgh7H2FsxotMUq79jDjmYrOAtygFs17-uURqM0ALUkhQ6Toi8DwU_clzQMYEyxjb0nyJggCmhnDv1GGBlUznpfhLxiAPyORH75kw24PxekxJCxyJrnCx5j4xBQAb5wA6kE2t8vxlAVGfi52FvOaZzP3QZq1zsu0IelzDpU6gzSGIAD8d1XMRIby-EF-0YJ50Rlh8DJLHac3kv4YrAFqkPdLpVHNIMhsYY1WJLI0E7X4IqIm6nYIq1DpNaMMtUp7FJX4p_BnLQZPfqYNsRltBe9NbVnE3dUz5imXUy4CFgh05M0LrSXW0XLJDbTZCVm_pQr6KurAsZiRFCwzZmyQH5uoIOMWXIm6am4A-S6Wf27EHly",
+            "raw_reference" : 
+            {
+               "media_key" : "CIHM0ogKEICAgICS69ualQE"
+            },
+            "width" : 3024
+         }
+      ],
+      "place_id" : "ChIJPRJgy013w0cRPefIb4M8d_c",
+      "plus_code" : 
+      {
+         "compound_code" : "4Q34+JX Gent, België",
+         "global_code" : "9F354Q34+JX"
+      },
+      "rating" : 3.8,
+      "reference" : "ChIJPRJgy013w0cRPefIb4M8d_c",
+      "reviews" : 
+      [
+         {
+            "author_name" : "Laurens Pelgrim",
+            "author_url" : "https://www.google.com/maps/contrib/102664926802828842317/reviews",
+            "language" : "nl",
+            "original_language" : "nl",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a/ACg8ocKFntpTm0Gy6o-L5uCO1yC687mzw1Vimk0PquLlH4BNjaAUsQ=s128-c0x00000000-cc-rp-mo",
+            "rating" : 1,
+            "relative_time_description" : "3 maanden geleden",
+            "text" : "Ja die Volvo is aan allemaal goedkope brol uit China niet van nog beetje kwaliteit aan nee auto van niks vroeger geweldig nu brol uit China voor veel geld ja",
+            "time" : 1751562877,
+            "translated" : false
+         },
+         {
+            "author_name" : "I AM David Dewulf",
+            "author_url" : "https://www.google.com/maps/contrib/117684400107087831399/reviews",
+            "language" : "nl",
+            "original_language" : "nl",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjWClp0APcjd30J84an9j9W05nlgl2qK0gEWrYg7-E8gBfjfnY0=s128-c0x00000000-cc-rp-mo",
+            "rating" : 1,
+            "relative_time_description" : "9 maanden geleden",
+            "text" : "De EX 30 ziet er mooi uit, rijdt vlot maar heeft een aantal jammerlijke problemen waar je over kan kijken bij de aankoop ( ze gaan het je niet zeggen). Ten eerste het openen en sluiten van de deuren. dat gaat in theorie contactloos, maar soms moet je tot 30 seconden wachten voor het open gaat en soms al helemaal niets(!), dan moet je met het kaartje tegen de deur contact maken ( tip: ga nooit weg zonder je reservekaartje), en als je weg gaat van de auto en je vergat iets en je moet terug, dan moet je ook ruim 20 seconden wachten, niet leuk en zeker niet met inkopen in de regen. De koffer gaat ook niet automatisch open, dus kan je niet op afstand openen, ook de lichten kan je niet aansteken op afstand, anders ideaal in een parking als je je auto zoekt...\nDan ook nog het panoramische dak, als de zon door het dak op je touchscreen met alle functies schijnt, kan je het helemaal niet meer lezen, alles in een zonnevlek. En misschien minder erg maar jammer, vele stukjes van scherm zijn heel klein en niet makkelijk/vlot te lezen als je rijdt...",
+            "time" : 1734620330,
+            "translated" : false
+         },
+         {
+            "author_name" : "Dorien Plaetevoet",
+            "author_url" : "https://www.google.com/maps/contrib/102065962242745614528/reviews",
+            "language" : "nl",
+            "original_language" : "nl",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjUgsXqlWMicLy-iJ5aRGK6fBkcXvMV2hCUxifjngarhLA4HQdWH=s128-c0x00000000-cc-rp-mo",
+            "rating" : 1,
+            "relative_time_description" : "12 maanden geleden",
+            "text" : "De mensen die verantwoordelijk zijn voor de mens moet ook de mensen bij sturen bij alle problemen op de werk vloer hun tyd geven het zijn geen robots zijn mensen van vlees en bloed zeer vuile fabriek wc de eetplaats de grond enz ik zou wel eens de grote baas een woordje zie toen staan aan ze mensen een dank woordje geven en elk jaar een feest voor hun werk dat ze doen en voor beloond word het kost geen geld 💸 is er in over vloet ik blijf het schrijven mijn gedacht en de rest ze mogen alles lezen het is de waarheid voor 100procent en met hart en ziel doe er iets mee tot snel en een het zorg de medisedienst dikke boel niet te doen dat ze mens aan neem voor die post die er wel verstand van heb en personeel dienst ook met niets in orde de wc vies",
+            "time" : 1727988482,
+            "translated" : false
+         },
+         {
+            "author_name" : "Filiz Cinar",
+            "author_url" : "https://www.google.com/maps/contrib/109569947727802794336/reviews",
+            "language" : "nl",
+            "original_language" : "nl",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjWwaUNxPcxU_NjSAi8FJEcs3B2_EL12zOY3eiyKLHoUaCvQP98=s128-c0x00000000-cc-rp-mo-ba3",
+            "rating" : 1,
+            "relative_time_description" : "een jaar geleden",
+            "text" : "Vandaag met mijn man langsgeweest voor medisch onderzoek voor zijn gebroken voet. Een vrouw aan de balie was zeer onvriendelijk tegen mij en ik mocht niet samen met mijn man naar binnen. Ik kan wel begrijpen dat ik niet mee naar binnen mag, maar reageer dan op een vriendelijke manier alstublieft! En een beetje glimlach op uw gezicht zou fijner zijn voor uw bezoekers.",
+            "time" : 1710151669,
+            "translated" : false
+         },
+         {
+            "author_name" : "Neriman Jargis",
+            "author_url" : "https://www.google.com/maps/contrib/111736400036604656355/reviews",
+            "language" : "nl",
+            "original_language" : "nl",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a/ACg8ocK5HStNzfxQPEX9wzm0QO3g2QsYymCf2638F0oa3POHqrtVsQ=s128-c0x00000000-cc-rp-mo-ba4",
+            "rating" : 5,
+            "relative_time_description" : "2 maanden geleden",
+            "text" : "Kan gemakkelijk parkeren",
+            "time" : 1753790891,
+            "translated" : false
+         }
+      ],
+      "types" : 
+      [
+         "establishment",
+         "point_of_interest"
+      ],
+      "url" : "https://maps.google.com/?cid=17831787784810587965",
+      "user_ratings_total" : 1691,
+      "utc_offset" : 120,
+      "vicinity" : "John F. Kennedylaan 25, Gent",
+      "website" : "http://www.volvocargent.be/",
+      "wheelchair_accessible_entrance" : true
+   },
+   "status" : "OK"
+} )

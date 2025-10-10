@@ -10,7 +10,7 @@
           <span class="hamburger-line"></span>
         </button>
 
-        <h2 class="header-title">{{ personalInfo?.firstName || 'Wout' }} {{ personalInfo?.lastName || 'Deleu' }}</h2>
+        <h2 class="header-title clickable-name" (click)="scrollToTop()">{{ personalInfo?.firstName || 'Wout' }} {{ personalInfo?.lastName || 'Deleu' }}</h2>
       </div>
       <div class="header-right">
         <!-- Desktop Navigation -->
@@ -56,7 +56,7 @@
                 style='background-image: url("assets/images/Profile/Professional.jpg");'
               ></div>
               <div class="profile-info">
-                <p class="profile-name">{{ personalInfo?.firstName || 'Wout' }} {{ personalInfo?.lastName || 'Deleu' }}</p>
+                <p class="profile-name clickable-name" (click)="scrollToTop()">{{ personalInfo?.firstName || 'Wout' }} {{ personalInfo?.lastName || 'Deleu' }}</p>
                 <div class="profile-details-container">
                   <div class="profile-age-container" (click)="toggleAgeDisplay()">
                     <span class="profile-age">

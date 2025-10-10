@@ -7,7 +7,7 @@
     "build": "npm run sync-content && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "sync-content": "rsync -av --delete content/ src/assets/data/",
+    "sync-content": "rsync -av --delete --exclude='.DS_Store' content/certifications/ src/assets/data/certifications/ && rsync -av --delete --exclude='.DS_Store' content/education/ src/assets/data/education/ && rsync -av --delete --exclude='.DS_Store' content/interests/ src/assets/data/interests/ && rsync -av --delete --exclude='.DS_Store' content/languages/ src/assets/data/languages/ && rsync -av --delete --exclude='.DS_Store' content/personal/ src/assets/data/personal/ && rsync -av --delete --exclude='.DS_Store' content/skills/ src/assets/data/skills/ && rsync -av --delete --exclude='.DS_Store' content/social-media/ src/assets/data/social-media/ && rsync -av --delete --exclude='.DS_Store' content/career/ src/assets/data/career/ && rsync -av --delete --exclude='.DS_Store' content/projects/ src/assets/data/projects/ && rsync -av --delete --exclude='.DS_Store' content/timeline-education/ src/assets/data/timeline-education/ && rsync -av --delete --exclude='.DS_Store' content/images/ src/assets/images/ && rsync -av --delete --exclude='.DS_Store' content/config/ src/assets/config/",
     "dev": "ng serve"
   },
   "private": true,

@@ -77,6 +77,15 @@ export interface Education {
   order: number;
 }
 
+export interface Skill {
+  id: string;
+  name: string;
+  proficiency: number;
+  icon: string;
+  color: string;
+  order: number;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -139,6 +148,19 @@ export class DataService {
 
     return forkJoin(educationRequests).pipe(
       map(education => education.sort((a, b) => a.order - b.order))
+    );
+  }
+
+  getSkills(): Observable<Skill[]> {
+    // List of known skill files - Angular can't dynamically discover files
+    const skillFiles = ['python', 'java', 'cpp', 'angular'];
+
+    const skillRequests = skillFiles.map(id =>
+      this.http.get<Skill>(`${this.basePath}/skills/${id}.json`)
+    );
+
+    return forkJoin(skillRequests).pipe(
+      map(skills => skills.sort((a, b) => a.order - b.order))
     );
   }
 }

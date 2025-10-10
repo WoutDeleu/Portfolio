@@ -1,4 +1,4 @@
-<app-view-toggle (viewChange)="onViewChange($event)"></app-view-toggle>
+<app-view-toggle [currentView]="currentView" (viewChange)="onViewChange($event)"></app-view-toggle>
 
 <div class="view-container">
   <div class="view-wrapper" [class.show-terminal]="currentView === 'terminal'">
@@ -10,8 +10,9 @@
 
     <div class="view terminal-view-wrapper"
          [@slideAnimation]="currentView === 'terminal' ? 'visible' : 'hidden'"
+         [@terminalCloseAnimation]="terminalCloseAnimation"
          [style.visibility]="currentView === 'terminal' ? 'visible' : 'hidden'">
-      <app-terminal-view></app-terminal-view>
+      <app-terminal-view (closeWindow)="onTerminalAction($event)"></app-terminal-view>
     </div>
   </div>
 </div>

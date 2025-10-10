@@ -1,9 +1,9 @@
 <div class="terminal-container" (click)="onTerminalClick()">
   <div class="terminal-header">
     <div class="terminal-buttons">
-      <span class="button close"></span>
-      <span class="button minimize"></span>
-      <span class="button maximize"></span>
+      <span class="button close" (click)="closeTerminal($event)" title="Close"></span>
+      <span class="button minimize" (click)="minimizeTerminal($event)" title="Minimize"></span>
+      <span class="button maximize" (click)="maximizeTerminal($event)" title="Maximize"></span>
     </div>
     <div class="terminal-title">wout@portfolio:~</div>
   </div>

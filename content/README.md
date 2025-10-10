@@ -1,16 +1,23 @@
 # Portfolio Content Configuration
 
-This directory contains all the external configuration files for your portfolio website. All content can be easily updated by modifying the JSON files in this directory.
+This directory is the **single source of truth** for all portfolio content. Everything - JSON data, images, and configuration files - is centralized here and automatically synced to `src/assets/` during build and development.
 
 ## 📁 Directory Structure
 
 ```
 content/
-├── personal/           # Personal information
-├── social-media/       # Social media links
+├── certifications/     # Professional certifications
+├── education/          # Educational background
 ├── interests/          # Personal interests
-├── languages/          # Programming languages
-└── skills/            # Technical skills
+├── languages/          # Spoken languages
+├── personal/           # Personal information
+├── skills/             # Technical skills
+├── social-media/       # Social media links
+├── career/             # Career history
+├── projects/           # Projects portfolio
+├── timeline-education/ # Education timeline
+├── images/             # All images (logos, photos, icons)
+└── config/             # Application configuration (email, etc.)
 ```
 
 ## 🔧 How to Update Content
@@ -101,10 +108,17 @@ Similar structure to interests - create individual files and update respective i
 
 ## 🔄 Sync Process
 
-Content is automatically synced from this directory to `src/assets/data/` during:
-- Development server startup
-- Build process
+**All content from `/content` is automatically synced to `/src/assets/` during:**
+- Development server startup (`npm start`)
+- Build process (`npm run build`)
 - Manual sync with `npm run sync-content`
+
+**What gets synced:**
+- `/content/*/` → `/src/assets/data/*/` (all JSON data)
+- `/content/images/` → `/src/assets/images/` (all images)
+- `/content/config/` → `/src/assets/config/` (all configuration files)
+
+**Important:** The `/src/assets/` directories are **gitignored** and generated automatically. Always edit files in `/content/`, never in `/src/assets/`.
 
 ## 🆘 Troubleshooting
 

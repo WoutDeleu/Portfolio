@@ -91,6 +91,16 @@ header {
   letter-spacing: -0.015em;
 }
 
+.clickable-name {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clickable-name:hover {
+  color: #00ff41;
+  transform: translateY(-1px);
+}
+
 .header-right {
   display: flex;
   flex: 1;

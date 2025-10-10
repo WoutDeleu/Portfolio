@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-view-toggle',
@@ -8,7 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ViewToggleComponent {
   @Output() viewChange = new EventEmitter<'main' | 'terminal'>();
-  currentView: 'main' | 'terminal' = 'main';
+  @Input() currentView: 'main' | 'terminal' = 'main';
 
   toggleView() {
     this.currentView = this.currentView === 'main' ? 'terminal' : 'main';

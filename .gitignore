@@ -40,3 +40,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Generated assets (synced from /content)
+/src/assets/data/
+/src/assets/images/
+/src/assets/config/
