@@ -1,0 +1,253 @@
+/**/_xdc_._uatrxb && _xdc_._uatrxb( {
+   "predictions" : 
+   [
+      {
+         "description" : "Volvo Car Gent, John F. Kennedylaan, Gent, België",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPRJgy013w0cRPefIb4M8d_c",
+         "reference" : "ChIJPRJgy013w0cRPefIb4M8d_c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Volvo Car Gent",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "John F. Kennedylaan, Gent, België"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Volvo Car Gent"
+            },
+            {
+               "offset" : 16,
+               "value" : "John F. Kennedylaan"
+            },
+            {
+               "offset" : 37,
+               "value" : "Gent"
+            },
+            {
+               "offset" : 43,
+               "value" : "België"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Volvo CE Arena, Arenatorget, Eskilstuna, Zweden",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmXD4OpHzXkYR75rXgJZGR0M",
+         "reference" : "ChIJmXD4OpHzXkYR75rXgJZGR0M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Volvo CE Arena",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Arenatorget, Eskilstuna, Zweden"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Volvo CE Arena"
+            },
+            {
+               "offset" : 16,
+               "value" : "Arenatorget"
+            },
+            {
+               "offset" : 29,
+               "value" : "Eskilstuna"
+            },
+            {
+               "offset" : 41,
+               "value" : "Zweden"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Volvo Cars - TK Receptionen, Personalvägen, Gothenburg, Zweden",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJd0B6RnqMT0YRG5KloIvsWmg",
+         "reference" : "ChIJd0B6RnqMT0YRG5KloIvsWmg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Volvo Cars - TK Receptionen",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Personalvägen, Gothenburg, Zweden"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Volvo Cars - TK Receptionen"
+            },
+            {
+               "offset" : 29,
+               "value" : "Personalvägen"
+            },
+            {
+               "offset" : 44,
+               "value" : "Gothenburg"
+            },
+            {
+               "offset" : 56,
+               "value" : "Zweden"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "store"
+         ]
+      },
+      {
+         "description" : "Volvo Car Kista, Kronåsvägen, Sollentuna, Zweden",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJabgiqd-eX0YRjJ5VtGYQgb8",
+         "reference" : "ChIJabgiqd-eX0YRjJ5VtGYQgb8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Volvo Car Kista",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Kronåsvägen, Sollentuna, Zweden"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Volvo Car Kista"
+            },
+            {
+               "offset" : 17,
+               "value" : "Kronåsvägen"
+            },
+            {
+               "offset" : 30,
+               "value" : "Sollentuna"
+            },
+            {
+               "offset" : 42,
+               "value" : "Zweden"
+            }
+         ],
+         "types" : 
+         [
+            "car_dealer",
+            "car_repair",
+            "establishment",
+            "point_of_interest",
+            "store"
+         ]
+      },
+      {
+         "description" : "Volvo Car Wrocław-Bielany Autoryzowany Dealer Volvo, Wrocławska, Bielany Wrocławskie, Polen",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJiaoQCvDDD0cRsJXrY5z1Yqw",
+         "reference" : "ChIJiaoQCvDDD0cRsJXrY5z1Yqw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Volvo Car Wrocław-Bielany Autoryzowany Dealer Volvo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Wrocławska, Bielany Wrocławskie, Polen"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Volvo Car Wrocław-Bielany Autoryzowany Dealer Volvo"
+            },
+            {
+               "offset" : 53,
+               "value" : "Wrocławska"
+            },
+            {
+               "offset" : 65,
+               "value" : "Bielany Wrocławskie"
+            },
+            {
+               "offset" : 86,
+               "value" : "Polen"
+            }
+         ],
+         "types" : 
+         [
+            "car_dealer",
+            "car_repair",
+            "establishment",
+            "point_of_interest",
+            "store"
+         ]
+      }
+   ],
+   "status" : "OK"
+} )
