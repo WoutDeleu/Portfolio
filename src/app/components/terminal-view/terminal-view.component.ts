@@ -48,14 +48,17 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
   private getIntroLines(): TerminalLine[] {
     const firstName = this.personalInfo?.firstName || 'Wout';
     const welcomeText = `Welcome to ${firstName}'s Portfolio Terminal v1.0`;
-    const padding = Math.floor((78 - welcomeText.length) / 2);
-    const paddedWelcome = '║' + ' '.repeat(padding) + welcomeText + ' '.repeat(78 - padding - welcomeText.length) + '║';
-
+    const totalWidth = 78; // Width between the ║ characters
+    const padding = Math.floor((totalWidth - welcomeText.length) / 2);
+    const remainingPadding = totalWidth - padding - welcomeText.length - 2;
+    const paddedWelcome = '║' + ' '.repeat(padding) + welcomeText + ' '.repeat(remainingPadding) + '║';
     return [
-      { text: '   ___       __               __     ____             __  ____      ___    ', type: 'info' },
-      { text: '  / _ \\ ___ / /_  ___  ___  / /    / __ \\___  ___  / /_/ _/ /__  / (_)__ ', type: 'info' },
-      { text: ' / // // -_) / /_/ _ \\/ _ \\/ /    / /_/ / _ \\/ _ \\/ __/ _/ / _ \\/ / / _ \\', type: 'info' },
-      { text: '/____/ \\__/_/\\__/\\___/_//_/_/     \\____/\\___/_//_/\\__/_/ /_/\\___/_/_/\\___/', type: 'info' },
+      { text: '██╗    ██╗ ██████╗ ██╗   ██╗████████╗    ██████╗ ███████╗██╗     ███████╗██╗   ██╗', type: 'info' },
+      { text: '██║    ██║██╔═══██╗██║   ██║╚══██╔══╝    ██╔══██╗██╔════╝██║     ██╔════╝██║   ██║', type: 'info' },
+      { text: '██║ █╗ ██║██║   ██║██║   ██║   ██║       ██║  ██║█████╗  ██║     █████╗  ██║   ██║', type: 'info' },
+      { text: '██║███╗██║██║   ██║██║   ██║   ██║       ██║  ██║██╔══╝  ██║     ██╔══╝  ██║   ██║', type: 'info' },
+      { text: '╚███╔███╔╝╚██████╔╝╚██████╔╝   ██║       ██████╔╝███████╗███████╗███████╗╚██████╔╝', type: 'info' },
+      { text: ' ╚══╝╚══╝  ╚═════╝  ╚═════╝    ╚═╝       ╚═════╝ ╚══════╝╚══════╝╚══════╝ ╚═════╝ ', type: 'info' },
       { text: '', type: 'output' },
       { text: '╔════════════════════════════════════════════════════════════════════════════╗', type: 'info' },
       { text: paddedWelcome, type: 'info' },
@@ -129,7 +132,7 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
         for (let j = 0; j < line.text.length; j++) {
           line.displayText = line.text.substring(0, j + 1);
           await this.delay(8);
-          if (j % 3 === 0) this.scrollToBottom();
+          if (j % 2 === 0) this.scrollToBottom();
         }
       }
 
