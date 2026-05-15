@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, switchMap, map } from 'rxjs';
+import { Observable, forkJoin, switchMap, map, of, catchError } from 'rxjs';
 import { SafeHtml } from '@angular/platform-browser';
 
 export interface SocialMedia {
@@ -18,6 +18,7 @@ export interface PersonalInfo {
   birthDate: string;
   title: string;
   description: string;
+  extendedBio?: string[];
   contact?: {
     email?: string;
     phone?: string;
@@ -86,6 +87,30 @@ export interface Skill {
   order: number;
 }
 
+export interface Language {
+  id: string;
+  name: string;
+  level: string;
+  flag: string;
+  order: number;
+}
+
+export interface TimelineItemData {
+  id: string;
+  title?: string;
+  organization?: string;
+  startDate: string;
+  endDate?: string | null;
+  type: 'period' | 'event';
+  icon?: string;
+  logoImage?: string;
+  shortDescription?: string;
+  details?: string;
+  tags?: string[];
+  location?: string;
+  certificationId?: string;
+  order: number;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -100,67 +125,113 @@ export class DataService {
   }
 
   getInterests(): Observable<Interest[]> {
-    // List of known interest files - Angular can't dynamically discover files
-    const interestFiles = ['badminton', 'coaching', 'sports', 'technology'];
-
-    const interestRequests = interestFiles.map(id =>
-      this.http.get<Interest>(`${this.basePath}/interests/${id}.json`)
-    );
-
-    return forkJoin(interestRequests).pipe(
-      map(interests => interests.sort((a, b) => a.order - b.order))
+    return this.http.get<{ interests: string[] }>(`${this.basePath}/interests/index.json`).pipe(
+      switchMap(({ interests }) =>
+        interests.length ? forkJoin(interests.map(id =>
+          this.http.get<Interest>(`${this.basePath}/interests/${id}.json`)
+        )) : of([])
+      ),
+      map(items => items.sort((a, b) => a.order - b.order))
     );
   }
 
   getSocialMedia(): Observable<SocialMedia[]> {
-    // List of known social media files - Angular can't dynamically discover files
-    const socialMediaFiles = ['github', 'linkedin'];
-
-    const socialMediaRequests = socialMediaFiles.map(id =>
-      this.http.get<SocialMedia>(`${this.basePath}/social-media/${id}.json`)
-    );
-
-    return forkJoin(socialMediaRequests).pipe(
-      map(socialMedia => socialMedia.sort((a, b) => a.order - b.order))
+    return this.http.get<{ socialMedia: string[] }>(`${this.basePath}/social-media/index.json`).pipe(
+      switchMap(({ socialMedia }) =>
+        socialMedia.length ? forkJoin(socialMedia.map(id =>
+          this.http.get<SocialMedia>(`${this.basePath}/social-media/${id}.json`)
+        )) : of([])
+      ),
+      map(items => items.sort((a, b) => a.order - b.order))
     );
   }
 
   getCertifications(): Observable<Certification[]> {
-    // List of known certification files - Angular can't dynamically discover files
-    const certificationFiles = ['spring', 'scrum', 'oracle'];
-
-    const certificationRequests = certificationFiles.map(id =>
-      this.http.get<Certification>(`${this.basePath}/certifications/${id}.json`)
-    );
-
-    return forkJoin(certificationRequests).pipe(
-      map(certifications => certifications.sort((a, b) => a.order - b.order))
+    return this.http.get<{ certifications: string[] }>(`${this.basePath}/certifications/index.json`).pipe(
+      switchMap(({ certifications }) =>
+        certifications.length ? forkJoin(certifications.map(id =>
+          this.http.get<Certification>(`${this.basePath}/certifications/${id}.json`)
+        )) : of([])
+      ),
+      map(items => items.sort((a, b) => a.order - b.order))
     );
   }
 
   getEducation(): Observable<Education[]> {
-    // List of known education files - Angular can't dynamically discover files
-    const educationFiles = ['university-xyz', 'axxes'];
-
-    const educationRequests = educationFiles.map(id =>
-      this.http.get<Education>(`${this.basePath}/education/${id}.json`)
-    );
-
-    return forkJoin(educationRequests).pipe(
-      map(education => education.sort((a, b) => a.order - b.order))
+    return this.http.get<{ education: string[] }>(`${this.basePath}/education/index.json`).pipe(
+      switchMap(({ education }) =>
+        education.length ? forkJoin(education.map(id =>
+          this.http.get<Education>(`${this.basePath}/education/${id}.json`)
+        )) : of([])
+      ),
+      map(items => items.sort((a, b) => a.order - b.order))
     );
   }
 
   getSkills(): Observable<Skill[]> {
-    // List of known skill files - Angular can't dynamically discover files
-    const skillFiles = ['python', 'java', 'cpp', 'angular'];
-
-    const skillRequests = skillFiles.map(id =>
-      this.http.get<Skill>(`${this.basePath}/skills/${id}.json`)
+    return this.http.get<{ skills: string[] }>(`${this.basePath}/skills/index.json`).pipe(
+      switchMap(({ skills }) =>
+        skills.length ? forkJoin(skills.map(id =>
+          this.http.get<Skill>(`${this.basePath}/skills/${id}.json`)
+        )) : of([])
+      ),
+      map(items => items.sort((a, b) => a.order - b.order))
     );
+  }
 
-    return forkJoin(skillRequests).pipe(
-      map(skills => skills.sort((a, b) => a.order - b.order))
+  getLanguages(): Observable<Language[]> {
+    return this.http.get<{ languages: string[] }>(`${this.basePath}/languages/index.json`).pipe(
+      switchMap(({ languages }) =>
+        languages.length ? forkJoin(languages.map(id =>
+          this.http.get<Language>(`${this.basePath}/languages/${id}.json`)
+        )) : of([])
+      ),
+      map(items => items.sort((a, b) => a.order - b.order))
+    );
+  }
+
+  getCareerTimeline(): Observable<TimelineItemData[]> {
+    return this.http.get<{ career: string[] }>(`${this.basePath}/career/index.json`).pipe(
+      switchMap(({ career }) =>
+        career.length ? forkJoin(career.map(id =>
+          this.http.get<TimelineItemData>(`${this.basePath}/career/${id}.json`)
+        )) : of([])
+      ),
+      map(items => items.sort((a, b) => a.order - b.order)),
+      catchError(() => of([]))
+    );
+  }
+
+  getTimelineEducation(): Observable<TimelineItemData[]> {
+    return this.http.get<{ 'timeline-education': string[] }>(`${this.basePath}/timeline-education/index.json`).pipe(
+      switchMap(index => {
+        const ids = index['timeline-education'];
+        return ids.length ? forkJoin(ids.map(id =>
+          this.http.get<TimelineItemData>(`${this.basePath}/timeline-education/${id}.json`)
+        )) : of([]);
+      }),
+      map(items => items.sort((a, b) => {
+        const dateA = new Date(a.startDate).getTime();
+        const dateB = new Date(b.startDate).getTime();
+        return dateB - dateA;
+      })),
+      catchError(() => of([]))
+    );
+  }
+
+  getProjectsTimeline(): Observable<TimelineItemData[]> {
+    return this.http.get<{ projects: string[] }>(`${this.basePath}/projects/index.json`).pipe(
+      switchMap(({ projects }) =>
+        projects.length ? forkJoin(projects.map(id =>
+          this.http.get<TimelineItemData>(`${this.basePath}/projects/${id}.json`)
+        )) : of([])
+      ),
+      map(items => items.sort((a, b) => {
+        const dateA = new Date(a.startDate).getTime();
+        const dateB = new Date(b.startDate).getTime();
+        return dateB - dateA;
+      })),
+      catchError(() => of([]))
     );
   }
 }
