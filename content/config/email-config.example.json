@@ -1,0 +1,9 @@
+{
+  "recipientEmail": "your@email.com",
+  "emailService": {
+    "provider": "emailjs",
+    "serviceId": "service_xxxxxxx",
+    "templateId": "template_xxxxxxx",
+    "publicKey": "your_emailjs_public_key"
+  }
+}

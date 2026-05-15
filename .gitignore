@@ -45,3 +45,6 @@ Thumbs.db
 /src/assets/data/
 /src/assets/images/
 /src/assets/config/
+
+# Sensitive config (contains credentials — use email-config.example.json as template)
+/content/config/email-config.json
