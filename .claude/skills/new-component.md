@@ -76,6 +76,8 @@ export class <Name>Component implements OnInit, OnDestroy {
 }
 ```
 
+> Import path depth depends on nesting: 2 levels deep (`components/foo/`) use `../../services/data.service`; 3 levels deep (`components/cards/foo/`) use `../../../services/data.service`.
+
 **If dumb** — replace the generated `.ts` content with:
 ```typescript
 import { Component, Input, Output, EventEmitter } from '@angular/core';
@@ -91,6 +93,8 @@ export class <Name>Component {
   @Input() item!: <Type>;
 }
 ```
+
+> Add `@Output() eventName = new EventEmitter<Type>();` if this component needs to emit events to its parent.
 
 ## Step 6: Next steps
 

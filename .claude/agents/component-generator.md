@@ -44,7 +44,7 @@ import { DataService } from '../../services/data.service';
   standalone: false
 })
 export class <Name>Component implements OnInit, OnDestroy {
-  data: <Type>[] = [];
+  items: <Type>[] = [];
   private destroy$ = new Subject<void>();
 
   constructor(private dataService: DataService) {}
@@ -52,8 +52,8 @@ export class <Name>Component implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dataService.get<Type>().pipe(
       takeUntil(this.destroy$)
-    ).subscribe(data => {
-      this.data = data;
+    ).subscribe(items => {
+      this.items = items;
     });
   }
 
