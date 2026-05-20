@@ -6,7 +6,7 @@
     "start": "npm run sync-content && ng serve",
     "build": "npm run sync-content && ng build",
     "postbuild": "touch docs/.nojekyll",
-    "deploy": "npm run build && git add docs/ && git diff --staged --quiet || git commit -m 'Deploy: rebuild for GitHub Pages' && git push origin main && git push origin $(git subtree split --prefix docs HEAD):gh-pages --force",
+    "deploy": "npm run build && git add docs/ && (git diff --staged --quiet || git commit -m 'Deploy: rebuild for GitHub Pages') && git push origin main && bash scripts/deploy-gh-pages.sh",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "sync-content": "rsync -av --delete --exclude='.DS_Store' content/certifications/ src/assets/data/certifications/ && rsync -av --delete --exclude='.DS_Store' content/education/ src/assets/data/education/ && rsync -av --delete --exclude='.DS_Store' content/interests/ src/assets/data/interests/ && rsync -av --delete --exclude='.DS_Store' content/languages/ src/assets/data/languages/ && rsync -av --delete --exclude='.DS_Store' content/personal/ src/assets/data/personal/ && rsync -av --delete --exclude='.DS_Store' content/skills/ src/assets/data/skills/ && rsync -av --delete --exclude='.DS_Store' content/social-media/ src/assets/data/social-media/ && rsync -av --delete --exclude='.DS_Store' content/career/ src/assets/data/career/ && rsync -av --delete --exclude='.DS_Store' content/projects/ src/assets/data/projects/ && rsync -av --delete --exclude='.DS_Store' content/timeline-education/ src/assets/data/timeline-education/ && rsync -av --delete --exclude='.DS_Store' content/images/ src/assets/images/ && rsync -av --delete --exclude='.DS_Store' content/config/ src/assets/config/",
