@@ -16,10 +16,10 @@
         <!-- Desktop Navigation -->
         <div class="nav-links desktop-nav">
           <a class="nav-link" [class.active]="isActiveSection('about')" (click)="scrollToSection('about')">About</a>
-          <a class="nav-link" [class.active]="isActiveSection('interests')" (click)="scrollToSection('interests')">Interests</a>
           <a class="nav-link" [class.active]="isActiveSection('skills')" (click)="scrollToSection('skills')">Skills</a>
           <a class="nav-link" [class.active]="isActiveSection('timeline')" (click)="scrollToSection('timeline')">Timeline</a>
           <a class="nav-link" [class.active]="isActiveSection('certifications')" (click)="scrollToSection('certifications')">Certifications</a>
+          <a class="nav-link" [class.active]="isActiveSection('interests')" (click)="scrollToSection('interests')">Interests</a>
           <a class="nav-link" [class.active]="isActiveSection('contact')" (click)="scrollToSection('contact')">Contact</a>
         </div>
         <div
@@ -34,10 +34,10 @@
         <div class="mobile-nav-overlay" (click)="closeMobileMenu()"></div>
         <div class="mobile-nav-content">
           <a class="mobile-nav-link" [class.active]="isActiveSection('about')" (click)="scrollToSection('about')">About</a>
-          <a class="mobile-nav-link" [class.active]="isActiveSection('interests')" (click)="scrollToSection('interests')">Interests</a>
           <a class="mobile-nav-link" [class.active]="isActiveSection('skills')" (click)="scrollToSection('skills')">Skills</a>
           <a class="mobile-nav-link" [class.active]="isActiveSection('timeline')" (click)="scrollToSection('timeline')">Timeline</a>
           <a class="mobile-nav-link" [class.active]="isActiveSection('certifications')" (click)="scrollToSection('certifications')">Certifications</a>
+          <a class="mobile-nav-link" [class.active]="isActiveSection('interests')" (click)="scrollToSection('interests')">Interests</a>
           <a class="mobile-nav-link" [class.active]="isActiveSection('contact')" (click)="scrollToSection('contact')">Contact</a>
         </div>
       </div>
@@ -87,12 +87,16 @@
                     </a>
                   </div>
                 </div>
-                <p class="profile-description">
-                  {{ personalInfo?.description || 'Analytical thinker with a passion for solving complex problems. Experienced in backend development with a strong foundation in programming languages and certifications.' }}
+                <p class="profile-description intro-opener" (click)="openIntroModal()" *ngIf="personalInfo?.extendedBio?.length">
+                  {{ personalInfo?.description }}
+                  <span class="intro-read-more">Read more</span>
+                </p>
+                <p class="profile-description" *ngIf="!personalInfo?.extendedBio?.length">
+                  {{ personalInfo?.description || 'Analytical thinker with a passion for solving complex problems.' }}
                 </p>
 
                 <!-- Social Media Links -->
-                <div class="social-media-links" *ngIf="getSocialMediaLinks().length > 0">
+                <div class="social-media-links">
                   <div class="social-icons">
                     <a
                       *ngFor="let social of getSocialMediaLinks()"
@@ -104,30 +108,25 @@
                     >
                       <div [innerHTML]="social.icon"></div>
                     </a>
+                    <a
+                      href="assets/cv/cv.pdf"
+                      download="Wout_Deleu_CV.pdf"
+                      class="social-icon cv-download-btn"
+                      aria-label="Download CV"
+                      title="Download CV"
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                      </svg>
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-        <!-- Interests Section -->
-        <section id="interests" class="interests-section" appScrollAnimation [delay]="50">
-          <h2 class="section-title">Interests</h2>
-          <div class="interests-grid">
-            <div class="interest-card" *ngFor="let interest of interests; let i = index" appScrollAnimation [delay]="100 + (i * 50)">
-              <div class="interest-icon" [innerHTML]="interest.icon" [style.color]="interest.color"></div>
-              <div class="interest-content">
-                <h3 class="interest-name">{{interest.name}}</h3>
-                <p class="interest-description">{{interest.description}}</p>
-              </div>
-              <div class="interest-background"></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section Divider -->
-        <div class="section-divider"></div>
 
         <!-- Skills Section -->
         <section id="skills" appScrollAnimation [delay]="50">
@@ -185,8 +184,8 @@
                      *ngFor="let item of timeline.items; let j = index"
                      [class.timeline-event]="item.type === 'event'"
                      [class.timeline-period]="item.type === 'period'"
+                     [class.timeline-expanded]="expandedItemId === item.id"
                      (click)="onTimelineItemClick(item)"
-                     (mouseenter)="onTimelineItemHover(item)"
                      appScrollAnimation [delay]="200 + (j * 50)">
 
                   <div class="timeline-marker">
@@ -197,14 +196,48 @@
                   <div class="timeline-content">
                     <div class="timeline-header">
                       <h4 class="timeline-item-title">{{item.certificationId ? (getCertificationById(item.certificationId)?.title || item.title) : item.title}}</h4>
-                      <span class="timeline-date">{{getTimelineDuration(item)}}</span>
+                      <div class="timeline-header-right">
+                        <span class="timeline-date">{{getTimelineDuration(item)}}</span>
+                        <div class="timeline-chevron" [class.timeline-chevron--open]="expandedItemId === item.id">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
 
                     <p class="timeline-organization" *ngIf="item.organization">{{item.organization}}</p>
                     <p class="timeline-description">{{item.shortDescription}}</p>
 
-                    <div class="timeline-tags" *ngIf="item.tags">
+                    <div class="timeline-tags" *ngIf="item.tags && expandedItemId !== item.id">
                       <span class="timeline-tag" *ngFor="let tag of item.tags">{{tag}}</span>
+                    </div>
+
+                    <div class="timeline-expand" [class.timeline-expand--open]="expandedItemId === item.id">
+                      <ng-container *ngIf="item.certificationId">
+                        <p class="timeline-expand-details">{{ getCertificationById(item.certificationId)?.description }}</p>
+                        <div class="timeline-expand-tags" *ngIf="getCertificationById(item.certificationId)?.tags?.length">
+                          <span class="timeline-tag" *ngFor="let tag of getCertificationById(item.certificationId)?.tags">{{tag}}</span>
+                        </div>
+                        <div class="timeline-expand-footer">
+                          <a [href]="getCertificationById(item.certificationId)?.credentialUrl" target="_blank"
+                             class="timeline-credential-link" (click)="$event.stopPropagation()">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                              <polyline points="15,3 21,3 21,9"/>
+                              <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            View Credential
+                          </a>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="!item.certificationId">
+                        <p class="timeline-expand-details">{{ item.details }}</p>
+                        <div class="timeline-expand-meta" *ngIf="item.location">📍 {{ item.location }}</div>
+                        <div class="timeline-expand-tags" *ngIf="item.tags?.length">
+                          <span class="timeline-tag" *ngFor="let tag of item.tags">{{tag}}</span>
+                        </div>
+                      </ng-container>
                     </div>
                   </div>
                 </div>
@@ -256,6 +289,29 @@
         <!-- Section Divider -->
         <div class="section-divider"></div>
 
+        <!-- Interests Section -->
+        <section id="interests" class="interests-section" appScrollAnimation [delay]="50">
+          <h2 class="section-title">Interests</h2>
+          <div class="interests-grid">
+            <div class="interest-card"
+                 *ngFor="let interest of interests; let i = index"
+                 appScrollAnimation [delay]="100 + (i * 50)"
+                 [class.interest-card--clickable]="interest.extendedDescription"
+                 (click)="openInterestModal(interest)">
+              <div class="interest-icon" [innerHTML]="interest.icon" [style.color]="interest.color"></div>
+              <div class="interest-content">
+                <h3 class="interest-name">{{interest.name}}</h3>
+                <p class="interest-description">{{interest.description}}</p>
+              </div>
+              <div class="interest-background"></div>
+              <span class="interest-more" *ngIf="interest.extendedDescription">+</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
+
         <!-- Contact Form Section -->
         <section id="contact">
           <app-contact-form></app-contact-form>
@@ -264,89 +320,75 @@
       </div>
     </div>
 
-    <!-- Timeline Detail Modal -->
-    <div class="timeline-modal" *ngIf="selectedTimelineItem" (click)="closeTimelineDetail()">
-      <div class="timeline-modal-content" (click)="$event.stopPropagation()">
-        <button class="timeline-modal-close" (click)="closeTimelineDetail()">
+    <!-- Interest Detail Modal -->
+    <div class="interest-modal" *ngIf="selectedInterest" (click)="closeInterestModal()">
+      <div class="interest-modal-content" (click)="$event.stopPropagation()">
+        <button class="interest-modal-close" (click)="closeInterestModal()">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-
-        <div class="timeline-modal-header">
-          <div class="timeline-modal-icon" *ngIf="!selectedTimelineItem.logoImage" [innerHTML]="selectedTimelineItem.icon"></div>
-          <div class="timeline-modal-icon" *ngIf="selectedTimelineItem.logoImage">
-            <img [src]="selectedTimelineItem.logoImage" [alt]="selectedTimelineItem.organization + ' logo'" class="timeline-modal-logo-image">
-          </div>
+        <div class="interest-modal-header">
+          <div class="interest-modal-icon" [innerHTML]="selectedInterest.icon" [style.color]="selectedInterest.color"></div>
           <div>
-            <h3 class="timeline-modal-title">{{selectedTimelineItem.certificationId ? (getCertificationById(selectedTimelineItem.certificationId)?.title || selectedTimelineItem.title) : selectedTimelineItem.title}}</h3>
-            <p class="timeline-modal-organization" *ngIf="selectedTimelineItem.organization">
-              {{selectedTimelineItem.organization}}
-            </p>
-            <p class="timeline-modal-date">{{getTimelineDuration(selectedTimelineItem)}}</p>
-            <p class="timeline-modal-location" *ngIf="selectedTimelineItem.location">
-              📍 {{selectedTimelineItem.location}}
-            </p>
+            <h3 class="interest-modal-name">{{selectedInterest.name}}</h3>
+            <p class="interest-modal-tagline">{{selectedInterest.description}}</p>
           </div>
         </div>
-
-        <div class="timeline-modal-body">
-          <p class="timeline-modal-details">{{selectedTimelineItem.details}}</p>
-
-          <div class="timeline-modal-tags" *ngIf="selectedTimelineItem.tags">
-            <h4>Technologies & Skills</h4>
-            <div class="timeline-modal-tag-list">
-              <span class="timeline-modal-tag" *ngFor="let tag of selectedTimelineItem.tags">{{tag}}</span>
-            </div>
-          </div>
+        <div class="interest-modal-body">
+          <p *ngFor="let paragraph of getInterestParagraphs(selectedInterest)" class="interest-modal-paragraph">{{ paragraph }}</p>
         </div>
       </div>
     </div>
 
-    <!-- Certification Detail Modal -->
-    <div class="certification-modal" *ngIf="selectedCertification" (click)="closeCertificationDetail()">
-      <div class="certification-modal-content" (click)="$event.stopPropagation()">
-        <button class="certification-modal-close" (click)="closeCertificationDetail()">
+    <!-- Intro Modal -->
+    <div class="intro-modal" *ngIf="showIntroModal" (click)="closeIntroModal()">
+      <div class="intro-modal-content" (click)="$event.stopPropagation()">
+        <button class="intro-modal-close" (click)="closeIntroModal()">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-
-        <div class="certification-modal-header">
-          <div class="certification-modal-logo">
-            <div *ngIf="selectedCertification.logo && !selectedCertification.logoImage" [innerHTML]="selectedCertification.logo"></div>
-            <img *ngIf="selectedCertification.logoImage" [src]="selectedCertification.logoImage" [alt]="selectedCertification.organization + ' logo'" class="certification-modal-image">
-          </div>
-          <div class="certification-modal-meta">
-            <h3 class="certification-modal-title">{{selectedCertification.title}}</h3>
-            <p class="certification-modal-organization">{{selectedCertification.organization}}</p>
-            <div class="certification-modal-dates">
-              <span class="achieved">achieved: {{selectedCertification.achieved}}</span>
-              <span class="expires">expires: {{selectedCertification.expires}}</span>
+        <div class="intro-modal-header">
+          <div class="intro-modal-avatar" style='background-image: url("assets/images/Profile/Professional.jpg");'></div>
+          <div>
+            <h3 class="intro-modal-name">{{ personalInfo?.firstName }} {{ personalInfo?.lastName }}</h3>
+            <div class="intro-modal-details">
+              <span class="intro-modal-detail" (click)="toggleAgeDisplay()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M8 2v4"/><path d="M16 2v4"/>
+                  <rect width="18" height="18" x="3" y="4" rx="2"/>
+                  <path d="M3 10h18"/>
+                </svg>
+                {{ showAge ? (age + ' years old') : getFormattedBirthDate() }}
+              </span>
+              <span class="intro-modal-detail-sep" *ngIf="personalInfo?.contact?.location">•</span>
+              <a class="intro-modal-detail intro-modal-location"
+                 *ngIf="personalInfo?.contact?.location"
+                 [href]="'https://maps.google.com/?q=' + encodeURIComponent(personalInfo?.contact?.location || '')"
+                 target="_blank" rel="noopener noreferrer"
+                 (click)="$event.stopPropagation()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                  <circle cx="12" cy="9" r="2.5"/>
+                </svg>
+                {{ personalInfo?.contact?.location }}
+              </a>
+              <span class="intro-modal-detail-sep" *ngIf="personalInfo?.education?.degree">•</span>
+              <span class="intro-modal-detail" *ngIf="personalInfo?.education?.degree">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+                {{ personalInfo?.education?.degree }}
+              </span>
             </div>
           </div>
         </div>
-
-        <div class="certification-modal-body">
-          <p class="certification-modal-description">{{selectedCertification.description}}</p>
-
-          <div class="certification-modal-tags" *ngIf="selectedCertification.tags">
-            <h4>Technologies & Skills</h4>
-            <div class="certification-modal-tag-list">
-              <span class="certification-modal-tag" *ngFor="let tag of selectedCertification.tags">{{tag}}</span>
-            </div>
-          </div>
-
-          <a [href]="selectedCertification.credentialUrl" target="_blank" class="certification-modal-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15,3 21,3 21,9"/>
-              <line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-            View Credential
-          </a>
+        <div class="intro-modal-body">
+          <p *ngFor="let paragraph of personalInfo?.extendedBio" class="intro-modal-paragraph">{{ paragraph }}</p>
         </div>
       </div>
     </div>

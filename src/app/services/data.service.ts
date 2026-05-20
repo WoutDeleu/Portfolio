@@ -40,6 +40,7 @@ export interface Interest {
   id: string;
   name: string;
   description: string;
+  extendedDescription?: string;
   icon: string;
   color: string;
   order: number;
@@ -197,7 +198,7 @@ export class DataService {
           this.http.get<TimelineItemData>(`${this.basePath}/career/${id}.json`)
         )) : of([])
       ),
-      map(items => items.sort((a, b) => a.order - b.order)),
+      map(items => items.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())),
       catchError(() => of([]))
     );
   }
@@ -210,11 +211,7 @@ export class DataService {
           this.http.get<TimelineItemData>(`${this.basePath}/timeline-education/${id}.json`)
         )) : of([]);
       }),
-      map(items => items.sort((a, b) => {
-        const dateA = new Date(a.startDate).getTime();
-        const dateB = new Date(b.startDate).getTime();
-        return dateB - dateA;
-      })),
+      map(items => items.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())),
       catchError(() => of([]))
     );
   }
@@ -226,11 +223,7 @@ export class DataService {
           this.http.get<TimelineItemData>(`${this.basePath}/projects/${id}.json`)
         )) : of([])
       ),
-      map(items => items.sort((a, b) => {
-        const dateA = new Date(a.startDate).getTime();
-        const dateB = new Date(b.startDate).getTime();
-        return dateB - dateA;
-      })),
+      map(items => items.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())),
       catchError(() => of([]))
     );
   }

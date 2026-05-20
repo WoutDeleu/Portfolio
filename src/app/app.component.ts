@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
-import * as personData from './models/data/JohnDoe.json';
 import { environment } from "../environments/environment";
-import { Person } from "./models/Person";
-import {PersonJSON} from "./models/data/PersonJSON";
 
 @Component({
     selector: 'app-root',
@@ -60,13 +57,9 @@ import {PersonJSON} from "./models/data/PersonJSON";
 })
 export class AppComponent {
   title = 'Portfolio';
-  terminalView: boolean = false;
   production : boolean = environment.production;
   currentView: 'main' | 'terminal' = 'main';
   terminalCloseAnimation: 'idle' | 'close' | 'minimize' | 'maximize' = 'idle';
-
-  personJSONObject : PersonJSON = personData as PersonJSON;
-  person : Person = new Person(this.personJSONObject);
 
   onViewChange(view: 'main' | 'terminal') {
     this.currentView = view;

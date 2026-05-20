@@ -149,6 +149,12 @@
   }
 }
 
+.sudo-prompt {
+  color: #00cc00;
+  margin-right: 0;
+  white-space: nowrap;
+}
+
 .terminal-input {
   flex: 1;
   background: transparent;

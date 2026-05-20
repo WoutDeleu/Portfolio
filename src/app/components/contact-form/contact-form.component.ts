@@ -90,8 +90,6 @@ export class ContactFormComponent implements OnInit, OnDestroy {
       const phoneNumber = this.form.get('telNr')?.value;
       const allowedToCall = this.form.get('allowedToCall')?.value;
 
-      console.log('Phone debug:', { countryCode, phoneNumber, allowedToCall });
-
       const formData: ContactFormData = {
         name: this.form.get('name')?.value,
         email: this.form.get('email')?.value,
@@ -103,10 +101,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
         allowedToCall: allowedToCall
       };
 
-      console.log('Final phone number:', formData.telNr);
-
       const result = await this.emailService.sendEmail(formData);
-      console.log('Email sent successfully:', result.text);
 
       this.submitStatus = 'success';
       this.statusMessage = `Email sent successfully to ${this.emailService.getRecipientEmail()}!`;

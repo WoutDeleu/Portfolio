@@ -29,17 +29,18 @@
         {{ line.displayText || line.text }}<span *ngIf="line.isTyping" class="typing-cursor">▊</span>
       </div>
       <div class="terminal-line command input-line" *ngIf="!isTyping">
-        <span class="prompt">></span>
+        <span class="prompt" *ngIf="!awaitingSudoPassword">></span>
+        <span class="sudo-prompt" *ngIf="awaitingSudoPassword">[sudo] password for {{ personalInfo?.firstName?.toLowerCase() || 'user' }}: </span>
         <input
           #terminalInput
-          type="text"
+          [type]="awaitingSudoPassword ? 'password' : 'text'"
           class="terminal-input"
           [(ngModel)]="currentInput"
           (keydown)="handleKeyDown($event)"
           autocomplete="off"
           spellcheck="false"
         />
-        <span class="cursor" [class.hidden]="currentInput.length > 0">_</span>
+        <span class="cursor" [class.hidden]="currentInput.length > 0 || awaitingSudoPassword">_</span>
       </div>
     </div>
   </div>

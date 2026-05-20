@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import { DataService, PersonalInfo } from '../../services/data.service';
+import { DataService, PersonalInfo, TimelineItemData } from '../../services/data.service';
 import { EmailService } from '../../services/email.service';
 
 interface TerminalLine {
@@ -31,8 +31,10 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
   personalInfo: PersonalInfo | null = null;
   skills: any[] = [];
   interests: any[] = [];
+  projects: TimelineItemData[] = [];
   contactFormMode = false;
   contactFormStep: 'name' | 'email' | 'subject' | 'message' | 'confirm' | null = null;
+  awaitingSudoPassword = false;
   contactFormData = {
     name: '',
     email: '',
@@ -89,6 +91,10 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
 
     this.dataService.getInterests().subscribe(interests => {
       this.interests = interests;
+    });
+
+    this.dataService.getProjectsTimeline().subscribe(projects => {
+      this.projects = projects;
     });
   }
 
@@ -170,7 +176,9 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
 
     if (event.key === 'Enter') {
       event.preventDefault();
-      if (this.contactFormMode) {
+      if (this.awaitingSudoPassword) {
+        this.handleSudoPasswordInput(this.currentInput);
+      } else if (this.contactFormMode) {
         this.handleContactFormInput(this.currentInput.trim());
       } else {
         this.executeCommand(this.currentInput.trim());
@@ -228,6 +236,9 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
       case 'secret':
         await this.showSecret();
         break;
+      case 'cv':
+        await this.showCv();
+        break;
       case 'clear':
         this.clearTerminal();
         this.isTyping = false;
@@ -279,8 +290,18 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
     await this.typeOutLine('  skills   - View technical skills', 'output');
     await this.typeOutLine('  projects - See portfolio projects', 'output');
     await this.typeOutLine('  contact  - Get contact information', 'output');
+    await this.typeOutLine('  cv       - Download my CV', 'output');
     await this.typeOutLine('  secret   - Find hidden easter egg', 'output');
     await this.typeOutLine('  clear    - Clear terminal screen', 'output');
+  }
+
+  private calculateAge(birthDate: string): number {
+    const birth = new Date(birthDate);
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+    return age;
   }
 
   async showWhoami() {
@@ -292,6 +313,9 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
     await this.typeOutLine(fullName, 'info', 18);
     await this.typeOutLine(description, 'output');
 
+    if (this.personalInfo?.birthDate) {
+      await this.typeOutLine(`🎂 Age: ${this.calculateAge(this.personalInfo.birthDate)}`, 'output');
+    }
     if (this.personalInfo?.contact?.location) {
       await this.typeOutLine(`📍 Location: ${this.personalInfo.contact.location}`, 'output');
     }
@@ -318,10 +342,26 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
 
   async showProjects() {
     await this.typeOutLine('Portfolio Projects:', 'info', 18);
-    await this.typeOutLine('  • Interactive Portfolio - This website!', 'output');
-    await this.typeOutLine('  • Terminal Interface - The view you\'re using now', 'output');
-    this.lines.push({ text: '', type: 'output', displayText: '' });
-    await this.typeOutLine('Visit the portfolio view to see more details.', 'output');
+
+    if (this.projects.length > 0) {
+      for (const project of this.projects) {
+        this.lines.push({ text: '', type: 'output', displayText: '' });
+        await this.typeOutLine(`  📁 ${project.title}`, 'info', 18);
+        if (project.shortDescription) {
+          await this.typeOutLine(`     ${project.shortDescription}`, 'output');
+        }
+        if (project.tags && project.tags.length > 0) {
+          await this.typeOutLine(`     Tags: ${project.tags.join(', ')}`, 'output');
+        }
+        const start = new Date(project.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        const end = project.endDate
+          ? new Date(project.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+          : 'Present';
+        await this.typeOutLine(`     ${start} – ${end}`, 'output');
+      }
+    } else {
+      await this.typeOutLine('  No projects found.', 'output');
+    }
   }
 
   async showContact() {
@@ -441,6 +481,11 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
     this.focusInput();
   }
 
+  async showCv() {
+    await this.typeOutLine('📄 CV download coming soon...', 'info', 18);
+    await this.typeOutLine('In the meantime, use the download button in the portfolio view.', 'output');
+  }
+
   async showSecret() {
     await this.typeOutLine('🔍 Searching for hidden secrets...', 'output');
     await this.delay(500);
@@ -454,30 +499,11 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
 
   async handleSudo(password: string) {
     if (!this.hasFoundSecret) {
-      await this.typeOutLine('[sudo] password required', 'output');
-      await this.delay(300);
-
-      if (password === this.secretPassword) {
-        this.hasFoundSecret = true;
-        await this.typeOutLine('✓ Authentication successful!', 'info', 18);
-        await this.delay(500);
-        await this.typeOutLine('Accessing restricted area...', 'output');
-        await this.delay(800);
-        await this.typeOutLine('Loading video player...', 'output');
-        await this.delay(500);
-
-        this.showRickroll = true;
-        await this.delay(1000);
-
-        await this.typeOutLine('', 'output');
-        await this.typeOutLine('🎵 Classic 80s Music Video Loading... 🎵', 'info', 18);
-        await this.typeOutLine('', 'output');
-        await this.typeOutLine('🎉 Congratulations! You\'ve been rickrolled! 🎉', 'info', 18);
-        await this.typeOutLine('Enjoy this timeless classic from 1987!', 'output');
-      } else {
-        await this.typeOutLine('✗ sudo: incorrect password', 'error');
-        await this.typeOutLine('Hint: Use the "secret" command first!', 'output');
+      if (!password) {
+        this.awaitingSudoPassword = true;
+        return;
       }
+      await this.authenticateSudo(password);
     } else {
       await this.typeOutLine('✓ Access already granted!', 'info', 18);
       await this.typeOutLine('Rickroll video already playing! 😄', 'output');
@@ -485,8 +511,51 @@ export class TerminalViewComponent implements OnInit, AfterViewInit {
     }
   }
 
+  async handleSudoPasswordInput(password: string) {
+    this.awaitingSudoPassword = false;
+    this.isTyping = true;
+    const username = this.personalInfo?.firstName?.toLowerCase() || 'user';
+    this.lines.push({ text: `[sudo] password for ${username}:`, type: 'output', displayText: `[sudo] password for ${username}:` });
+    await this.authenticateSudo(password);
+    this.lines.push({ text: '', type: 'output', displayText: '' });
+    this.scrollToBottom();
+    this.isTyping = false;
+    this.focusInput();
+    this.currentInput = '';
+    this.historyIndex = -1;
+  }
+
+  async authenticateSudo(password: string) {
+    await this.delay(300);
+    if (password === this.secretPassword) {
+      this.hasFoundSecret = true;
+      await this.typeOutLine('✓ Authentication successful!', 'info', 18);
+      await this.delay(500);
+      await this.typeOutLine('Accessing restricted area...', 'output');
+      await this.delay(800);
+      await this.typeOutLine('Loading video player...', 'output');
+      await this.delay(500);
+
+      this.showRickroll = true;
+      await this.delay(1000);
+
+      await this.typeOutLine('', 'output');
+      await this.typeOutLine('🎵 Classic 80s Music Video Loading... 🎵', 'info', 18);
+      await this.typeOutLine('', 'output');
+      await this.typeOutLine('🎉 Congratulations! You\'ve been rickrolled! 🎉', 'info', 18);
+      await this.typeOutLine('Enjoy this timeless classic from 1987!', 'output');
+    } else {
+      await this.typeOutLine('✗ sudo: incorrect password', 'error');
+      await this.typeOutLine('Hint: Use the "secret" command first!', 'output');
+    }
+  }
+
   clearTerminal() {
     this.lines = [];
+    this.showRickroll = false;
+    this.hasFoundSecret = false;
+    this.awaitingSudoPassword = false;
+    this.generateSecretPassword();
     this.initializeTerminal();
   }
 

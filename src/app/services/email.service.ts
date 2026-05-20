@@ -40,17 +40,7 @@ export class EmailService {
       this.configLoaded.next(true);
     } catch (error) {
       console.error('Failed to load email configuration:', error);
-      // Fallback configuration
-      this.emailConfig = {
-        recipientEmail: 'wout.deleu@gmail.com',
-        emailService: {
-          provider: 'emailjs',
-          serviceId: 'service_x85363u',
-          templateId: 'template_08pbt9i',
-          publicKey: 'tAL5L8Z5FRoC9hh2k'
-        }
-      };
-      this.configLoaded.next(true);
+      this.configLoaded.next(false);
     }
   }
 
@@ -82,19 +72,6 @@ export class EmailService {
       this.emailConfig.emailService.serviceId,
       this.emailConfig.emailService.templateId,
       templateParams,
-      this.emailConfig.emailService.publicKey
-    );
-  }
-
-  async sendEmailFromForm(formElement: HTMLFormElement): Promise<EmailJSResponseStatus> {
-    if (!this.emailConfig) {
-      throw new Error('Email configuration not loaded');
-    }
-
-    return emailjs.sendForm(
-      this.emailConfig.emailService.serviceId,
-      this.emailConfig.emailService.templateId,
-      formElement,
       this.emailConfig.emailService.publicKey
     );
   }
