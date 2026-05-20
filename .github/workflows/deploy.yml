@@ -2,51 +2,18 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      contents: write
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # needed so the worktree can access the gh-pages branch
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-
-    - name: Clear npm cache
-      run: npm cache clean --force
-
-    - name: Install dependencies
-      run: |
-        rm -rf node_modules package-lock.json
-        npm install
-
-    - name: Install Angular CLI
-      run: npm install -g @angular/cli@latest
-
-    - name: Build for production
-      run: ng build --configuration production --base-href="/Portfolio/"
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
-
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: ./docs
-
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Deploy docs/ to gh-pages
+        run: bash scripts/deploy-gh-pages.sh
