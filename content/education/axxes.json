@@ -1,21 +1,23 @@
 {
-  "id": "axxes",
-  "title": "Bachelor's in Computer Science",
-  "subTitle": "Bachelor",
-  "startDate": "January 2010",
-  "endDate": "January 2014",
-  "description": "Studied computer science with a focus on software development.",
-  "specialization": "Software Engineering",
+  "id": "axxes-traineeship",
+  "title": "Software Development Traineeship",
+  "subTitle": "Traineeship",
+  "startDate": "August 2023",
+  "endDate": "September 2023",
+  "description": "Intensive 6-week traineeship at Axxes covering the full modern software development stack. Topics ranged from backend principles to cloud infrastructure, with an emphasis on professional engineering practices used in real consulting engagements.",
+  "specialization": "Full Stack Development & Cloud",
   "relevantCourses": [
-    "Software Engineering",
-    "Web Development",
-    "Data Structures",
-    "Algorithms"
+    "Clean Code & SOLID Principles",
+    "Spring Framework & Spring Security",
+    "React & Angular",
+    "Docker & AWS",
+    "Microservice & Event-Driven Architecture",
+    "Automated Front-End Testing"
   ],
   "institution": {
-    "name": "AXXES",
-    "logo": "https://picsum.photos/200/300",
-    "website": "https://www.websolutions.com"
+    "name": "Axxes",
+    "logo": "assets/images/logo.png",
+    "website": "https://www.axxes.com"
   },
   "order": 2
 }

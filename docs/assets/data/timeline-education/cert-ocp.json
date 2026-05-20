@@ -1,0 +1,10 @@
+{
+  "id": "cert-ocp",
+  "certificationId": "cert-ocp",
+  "startDate": "2024-08-01",
+  "type": "event",
+  "logoImage": "assets/images/oracle.png",
+  "organization": "Oracle",
+  "shortDescription": "Java SE17 professional certification",
+  "order": 3
+}

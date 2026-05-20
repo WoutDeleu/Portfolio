@@ -1,0 +1,10 @@
+{
+  "id": "cert-spring",
+  "certificationId": "cert-spring",
+  "startDate": "2025-08-01",
+  "type": "event",
+  "logoImage": "assets/images/spring.png",
+  "organization": "Broadcom",
+  "shortDescription": "Spring Framework expertise certification",
+  "order": 1
+}

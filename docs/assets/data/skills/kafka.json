@@ -1,0 +1,8 @@
+{
+  "id": "kafka",
+  "name": "Apache Kafka",
+  "proficiency": 65,
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"36\" height=\"36\" fill=\"none\"><circle cx=\"12\" cy=\"4\" r=\"2.5\" fill=\"#231F20\"/><circle cx=\"4.5\" cy=\"14\" r=\"2.5\" fill=\"#231F20\"/><circle cx=\"19.5\" cy=\"14\" r=\"2.5\" fill=\"#231F20\"/><circle cx=\"8\" cy=\"21\" r=\"1.5\" fill=\"#231F20\"/><circle cx=\"16\" cy=\"21\" r=\"1.5\" fill=\"#231F20\"/><line x1=\"12\" y1=\"6.5\" x2=\"6.5\" y2=\"11.5\" stroke=\"#231F20\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><line x1=\"12\" y1=\"6.5\" x2=\"17.5\" y2=\"11.5\" stroke=\"#231F20\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><line x1=\"4.5\" y1=\"16.5\" x2=\"8\" y2=\"19.5\" stroke=\"#231F20\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><line x1=\"19.5\" y1=\"16.5\" x2=\"16\" y2=\"19.5\" stroke=\"#231F20\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg>",
+  "color": "#231F20",
+  "order": 7
+}

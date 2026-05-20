@@ -1,0 +1,14 @@
+{
+  "id": "project-home-server",
+  "title": "Home Server Setup",
+  "startDate": "2025-01-01",
+  "endDate": null,
+  "type": "period",
+  "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"8\" rx=\"2\"/><rect x=\"2\" y=\"14\" width=\"20\" height=\"8\" rx=\"2\"/><line x1=\"6\" y1=\"6\" x2=\"6.01\" y2=\"6\"/><line x1=\"6\" y1=\"18\" x2=\"6.01\" y2=\"18\"/></svg>",
+  "shortDescription": "Self-hosted homelab with Docker — NAS, media server, home automation, monitoring, and network-wide ad blocking",
+  "details": "Building out a home server from scratch with Docker for containerised services. The goal is a fully self-hosted stack covering all the things I don't want to rely on external services for.\n\nPlanned and in-progress services include: AdGuard Home for network-wide DNS filtering, Tailscale for remote access, Jellyfin or Plex for media, Jellystat for media analytics, a NAS setup with drive spin-down, Home Assistant integrated with Google Home, a Tadoo smart thermostat and smart radiator valves, and Vaultwarden as a self-hosted password manager. Monitoring and observability dashboards tie it all together.\n\nThe project is tracked as a GitHub project board — infrastructure-as-personal-project, built piece by piece.",
+  "tags": ["Docker", "Home Assistant", "Jellyfin", "Tailscale", "AdGuard Home", "Vaultwarden", "NAS", "Self-Hosting"],
+  "location": "Personal Project",
+  "githubUrl": "https://github.com/WoutDeleu/home-server",
+  "order": 6
+}

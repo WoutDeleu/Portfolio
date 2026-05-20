@@ -1,0 +1,12 @@
+{
+  "id": "project-vending-machine",
+  "title": "Vending Machine Integration Microservice",
+  "startDate": "2024-09-01",
+  "type": "period",
+  "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"18\" rx=\"2\"/><path d=\"M8 3v18\"/><path d=\"M2 9h20\"/><circle cx=\"15\" cy=\"15\" r=\"2\"/></svg>",
+  "shortDescription": "Production microservice bridging Maximo WMS and S4M vending machines via bidirectional Kafka streaming",
+  "details": "Sole developer, analyst, and architect of a production microservice at Volvo Cars Belgium connecting Maximo (the master Warehouse Management System) with S4M vending machines on the factory floor. Designed the full solution end-to-end — from domain analysis and architectural decisions through implementation and testing.\n\nThe service handles bidirectional Kafka event streaming, transforming and repartitioning messages to keep stock levels and transactions in sync across both platforms in real time. Built with Java, Spring Boot, and hexagonal (ports & adapters) architecture, the project became an internal reference for software quality within the organization — recognized for its design patterns, test architecture, thorough documentation, and production-grade observability.",
+  "tags": ["Java", "Spring Boot", "Kafka", "Hexagonal Architecture", "DDD", "Microservices", "Maximo"],
+  "location": "Volvo Cars Ghent",
+  "order": 2
+}

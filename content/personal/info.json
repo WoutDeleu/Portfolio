@@ -2,19 +2,25 @@
   "firstName": "Wout",
   "lastName": "Deleu",
   "birthDate": "2001-12-13",
-  "description": "Young, driven backend developer with a knack for problem-solving!",
+  "description": "Hey, I'm Wout. I'm a software engineer who loves building robust backend systems, tinkering with servers at home, and playing badminton at a competitive level.",
+  "extendedBio": [
+    "By day I work as a software engineer, mostly on the backend side of things. I like systems that are well-structured and make sense, whether that's a service I'm designing at work or a homelab project I'm setting up at 11pm for no good reason.",
+    "I currently work on supply chain software at Volvo Cars with the DEVEX team, and I got my start partly through a love of problem-solving, which once took me to the finals of the CyberSecurity Challenge Belgium during my studies.",
+    "Outside of work, badminton takes up a good chunk of my time. I play at a national competitive level (top 60 in Belgium, top 16 at this year's Belgian Championships), coach a handful of top players individually, and help run sessions at De Pluimplukkers, the biggest badminton club in Belgium. I also run, swim, and do calisthenics when I can, with the occasional half marathon thrown in.",
+    "When things slow down, you'll find me with a fantasy novel, a good series, or a cup of coffee somewhere nice. I like travelling, I'm endlessly curious about new tools and technologies, and I have a slight obsession with making my dev environment just a little bit cleaner."
+  ],
   "contact": {
     "email": "wout.deleu@student.kuleuven.be",
     "phone": "+32 477 123 456",
     "location": "Ghent, Belgium",
-    "linkedin": "linkedin.com/in/wout-deleu",
+    "linkedin": "linkedin.com/in/woutdeleu",
     "github": "github.com/WoutDeleu"
   },
   "education": {
     "degree": "Master of Science in Industrial Engineering",
     "specialization": "Electronics & ICT",
     "university": "KU Leuven",
-    "period": "2017-2020",
+    "period": "2019-2023",
     "location": "Leuven, Belgium"
   }
 }

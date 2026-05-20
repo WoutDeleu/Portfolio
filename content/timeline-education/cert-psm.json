@@ -1,0 +1,10 @@
+{
+  "id": "cert-psm",
+  "certificationId": "cert-psm",
+  "startDate": "2025-02-01",
+  "type": "event",
+  "logoImage": "assets/images/scrum.png",
+  "organization": "Scrum.org",
+  "shortDescription": "Agile project management certification",
+  "order": 2
+}

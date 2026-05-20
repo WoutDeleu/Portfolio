@@ -1,0 +1,14 @@
+{
+  "id": "job-volvo-cars",
+  "title": "Software Developer",
+  "organization": "Volvo Cars (via Axxes)",
+  "startDate": "2024-05-01",
+  "endDate": null,
+  "type": "period",
+  "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"7\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"/><path d=\"M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/></svg>",
+  "shortDescription": "Backend developer on the DEVEX team building supply chain tooling and platform services for Volvo Cars plants globally",
+  "details": "Part of the newly formed Developer Experience (DEVEX) team at Volvo Cars Belgium, building shared tooling, platform services, and development standards used across the organization. The team launched without a PM, PO, or Scrum Master — I took initiative to introduce retrospectives and improve team workflow from day one.\n\nKey projects: designed and led development of a Keycloak Integration Tool that lets management configure and monitor authorization across all Volvo plants; built a production microservice bridging Maximo (the master WMS) and S4M vending machines on the factory floor using bidirectional Kafka event streaming. The microservice was architected with hexagonal (ports & adapters) design and became an internal reference for software quality — recognized for its design patterns, test architecture, documentation, and observability.\n\nResponsibilities span backend development, DevOps (pipelines, Kubernetes, Docker), Angular frontend work, and Kafka support across teams.",
+  "tags": ["Java", "Spring Boot", "Spring Security", "Keycloak", "Kafka", "Docker", "Kubernetes", "Angular", "DDD", "Hexagonal Architecture", "DevOps"],
+  "location": "Ghent, Belgium",
+  "order": 1
+}

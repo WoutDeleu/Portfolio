@@ -1,7 +1,8 @@
 {
   "id": "technology",
-  "name": "Technology",
-  "description": "Exploring new tech trends, coding innovations, and digital solutions",
+  "name": "Homelab & Tinkering",
+  "description": "Self-hosted everything, unreasonable uptime expectations, and yes, another dotfiles rewrite",
+  "extendedDescription": "My homelab is a permanent work-in-progress. I run a cluster of self-hosted services — media, monitoring, reverse proxies, DNS, and a few things that exist purely because I wanted to understand them. Kubernetes at home? Yes, and it broke spectacularly the first three times.\n\nI have an obsession with making workflows faster and cleaner. Dotfiles, shell configs, editor setups, automation scripts — I'll happily spend an evening eliminating ten seconds from a task I do twice a week. It's not always rational but it's consistently satisfying.\n\nBeyond the homelab, I follow the broader industry closely: new language features, architectural patterns, platform engineering trends. I try to stay genuinely curious rather than just chasing hype.",
   "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"/><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"/></svg>",
   "color": "#00ccff",
   "order": 2

@@ -1,0 +1,8 @@
+{
+  "id": "spring",
+  "name": "Spring Framework",
+  "proficiency": 75,
+  "icon": "<svg viewBox=\"0 0 60 60\" width=\"36\" height=\"36\"><path fill=\"#6DB33F\" d=\"M44 7C53 19 52 37 42 49 35 57 20 60 10 54 21 51 35 41 39 27 42 15 38 5 26 3 32 1 39 3 44 7Z\"/><path fill=\"none\" stroke=\"#6DB33F\" stroke-width=\"4\" stroke-linecap=\"round\" d=\"M23 57C20 51 21 44 26 38\"/></svg>",
+  "color": "#6DB33F",
+  "order": 2
+}

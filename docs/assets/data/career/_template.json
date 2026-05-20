@@ -1,0 +1,15 @@
+{
+  "id": "job-1",
+  "title": "Job Title",
+  "organization": "Company Name",
+  "startDate": "2023-01-01",
+  "endDate": null,
+  "type": "period",
+  "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"/><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"/></svg>",
+  "logoImage": "assets/images/company-logo.png",
+  "shortDescription": "One-line summary of the role",
+  "details": "Full description of responsibilities and achievements.",
+  "tags": ["Tag1", "Tag2"],
+  "location": "City, Country",
+  "order": 1
+}
