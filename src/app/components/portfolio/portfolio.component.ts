@@ -316,43 +316,19 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   }
 
   onMainContentScroll(event: Event): void {
-    this.updateActiveSection();
+    // No-op: scrolling is now handled by the window
   }
 
   scrollToSection(sectionId: string): void {
     this.activeSection = sectionId;
-    // Close mobile menu when navigating
     this.isMobileMenuOpen = false;
 
-    // Use setTimeout to ensure menu closes before scrolling
     setTimeout(() => {
       const element = document.getElementById(sectionId);
-      const mainContent = document.querySelector('.main-content') as HTMLElement;
-
-      if (element && mainContent) {
-        const headerHeight = 70; // Fixed header height
-        const elementTop = element.offsetTop - mainContent.offsetTop - headerHeight;
-
-        // Try multiple scroll methods for better mobile compatibility
-        try {
-          mainContent.scrollTo({
-            top: elementTop,
-            behavior: 'smooth'
-          });
-        } catch (error) {
-          mainContent.scrollTop = elementTop;
-        }
-
-        // Also try scrolling the window as fallback
-        setTimeout(() => {
-          if (mainContent.scrollTop === 0 || Math.abs(mainContent.scrollTop - elementTop) > 100) {
-            const windowScrollTop = element.offsetTop - headerHeight;
-            window.scrollTo({
-              top: windowScrollTop,
-              behavior: 'smooth'
-            });
-          }
-        }, 200);
+      if (element) {
+        const headerHeight = 70;
+        const elementTop = element.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top: elementTop, behavior: 'smooth' });
       }
     }, 100);
   }
@@ -367,14 +343,7 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
 
   scrollToTop(): void {
     this.activeSection = 'about';
-    const mainContent = document.querySelector('.main-content') as HTMLElement;
-
-    if (mainContent) {
-      mainContent.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 
@@ -383,17 +352,14 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   }
 
   updateActiveSection(): void {
-    const mainContent = document.querySelector('.main-content') as HTMLElement;
-    if (!mainContent) return;
-
     const sections = ['about', 'skills', 'timeline', 'certifications', 'interests', 'contact'];
     const headerHeight = 70;
-    const scrollTop = mainContent.scrollTop + headerHeight + 100; // Add offset for better detection
+    const scrollTop = window.scrollY + headerHeight + 100;
 
     for (let i = sections.length - 1; i >= 0; i--) {
       const section = document.getElementById(sections[i]);
       if (section) {
-        const sectionTop = section.offsetTop - mainContent.offsetTop;
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
         if (scrollTop >= sectionTop) {
           this.activeSection = sections[i];
           break;

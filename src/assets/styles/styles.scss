@@ -1,4 +1,4 @@
 @import "colors.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'JetBrains Mono', monospace, "Helvetica Neue", sans-serif; }
+html { height: 100%; }
+body { min-height: 100%; margin: 0; font-family: 'JetBrains Mono', monospace, "Helvetica Neue", sans-serif; overflow-x: hidden; }
