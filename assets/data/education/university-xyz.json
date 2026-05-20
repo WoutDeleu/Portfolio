@@ -1,21 +1,23 @@
 {
-  "id": "university-xyz",
-  "title": "Bachelor's in Computer Science",
-  "subTitle": "Bachelor",
-  "startDate": "January 2010",
-  "endDate": "January 2014",
-  "description": "Studied computer science with a focus on software development.",
-  "specialization": "Software Engineering",
+  "id": "ku-leuven",
+  "title": "Master of Science in Industrial Engineering",
+  "subTitle": "Master",
+  "startDate": "September 2019",
+  "endDate": "June 2023",
+  "description": "Master's degree at KU Leuven with specialization in Electronics & ICT, combining embedded systems, software engineering, computer networks, and machine learning. Thesis: 'Time Is Running Out — Assessing Temporal Privacy of Privacy Zones in Fitness Tracking Social Networks', developing route-reconstruction algorithms that expose home locations from Strava-style privacy zones.",
+  "specialization": "Electronics & ICT",
   "relevantCourses": [
     "Software Engineering",
-    "Web Development",
-    "Data Structures",
-    "Algorithms"
+    "Algorithms & Data Structures",
+    "Computer Networks",
+    "Machine Learning",
+    "Embedded Systems",
+    "Digital Signal Processing"
   ],
   "institution": {
-    "name": "University of XYZ",
+    "name": "KU Leuven",
     "logo": "https://bib.kuleuven.be/english/ebib/afbeeldingen/logos-ku-leuven//kuleuven-logo-2012.png/image_thumb",
-    "website": "https://www.websolutions.com"
+    "website": "https://www.kuleuven.be"
   },
   "order": 1
 }

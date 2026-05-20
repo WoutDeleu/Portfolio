@@ -1,0 +1,14 @@
+{
+  "id": "job-silverfin",
+  "title": "Solution Developer",
+  "organization": "Silverfin (via Axxes)",
+  "startDate": "2024-02-01",
+  "endDate": "2024-05-01",
+  "type": "period",
+  "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><polyline points=\"14 2 14 8 20 8\"/><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"/><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"/></svg>",
+  "shortDescription": "Developed Personal Income Tax templates for accountants in the Silverfin platform under a tight deadline",
+  "details": "Joined a team of 17 professionals at Silverfin to help deliver Personal Income Tax reporting templates under a time-critical deadline. Working in an unfamiliar domain and a Liquid-based templating language specific to the Silverfin platform, I got up to speed quickly and contributed meaningfully to delivering the project on time.\n\nResponsibilities included developing and maintaining templates, code reviews, and coordinating within a large cross-functional team.",
+  "tags": ["Liquid", "Scrum", "JIRA", "GitHub", "Excel", "Fintech"],
+  "location": "Ghent, Belgium",
+  "order": 2
+}

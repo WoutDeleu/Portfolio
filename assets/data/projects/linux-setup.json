@@ -1,0 +1,14 @@
+{
+  "id": "project-linux-setup",
+  "title": "Linux Setup & Ricing",
+  "startDate": "2024-01-01",
+  "endDate": null,
+  "type": "period",
+  "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18\"/><path d=\"M9 21V9\"/></svg>",
+  "shortDescription": "Fully reproducible Linux environment managed with Ansible and GNU Stow — i3, Neovim, Polybar, EWW widgets, and automated recovery",
+  "details": "An ongoing project to make my entire Linux setup fully reproducible and recoverable from scratch. Managed via Ansible for provisioning and GNU Stow for dotfile symlinks, with a bootstrap script that gets everything running from a single command.\n\nThe desktop environment is built around i3 window manager with a custom Polybar status bar and EWW-powered widgets. Editor setup centres on Neovim with a full LSP configuration. The shell is Zsh with a tuned config, and a startup script handles automatic workspace layout on login.\n\nThe goal is that if I boot a fresh Arch install, I should be back to a fully working, familiar environment in minutes — not hours of manual configuration.",
+  "tags": ["Linux", "Ansible", "GNU Stow", "i3", "Neovim", "Zsh", "Polybar", "EWW", "Dotfiles", "Arch Linux"],
+  "location": "Personal Project",
+  "githubUrl": "https://github.com/WoutDeleu/linux-setup",
+  "order": 5
+}

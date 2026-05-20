@@ -1,8 +1,14 @@
 {
   "skills": [
-    "python",
     "java",
+    "spring",
+    "python",
     "cpp",
-    "angular"
+    "angular",
+    "react",
+    "docker",
+    "kafka",
+    "sql",
+    "linux"
   ]
 }
