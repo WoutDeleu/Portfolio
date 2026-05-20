@@ -44,7 +44,7 @@
     </header>
 
     <!-- Main Content with Scrollable Sections -->
-    <div class="main-content" (scroll)="onMainContentScroll($event)">
+    <div class="main-content">
       <div class="content-container">
 
         <!-- About Section -->
@@ -166,12 +166,15 @@
           </div>
         </section>
 
-        <!-- Section Divider -->
-        <div class="section-divider"></div>
+      </div>
+      <!-- End content-container: timeline is full-width outside it -->
 
-        <!-- Timeline Sections -->
-        <section id="timeline" class="timeline-section" appScrollAnimation [delay]="50">
-          <h2 class="section-title">Timeline</h2>
+      <!-- Section Divider -->
+      <div class="section-divider"></div>
+
+      <!-- Timeline Sections -->
+      <section id="timeline" class="timeline-section" appScrollAnimation [delay]="50">
+        <h2 class="section-title">Timeline</h2>
 
           <div class="timelines-container">
             <div class="timeline-column" *ngFor="let timeline of timelines; let i = index" [class]="'timeline-' + i" appScrollAnimation [delay]="100 + (i * 100)">
@@ -246,8 +249,11 @@
           </div>
         </section>
 
-        <!-- Section Divider -->
-        <div class="section-divider"></div>
+      <!-- Section Divider -->
+      <div class="section-divider"></div>
+
+      <!-- Remaining sections back in a content-container -->
+      <div class="content-container">
 
         <!-- Certifications Section -->
         <section id="certifications" class="certifications-section" appScrollAnimation [delay]="50">
