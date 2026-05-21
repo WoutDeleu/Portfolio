@@ -17,7 +17,7 @@
 
 .view {
   width: 100%;
-  will-change: transform, opacity;
+  will-change: opacity;
   pointer-events: none;
 
   &[style*="visibility: visible"] {
@@ -29,6 +29,14 @@
   /* Portfolio lives in the normal document flow so the window scrolls */
   position: relative;
   z-index: 1;
+  /* Do NOT add will-change: transform here — it would make position:fixed children
+     inside <app-portfolio> position themselves relative to this element instead of
+     the viewport, causing modals to appear off-screen when scrolled down. */
+}
+
+.terminal-view-wrapper {
+  /* Terminal is fixed-position itself, so will-change: transform is safe here */
+  will-change: transform, opacity;
 }
 
 .terminal-view-wrapper {
