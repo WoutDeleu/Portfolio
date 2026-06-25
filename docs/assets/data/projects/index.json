@@ -4,6 +4,7 @@
     "keycloak-tool",
     "thesis-privacy",
     "linux-setup",
-    "home-server"
+    "home-server",
+    "port-simulation"
   ]
 }

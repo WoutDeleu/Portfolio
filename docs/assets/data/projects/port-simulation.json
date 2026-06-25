@@ -1,0 +1,13 @@
+{
+  "id": "project-port-simulation",
+  "title": "Container Port Simulation",
+  "startDate": "2021-09-01",
+  "endDate": "2022-06-30",
+  "type": "period",
+  "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 21h18\"/><path d=\"M5 21V8l7-5 7 5v13\"/><path d=\"M9 21V12h6v9\"/></svg>",
+  "shortDescription": "Full simulation model of a container port: deterministic crane scheduler, AI-driven process planner with heuristics, and statistical visualisation",
+  "details": "Academic project at KU Leuven simulating end-to-end operations of a container port. Built in Java, the simulator models container arrivals, ship docking, crane assignment, yard transport, and outbound dispatch.\n\nThe system combines a deterministic crane scheduler with an AI process planner that uses search heuristics to optimise throughput under realistic constraints (limited cranes, stochastic arrival times, container priorities). Output is rendered through statistical visualisation (JFreeChart) to compare scheduling strategies. Verified with JUnit tests across edge cases.",
+  "tags": ["Java", "Simulation", "AI Planning", "AI Heuristics", "JFreeChart", "JUnit", "Algorithms"],
+  "location": "KU Leuven",
+  "order": 7
+}
