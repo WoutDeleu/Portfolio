@@ -7,7 +7,7 @@
   "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg>",
   "shortDescription": "Route-reconstruction algorithms exposing home locations from Strava privacy zones — security research thesis at KU Leuven",
   "details": "Master's thesis: 'Time Is Running Out — Assessing Temporal Privacy of Privacy Zones in Fitness Tracking Social Networks'. Fitness platforms like Strava allow users to hide portions of activity routes to protect sensitive locations (e.g. home address). Previous research showed these privacy zones remain vulnerable.\n\nDeveloped Python algorithms that reconstruct the hidden portions of routes using distance and elevation data, effectively exposing the home locations of users despite the privacy protections. Also investigated the conditions under which the attack is most effective, and proposed countermeasures to prevent it. Wrote a scientific article summarizing the findings. Individual research project under academic supervision.",
-  "tags": ["Python", "Algorithms", "Data Visualization", "Security Research", "Strava", "Analysis"],
+  "tags": ["Python", "NumPy", "Matplotlib", "Algorithms", "Data Visualization", "Security Research", "Strava", "GPS", "LaTeX"],
   "location": "KU Leuven",
   "order": 4
 }

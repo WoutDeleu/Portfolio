@@ -6,7 +6,7 @@
   "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/></svg>",
   "shortDescription": "Full-stack enterprise tool enabling Volvo Cars management to configure and monitor Keycloak authorization across all plants",
   "details": "Led the design and development of a Keycloak Integration Tool from the ground up at Volvo Cars Belgium. The tool enables management to evaluate, configure, and oversee the authorization system (Keycloak with Active Directory) across all Volvo production plants globally.\n\nResponsible for the full project lifecycle: gathering requirements from business stakeholders, designing the architecture, driving both Angular frontend and Spring Boot backend development, and integrating with Active Directory via LDAP. Significantly improved access management efficiency and security visibility across the organization.",
-  "tags": ["Java", "Spring Boot", "Keycloak", "Angular", "Active Directory", "LDAP", "Spring Security"],
+  "tags": ["Java", "Spring Boot", "Keycloak", "Angular", "Active Directory", "LDAP", "Spring Security", "Oracle DB", "GitHub Actions", "OpenShift"],
   "location": "Volvo Cars Ghent",
   "order": 3
 }
